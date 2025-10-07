@@ -37,3 +37,4 @@
   if (e.key === 'Escape') closeLightbox();
   });
 //Lightbox
+
