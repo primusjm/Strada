@@ -1169,6 +1169,10 @@ select {
     align-self: stretch;
 }
 
+.justify-self-end {
+    justify-self: end;
+}
+
 .overflow-hidden {
     overflow: hidden;
 }
@@ -1918,8 +1922,8 @@ span {
         width: 64%;
     }
 
-    .md\:w-72 {
-        width: 18rem;
+    .md\:w-\[200px\] {
+        width: 200px;
     }
 
     .md\:w-\[50\%\] {
@@ -2042,6 +2046,10 @@ span {
 
     .lg\:w-auto {
         width: auto;
+    }
+
+    .lg\:w-\[50\%\] {
+        width: 50%;
     }
 
     .lg\:columns-3 {
