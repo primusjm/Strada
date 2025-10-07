@@ -1866,10 +1866,6 @@ span {
 
 @media (min-width: 640px) {
 
-    .sm\:block {
-        display: block;
-    }
-
     .sm\:grid {
         display: grid;
     }
