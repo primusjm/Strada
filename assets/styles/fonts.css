@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'KumbhSans';
+    src: local('KumbhSans Regular'), local('KumbhSans-Regular'),
+        url('fonts/KumbhSansRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'KumbhSans';
+    src: local('KumbhSans Bold'), local('KumbhSans-Bold'),
+        url('fonts/KumbhSansBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
