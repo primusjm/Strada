@@ -1197,6 +1197,10 @@ select {
     border-radius: 0.375rem;
 }
 
+.rounded-br-2xl {
+    border-bottom-right-radius: 1rem;
+}
+
 .bg-cream {
     --tw-bg-opacity: 1;
     background-color: rgb(250 248 246 / var(--tw-bg-opacity));
@@ -1886,8 +1890,8 @@ span {
         top: -3rem;
     }
 
-    .md\:top-\[44px\] {
-        top: 44px;
+    .md\:top-\[38px\] {
+        top: 38px;
     }
 
     .md\:flex {
@@ -1972,6 +1976,10 @@ span {
 
     .md\:gap-12 {
         gap: 3rem;
+    }
+
+    .md\:rounded-2xl {
+        border-radius: 1rem;
     }
 
     .md\:rounded-none {
