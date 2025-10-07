@@ -875,12 +875,12 @@ select {
     height: 1rem;
 }
 
-.h-px {
-    height: 1px;
-}
-
 .h-6 {
     height: 1.5rem;
+}
+
+.h-px {
+    height: 1px;
 }
 
 .h-auto {
@@ -1125,10 +1125,6 @@ select {
     gap: 0.75rem;
 }
 
-.gap-12 {
-    gap: 3rem;
-}
-
 .gap-4 {
     gap: 1rem;
 }
@@ -1143,6 +1139,10 @@ select {
 
 .gap-0 {
     gap: 0px;
+}
+
+.gap-12 {
+    gap: 3rem;
 }
 
 .gap-16 {
@@ -1896,6 +1896,10 @@ span {
 
     .md\:flex {
         display: flex;
+    }
+
+    .md\:hidden {
+        display: none;
     }
 
     .md\:h-\[200px\] {
