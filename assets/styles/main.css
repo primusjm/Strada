@@ -1388,12 +1388,12 @@ select {
     padding-bottom: 2rem;
 }
 
-.pr-10 {
-    padding-right: 2.5rem;
-}
-
 .pt-4 {
     padding-top: 1rem;
+}
+
+.pr-10 {
+    padding-right: 2.5rem;
 }
 
 .text-left {
@@ -2059,6 +2059,10 @@ span {
         margin-bottom: 4rem;
     }
 
+    .lg\:mb-8 {
+        margin-bottom: 2rem;
+    }
+
     .lg\:block {
         display: block;
     }
@@ -2115,10 +2119,6 @@ span {
 
     .lg\:pb-0 {
         padding-bottom: 0px;
-    }
-
-    .lg\:pt-16 {
-        padding-top: 4rem;
     }
 
     .lg\:shadow-none {
