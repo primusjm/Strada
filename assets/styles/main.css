@@ -1205,6 +1205,10 @@ select {
     border-bottom-right-radius: 1rem;
 }
 
+.rounded-tl-2xl {
+    border-top-left-radius: 1rem;
+}
+
 .bg-cream {
     --tw-bg-opacity: 1;
     background-color: rgb(250 248 246 / var(--tw-bg-opacity));
@@ -1403,11 +1407,6 @@ select {
     line-height: 1;
 }
 
-.text-sm {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-}
-
 .text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -1418,9 +1417,9 @@ select {
     line-height: 2.25rem;
 }
 
-.text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+.text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
 }
 
 .font-bold {
@@ -1459,8 +1458,8 @@ select {
     line-height: 1.625;
 }
 
-.leading-\[48px\] {
-    line-height: 48px;
+.leading-\[60px\] {
+    line-height: 60px;
 }
 
 .leading-loose {
@@ -1477,10 +1476,6 @@ select {
 
 .leading-\[56px\] {
     line-height: 56px;
-}
-
-.leading-\[72px\] {
-    line-height: 72px;
 }
 
 .leading-\[36px\] {
@@ -1652,7 +1647,7 @@ select {
 }
 
 html {
-    font-size: 14px;
+    font-size: 16px;
     overflow-x: hidden !important;
     scroll-behavior: smooth;
 }
@@ -1761,6 +1756,7 @@ span {
 
 .content p {
   margin: 0.5rem 1.5rem;
+  /* line-height: 1.6rem; */
 }
 
 /* Links */
