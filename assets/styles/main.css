@@ -867,6 +867,10 @@ select {
     display: none;
 }
 
+.h-full {
+    height: 100%;
+}
+
 .h-\[300px\] {
     height: 300px;
 }
@@ -905,10 +909,6 @@ select {
 
 .h-\[400px\] {
     height: 400px;
-}
-
-.h-full {
-    height: 100%;
 }
 
 .h-14 {
@@ -1131,6 +1131,10 @@ select {
 
 .items-center {
     align-items: center;
+}
+
+.items-stretch {
+    align-items: stretch;
 }
 
 .justify-start {
@@ -1945,10 +1949,6 @@ span {
 
     .md\:hidden {
         display: none;
-    }
-
-    .md\:h-\[200px\] {
-        height: 200px;
     }
 
     .md\:w-full {
