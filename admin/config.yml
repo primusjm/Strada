@@ -1,0 +1,183 @@
+backend:
+  name: github
+  repo: primusjm/rising-leaders-center
+  branch: main
+  base_url: https://rising-leaders-center.netlify.app
+  auth_endpoint: api/auth
+
+publish_mode: editorial_workflow
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+collections:
+  - name: "posts"
+    label: "Articles"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Type", name: "type", widget: "hidden", default: "post" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "Header image", name: "image", widget: "string", hint: "Path under assets/images/articles, without extension" }
+      - { label: "Permalink", name: "permalink", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "about-us.md"
+        label: "About Us"
+        name: "about-us"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Layout", name: "layout", widget: "hidden", default: "about-us" }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "programs.md"
+        label: "Programs"
+        name: "programs"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "coaching.md"
+        label: "Coaching"
+        name: "coaching"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "crli.md"
+        label: "CRLI"
+        name: "crli"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "impact.md"
+        label: "Our Impact"
+        name: "impact"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "contact.md"
+        label: "Contact"
+        name: "contact"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "faqs.md"
+        label: "FAQs page"
+        name: "faqs-page"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "gallery.md"
+        label: "Gallery page"
+        name: "gallery-page"
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "faqs"
+    label: "FAQs"
+    files:
+      - file: "_data/faqs.yml"
+        label: "FAQs"
+        name: "faqs"
+        fields:
+          - label: "FAQs"
+            name: "faqs"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer", name: "answer", widget: "text" }
+              - { label: "Area", name: "area", widget: "string" }
+
+  - name: "testimonials"
+    label: "Testimonials"
+    files:
+      - file: "_data/testimonials.yml"
+        label: "Testimonials"
+        name: "testimonials"
+        fields:
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Company", name: "company", widget: "string" }
+              - { label: "Testimonial", name: "testimonial", widget: "text" }
+
+  - name: "partners"
+    label: "Partners"
+    files:
+      - file: "_data/partners.yml"
+        label: "Partners"
+        name: "partners"
+        fields:
+          - label: "Partners"
+            name: "partners"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo filename", name: "logo", widget: "string", hint: "Filename (without extension) under assets/images/logos" }
+
+  - name: "funders"
+    label: "Funders"
+    files:
+      - file: "_data/funders.yml"
+        label: "Funders"
+        name: "funders"
+        fields:
+          - label: "Funders"
+            name: "funders"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Logo filename", name: "logo", widget: "string", hint: "Filename (without extension) under assets/images/logos" }
+
+  - name: "clients"
+    label: "Clients"
+    files:
+      - file: "_data/cliente.yml"
+        label: "Clients"
+        name: "clients"
+        fields:
+          - label: "Clients"
+            name: "clients"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+
+  - name: "navigation"
+    label: "Navigation"
+    files:
+      - file: "_data/nav.yml"
+        label: "Main nav"
+        name: "nav"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+              - label: "Subitems"
+                name: "subitems"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Link", name: "link", widget: "string" }
+      - file: "_data/nav-footer.yml"
+        label: "Footer nav"
+        name: "nav-footer"
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }

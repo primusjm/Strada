@@ -1,1 +1,1 @@
-Sitemap: https://risingleaderscenter.org/sitemap.xml
+Sitemap: http://localhost:7000/sitemap.xml
