@@ -1,41 +1,55 @@
-// Hamburger toggle
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
-  let isOpen = false;
+/* Header: tucks away while scrolling down, returns on scroll up, and gains a hairline once the page moves. */
+(function () {
+  var header = document.querySelector(".site-header");
+  var toggle = document.getElementById("menu-toggle");
+  var last = window.scrollY;
+  var ticking = false;
 
-  if (menuToggle && menu) menuToggle.addEventListener('click', () => {
-    isOpen = !isOpen;
-    if (isOpen) {
-      menu.classList.remove('max-h-0', 'p-0');
-      menu.classList.add('max-h-[600px]', 'p-6');
-    } else {
-      menu.classList.remove('max-h-[600px]', 'p-6');
-      menu.classList.add('max-h-0', 'p-0');
+  function update() {
+    var y = window.scrollY;
+    var menuOpen = toggle && toggle.getAttribute("aria-expanded") === "true";
+    var hasFocus = header && header.contains(document.activeElement);
+
+    if (header) {
+      header.classList.toggle("is-scrolled", y > 8);
+      if (y <= 0 || y < last - 4 || menuOpen || hasFocus) {
+        header.classList.remove("is-hidden");
+      } else if (y > last + 4 && y > 160) {
+        header.classList.add("is-hidden");
+      }
     }
-  });
-// Hamburger toggle
-
-// Lightbox
-  function openLightbox(src) {
-  const lightbox = document.getElementById('lightbox');
-  const image = document.getElementById('lightbox-image');
-  image.src = src;
-  lightbox.classList.remove('hidden');
+    last = y;
+    ticking = false;
   }
 
-  function closeLightbox() {
-  document.getElementById('lightbox').classList.add('hidden');
+  window.addEventListener("scroll", function () {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  }, { passive: true });
+  update();
+})();
+
+/* Scroll to top buttons (only present on some layouts) */
+(function () {
+  var buttons = [
+    document.getElementById("scrollToTop"),
+    document.getElementById("scrollToTopMobile")
+  ].filter(Boolean);
+
+  buttons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  var desktopButton = document.getElementById("scrollToTop");
+  if (desktopButton) {
+    window.addEventListener("scroll", function () {
+      var show = window.scrollY > 200;
+      desktopButton.classList.toggle("hidden", !show);
+      desktopButton.classList.toggle("flex", show);
+    }, { passive: true });
   }
-
-  // ✅ Close on background click
-  const lightboxEl = document.getElementById('lightbox');
-  if (lightboxEl) lightboxEl.addEventListener('click', (e) => {
-  if (e.target.id === 'lightbox') closeLightbox();
-  });
-
-  // ✅ Optional: close with Esc key
-  document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeLightbox();
-  });
-//Lightbox
-
+})();
