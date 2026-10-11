@@ -1,1 +1,41 @@
-function openLightbox(e){const t=document.getElementById("lightbox");document.getElementById("lightbox-image").src=e,t.classList.remove("hidden")}function closeLightbox(){document.getElementById("lightbox").classList.add("hidden")}const menuToggle=document.getElementById("menu-toggle"),menu=document.getElementById("menu");let isOpen=!1;menuToggle.addEventListener("click",()=>{(isOpen=!isOpen)?(menu.classList.remove("max-h-0","p-0"),menu.classList.add("max-h-[600px]","p-6")):(menu.classList.remove("max-h-[600px]","p-6"),menu.classList.add("max-h-0","p-0"))}),document.getElementById("lightbox").addEventListener("click",e=>{"lightbox"===e.target.id&&closeLightbox()}),document.addEventListener("keydown",e=>{"Escape"===e.key&&closeLightbox()});
+// Hamburger toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  let isOpen = false;
+
+  if (menuToggle && menu) menuToggle.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      menu.classList.remove('max-h-0', 'p-0');
+      menu.classList.add('max-h-[600px]', 'p-6');
+    } else {
+      menu.classList.remove('max-h-[600px]', 'p-6');
+      menu.classList.add('max-h-0', 'p-0');
+    }
+  });
+// Hamburger toggle
+
+// Lightbox
+  function openLightbox(src) {
+  const lightbox = document.getElementById('lightbox');
+  const image = document.getElementById('lightbox-image');
+  image.src = src;
+  lightbox.classList.remove('hidden');
+  }
+
+  function closeLightbox() {
+  document.getElementById('lightbox').classList.add('hidden');
+  }
+
+  // ✅ Close on background click
+  const lightboxEl = document.getElementById('lightbox');
+  if (lightboxEl) lightboxEl.addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') closeLightbox();
+  });
+
+  // ✅ Optional: close with Esc key
+  document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeLightbox();
+  });
+//Lightbox
+
