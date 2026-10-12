@@ -3,7 +3,8 @@
 (function () {
   var sections = Array.prototype.slice.call(document.querySelectorAll(".titolo"));
   var zigzags = Array.prototype.slice.call(document.querySelectorAll(".zigzag"));
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+    document.documentElement.classList.contains("a11y-still");
 
   /* Give grid and stagger children an index so CSS can offset their entrance. */
   sections.forEach(function (section) {
