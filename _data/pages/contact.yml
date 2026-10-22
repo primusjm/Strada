@@ -5,3 +5,36 @@ thanks:
   caption: Message Sent
   title: Thank You
 thanks_text: Your message has been received, and we'll be in touch soon to discuss how we can begin your journey towards stronger, more impactful leadership.
+form:
+  first_name:
+    label: First Name
+    placeholder: Your first name
+    error: Enter your first name
+  last_name:
+    label: Last Name
+    placeholder: Your last name
+    error: Enter your last name
+  email:
+    label: Email Address
+    placeholder: mail@mail.com
+    error: Enter your email address
+    error_type: Enter a valid email address
+  organisation:
+    label: Organisation Name
+    placeholder: Your organisation name
+  message:
+    label: Your Message
+    placeholder: Your comments
+    error: Enter your message
+  country:
+    label: Country
+    error: Select your country
+    placeholder: Select a country
+  countries:
+  - Kenya
+  - Uganda
+  - Tanzania
+  - Rwanda
+  required_before: Fields marked
+  required_sr: with an asterisk
+  required_after: are required.

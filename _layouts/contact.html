@@ -16,23 +16,23 @@ layout: compressa
 	</h2>
 
 	<p class="text-charcoal text-base -mt-4">
-	  Fields marked <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.
+	  {{ c.form.required_before }} <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only">{{ c.form.required_sr }}</span> {{ c.form.required_after }}
 	</p>
 
 	<!-- First & Last Name -->
 	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="first-name" class="text-black text-base font-normal leading-tight mb-2">
-		  First Name <span class="text-red-600" aria-hidden="true">*</span>
+		  {{ c.form.first_name.label }} <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input id="first-name" name="first-name" autocomplete="given-name" data-error="Enter your first name" type="text" placeholder="Your first name" required class="field">
+		<input id="first-name" name="first-name" autocomplete="given-name" data-error="{{ c.form.first_name.error }}" type="text" placeholder="{{ c.form.first_name.placeholder }}" required class="field">
 	  </div>
 
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="last-name" class="text-black text-base font-normal leading-tight mb-2">
-		  Last Name <span class="text-red-600" aria-hidden="true">*</span>
+		  {{ c.form.last_name.label }} <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input id="last-name" name="last-name" autocomplete="family-name" data-error="Enter your last name" type="text" placeholder="Your last name" required class="field">
+		<input id="last-name" name="last-name" autocomplete="family-name" data-error="{{ c.form.last_name.error }}" type="text" placeholder="{{ c.form.last_name.placeholder }}" required class="field">
 	  </div>
 	</div>
 
@@ -40,21 +40,18 @@ layout: compressa
 	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="email" class="text-black text-base font-normal leading-tight mb-2">
-		  Email Address <span class="text-red-600" aria-hidden="true">*</span>
+		  {{ c.form.email.label }} <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input id="email" name="email" autocomplete="email" data-error="Enter your email address" data-error-type="Enter a valid email address" type="email" placeholder="mail@mail.com" required class="field">
+		<input id="email" name="email" autocomplete="email" data-error="{{ c.form.email.error }}" data-error-type="{{ c.form.email.error_type }}" type="email" placeholder="{{ c.form.email.placeholder }}" required class="field">
 	  </div>
 
 	  <div class="w-full flex-1 flex flex-col relative">
 		<label for="country" class="text-black text-base font-normal leading-tight mb-2">
-		  Country <span class="text-red-600" aria-hidden="true">*</span>
+		  {{ c.form.country.label }} <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<select id="country" name="country" autocomplete="country-name" data-error="Select your country" required class="field appearance-none pr-10">
-		  <option value="" disabled selected>Select a country</option>
-		  <option value="kenya">Kenya</option>
-		  <option value="uganda">Uganda</option>
-		  <option value="tanzania">Tanzania</option>
-		  <option value="rwanda">Rwanda</option>
+		<select id="country" name="country" autocomplete="country-name" data-error="{{ c.form.country.error }}" required class="field appearance-none pr-10">
+		  <option value="" disabled selected>{{ c.form.country.placeholder }}</option>
+		  {% for name in c.form.countries %}<option value="{{ name | downcase }}">{{ name }}</option>{% endfor %}
 		</select>
 		<svg
 		  class="w-4 h-4 absolute right-4 top-[38px] md:top-[38px] pointer-events-none text-gray-400"
@@ -72,9 +69,9 @@ layout: compressa
 	<div class="inline-flex justify-start items-start gap-8">
 	  <div class="flex-1 flex flex-col">
 		<label for="organisation" class="text-black text-base font-normal leading-tight mb-2">
-		  Organisation Name
+		  {{ c.form.organisation.label }}
 		</label>
-		<input id="organisation" name="organisation" autocomplete="organization" type="text" placeholder="Your organisation name" class="field">
+		<input id="organisation" name="organisation" autocomplete="organization" type="text" placeholder="{{ c.form.organisation.placeholder }}" class="field">
 	  </div>
 	</div>
 
@@ -82,9 +79,9 @@ layout: compressa
 	<div class="inline-flex justify-start items-start gap-8">
 	  <div class="flex-1 flex flex-col">
 		<label for="message" class="text-black text-base font-normal leading-tight mb-2">
-		  Your Message <span class="text-red-600" aria-hidden="true">*</span>
+		  {{ c.form.message.label }} <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<textarea id="message" name="message" data-error="Enter your message" placeholder="Your comments" required class="field h-36 resize-none"></textarea>
+		<textarea id="message" name="message" data-error="{{ c.form.message.error }}" placeholder="{{ c.form.message.placeholder }}" required class="field h-36 resize-none"></textarea>
 	  </div>
 	</div>
 
