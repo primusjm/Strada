@@ -1,7 +1,7 @@
 # Sveltia CMS (Decap-compatible). Sign in at /admin with GitHub or a personal access token.
 backend:
   name: github
-  repo: primusjm/Strada-source
+  repo: primusjm/Strada
   branch: main
 
 site_url: https://risingleaderscenter.org
