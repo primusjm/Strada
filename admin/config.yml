@@ -962,8 +962,11 @@ collections:
         widget: object
         collapsed: true
         fields:
-        - label: Linkedin
+        - label: Linkedin (founder's personal profile, used in the founder section)
           name: linkedin
+          widget: string
+        - label: Linkedin company page (footer icon)
+          name: linkedin_company
           widget: string
         - label: Linkedin link description (read out by screen readers)
           name: linkedin_label

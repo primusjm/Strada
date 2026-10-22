@@ -14,7 +14,7 @@
         <title>{% if page.title and page.type != "home" %} {{page.title|capitalize_all}} • RLC {% else %} {{site.title | capitalize_all}} {% endif %}</title>
         {% seo title=false %}
         {% if page.type == "home" %}
-        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":{{ site.title | jsonify }},"url":{{ site.url | jsonify }},"logo":{{ site.url | append: "/assets/images/icons/apple-touch-icon.png" | jsonify }},"description":{{ page.excerpt | strip_html | strip | jsonify }}}</script>
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":{{ site.title | jsonify }},"url":{{ site.url | jsonify }},"logo":{{ site.url | append: "/assets/images/icons/apple-touch-icon.png" | jsonify }},"description":{{ page.excerpt | strip_html | strip | jsonify }},"sameAs":[{{ site.data.pages.shared.social.linkedin_company | jsonify }}]}</script>
         {% endif %}
         <!-- Favicons -->
         <link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
