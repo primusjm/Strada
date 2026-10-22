@@ -30,8 +30,11 @@ exclude:
   - bin
   - "Strada backup"
 
-include:
-  - _headers
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      permalink: "/articles/:slug/"
 
 jekyll-minifier:
   compress_css: false

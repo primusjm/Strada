@@ -3,8 +3,9 @@
 {% include title.html caption="Stay Motivated" title="Read our Articles" dot="yes" align="center" %}
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
     {% for post in site.posts %}
+    {% include article-image.html image=post.image %}
     <a href="{{ post.url }}" class="group w-full h-full flex flex-col overflow-hidden rounded-2xl shadow-card lift hover:shadow-lg">
-      <img class="ph self-stretch h-full object-cover" src="/assets/images/articles/{{post.image}}-640.webp" srcset="/assets/images/articles/{{post.image}}-640.webp 640w, /assets/images/articles/{{post.image}}.webp 1600w" sizes="(min-width: 768px) 33vw, 100vw" alt="{{ post.title }}" loading="lazy" decoding="async">
+      <img class="ph self-stretch h-full object-cover" src="{{ article_thumb }}" srcset="{{ article_thumb }} 640w, {{ article_full }} 1600w" sizes="(min-width: 768px) 33vw, 100vw" alt="{{ post.title }}" loading="lazy" decoding="async">
       <div class="flex flex-col justify-between h-full bg-cream p-6 outline outline-1 outline-offset-[-1px] outline-gray-100">
         <div>
           <h2 class="text-2xl font-medium transition-colors group-hover:text-ink-700">{{ post.title }}</h2>

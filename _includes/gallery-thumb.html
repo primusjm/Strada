@@ -1,16 +1,17 @@
 {% comment %}
-  One gallery photo. cohort and i pick the file; label is the alt text prefix.
-  With lightbox=true it renders as a button that opens the viewer, otherwise as a plain tile.
+  One gallery photo. image is the full-size path from _data/gallery.yml, n its 1-based position,
+  cohort the cohort number and label the alt text prefix. The thumbnail lives in a thumbs/ folder next to
+  the full image (bin/make-thumbs creates it). With lightbox=true it is a button that opens the viewer.
 {% endcomment %}
-{% assign base = "/assets/images/gallery/cohort-" | append: include.cohort | append: "/" %}
-{% assign file = "cohort-" | append: include.cohort | append: "-" | append: include.i | append: ".webp" %}
-{% assign alt = "Cohort " | append: include.cohort | append: " " | append: include.label | append: " " | append: include.i %}
+{% assign thumb = include.image | split: "/" | last %}
+{% assign thumb = include.image | replace: thumb, "" | append: "thumbs/" | append: thumb %}
+{% assign alt = "Cohort " | append: include.cohort | append: " " | append: include.label | append: " " | append: include.n %}
 {% if include.lightbox %}
-<button type="button" class="w-full flex flex-col justify-start items-center overflow-hidden rounded-2xl cursor-zoom-in" data-lightbox="{{ base }}{{ file }}" aria-haspopup="dialog">
-  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ base }}thumbs/{{ file }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
+<button type="button" class="w-full flex flex-col justify-start items-center overflow-hidden rounded-2xl cursor-zoom-in" data-lightbox="{{ include.image }}" aria-haspopup="dialog">
+  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ thumb }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
 </button>
 {% else %}
 <div class="w-full flex flex-col justify-start items-center overflow-hidden">
-  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ base }}thumbs/{{ file }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
+  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ thumb }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
 </div>
 {% endif %}

@@ -20,8 +20,8 @@ layout: compressa
 			</div>
 			
 			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
-			  {% for i in (1..4) %}
-			  {% include gallery-thumb.html cohort=1 i=i label="photo" %}
+			  {% for photo in site.data.gallery["cohort-1"] limit: 4 %}
+			  {% include gallery-thumb.html image=photo.image n=forloop.index cohort=1 label="photo" %}
 			  {% endfor %}
 			</div>
 		</div>
@@ -38,8 +38,8 @@ layout: compressa
 			</div>
 			
 			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
-			  {% for i in (1..4) %}
-			  {% include gallery-thumb.html cohort=2 i=i label="photo" %}
+			  {% for photo in site.data.gallery["cohort-2"] limit: 4 %}
+			  {% include gallery-thumb.html image=photo.image n=forloop.index cohort=2 label="photo" %}
 			  {% endfor %}
 			</div>
 		</div>
@@ -56,8 +56,8 @@ layout: compressa
 			</div>
 			
 			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
-			  {% for i in (1..4) %}
-			  {% include gallery-thumb.html cohort=3 i=i label="photo" %}
+			  {% for photo in site.data.gallery["cohort-3"] limit: 4 %}
+			  {% include gallery-thumb.html image=photo.image n=forloop.index cohort=3 label="photo" %}
 			  {% endfor %}
 			</div>
 		</div>

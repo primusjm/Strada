@@ -1,0 +1,11 @@
+{% comment %}
+  Sets article_full and article_thumb from a post's image field. Older posts store "folder/name"
+  (no extension); posts edited in the CMS store the full path, e.g. /assets/images/articles/name.webp.
+  The 640px thumbnail sits next to it as name-640.webp (bin/make-thumbs creates it).
+{% endcomment %}
+{% if include.image contains "/assets/" %}
+  {% assign article_full = include.image %}
+{% else %}
+  {% assign article_full = include.image | prepend: "/assets/images/articles/" | append: ".webp" %}
+{% endif %}
+{% assign article_thumb = article_full | replace: ".webp", "-640.webp" %}

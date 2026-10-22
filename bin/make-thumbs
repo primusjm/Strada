@@ -1,0 +1,25 @@
+#!/bin/sh
+# Creates any missing thumbnails so images uploaded in the CMS work without manual resizing:
+#   gallery photos  -> gallery/cohort-N/thumbs/<name>.webp (640px wide)
+#   article headers -> articles/**/<name>-640.webp (640px wide)
+# Existing thumbnails are never overwritten. Needs ImageMagick with WebP support.
+set -eu
+cd "$(dirname "$0")/.."
+IMG=assets/images
+
+for f in "$IMG"/gallery/cohort-*/*.webp; do
+  [ -e "$f" ] || continue
+  dir=$(dirname "$f")
+  out="$dir/thumbs/$(basename "$f")"
+  [ -e "$out" ] && continue
+  mkdir -p "$dir/thumbs"
+  convert "$f" -resize 640x -quality 78 "$out"
+  echo "thumb: $out"
+done
+
+find "$IMG"/articles/*/ -name '*.webp' ! -name '*-640.webp' | while read -r f; do
+  out="${f%.webp}-640.webp"
+  [ -e "$out" ] && continue
+  convert "$f" -resize 640x -quality 78 "$out"
+  echo "thumb: $out"
+done

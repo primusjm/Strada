@@ -1,0 +1,341 @@
+# Sveltia CMS (Decap-compatible). Sign in at /admin with GitHub or a personal access token.
+backend:
+  name: github
+  repo: primusjm/Strada-source
+  branch: main
+
+site_url: https://risingleaderscenter.org
+display_url: https://risingleaderscenter.org
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: _posts
+    extension: md
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
+      - { label: Author, name: author, widget: string, default: Joyce Malombe }
+      - { label: Summary, name: excerpt, widget: text, hint: Shown on article cards and under the title. }
+      - label: Header image
+        name: image
+        widget: image
+        media_folder: /assets/images/articles/uploads
+        public_folder: /assets/images/articles/uploads
+        hint: Use a wide photo. A small version for article cards is created automatically.
+      - { label: Page address, name: permalink, widget: string, required: false, hint: "Leave empty for new articles. It becomes /articles/<title>/." }
+      - { name: layout, widget: hidden, default: post }
+      - { name: type, widget: hidden, default: post }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: data
+    label: Site content
+    files:
+      - label: Testimonials
+        name: testimonials
+        file: _data/testimonials.yml
+        fields:
+          - label: Testimonials
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.author}}, {{fields.company}}"
+            fields:
+              - { label: Author, name: author, widget: string }
+              - { label: Organisation, name: company, widget: string }
+              - { label: Quote, name: testimonial, widget: text }
+      - label: FAQs
+        name: faqs
+        file: _data/faqs.yml
+        fields:
+          - label: Questions
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Answer, name: answer, widget: text }
+              - { label: Area, name: area, widget: string, required: false }
+      - label: CRLI participants (logos)
+        name: partners
+        file: _data/partners.yml
+        fields:
+          - label: Organisations
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Logo file name, name: logo, widget: string, hint: "File name in assets/images/logos without .webp, for example glami." }
+      - label: Funders (logos)
+        name: funders
+        file: _data/funders.yml
+        fields:
+          - label: Funders
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Logo file name, name: logo, widget: string, hint: "File name in assets/images/logos without .webp." }
+      - label: Our values
+        name: values
+        file: _data/values.yml
+        fields:
+          - label: Values
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Value, name: name, widget: string }
+              - label: Star colour
+                name: star
+                widget: select
+                options:
+                  - { label: Green, value: star-green }
+                  - { label: Blue, value: star-blue }
+                  - { label: Teal, value: star-teal }
+                  - { label: Yellow, value: star-yellow }
+
+  - name: gallery
+    label: Gallery photos
+    files:
+      - label: Cohort photos
+        name: gallery
+        file: _data/gallery.yml
+        fields:
+          - label: Cohort 1
+            name: cohort-1
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-1
+                public_folder: /assets/images/gallery/cohort-1
+                hint: The order here is the order on the site. Small versions are created automatically.
+          - label: Cohort 2
+            name: cohort-2
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-2
+                public_folder: /assets/images/gallery/cohort-2
+                hint: The order here is the order on the site. Small versions are created automatically.
+          - label: Cohort 3
+            name: cohort-3
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-3
+                public_folder: /assets/images/gallery/cohort-3
+                hint: The order here is the order on the site. Small versions are created automatically.
+
+  - name: pages
+    label: Page headings
+    files:
+      - label: Home
+        name: index
+        file: index.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - label: Hero image
+            name: image
+            widget: object
+            fields:
+              - { name: path, widget: string }
+              - { name: width, widget: number }
+              - { name: height, widget: number }
+          - { name: permalink, widget: hidden }
+      - label: About Us
+        name: about-us
+        file: about-us.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Our Programs
+        name: programs
+        file: programs.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Coaching
+        name: coaching
+        file: coaching.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: CRLI
+        name: crli
+        file: crli.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Our Impact
+        name: impact
+        file: impact.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Articles
+        name: articles
+        file: articles.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Gallery
+        name: gallery
+        file: gallery.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 1"
+        name: cohort-1
+        file: cohort-1.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 2"
+        name: cohort-2
+        file: cohort-2.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 3"
+        name: cohort-3
+        file: cohort-3.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Contact
+        name: contact
+        file: contact.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: FAQs
+        name: faqs
+        file: faqs.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: 404 page
+        name: 404
+        file: 404.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
+      - label: Coming soon
+        name: coming-soon
+        file: coming-soon.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero image, name: image, widget: hidden }
+          - { name: permalink, widget: hidden }
