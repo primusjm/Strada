@@ -1,5 +1,6 @@
 {% if include.dot %} {% assign dot = include.dot %} {% endif %}
 {% if include.align %} {% assign align = include.align %} {% endif %}
+{% assign level = include.level | default: "h2" %}
 
 {% if align == "left" %}
 <div class="mx-auto w-full inline-flex flex-col justify-start items-start gap-0">
@@ -16,10 +17,10 @@
 					{{include.caption}}
 				</div>
 			</div>
-			<div class="text-4xl font-extrabold leading-[40px]">
+			<{{ level }} class="text-heading font-medium">
 				{{include.title}}
 				{% if dot == "yes" %}
-				<span class="-ml-1">{% include icon.html icon="dot" %}</span>
+				<span class="title-dot -ml-1">{% include icon.html icon="dot" %}</span>
 				{% endif %}
-			</div>
+			</{{ level }}>
 		</div>

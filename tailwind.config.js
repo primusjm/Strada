@@ -19,6 +19,14 @@ module.exports = {
         blue: "#1565C0",
         teal: "#20AD96",
         yellow: "#F9A825",
+        ink: "var(--green-ink)",
+      },
+      fontSize: {
+        display: ["clamp(2.5rem, 1.9rem + 2.6vw, 4rem)", { lineHeight: "1.08" }],
+        heading: ["clamp(1.75rem, 1.4rem + 1.1vw, 2.25rem)", { lineHeight: "1.15" }],
+      },
+      boxShadow: {
+        card: "0px 1px 3px 0px rgba(0, 0, 0, 0.16)",
       },
       fontFamily: {
         sans: ["KumbhSans"],
