@@ -2,19 +2,19 @@
   link: /about-us/
   subitems:
     - name: Our Story
-      link: /about-us#story
+      link: /about-us/#story
     - name: Our Values
-      link: /about-us#values
+      link: /about-us/#values
     - name: Our Founder
-      link: /about-us#founder
+      link: /about-us/#founder
     - name: Our Difference
-      link: /about-us#difference
+      link: /about-us/#difference
     - name: Our Focus
-      link: /about-us#focus
+      link: /about-us/#focus
     - name: Our Approach
-      link: /about-us#approach
+      link: /about-us/#approach
     - name: Our Partners
-      link: /about-us#partners
+      link: /about-us/#partners
 - name: Our Programs
   link: /programs/
   subitems: 
