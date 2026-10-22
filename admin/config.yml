@@ -965,6 +965,9 @@ collections:
         - label: Linkedin
           name: linkedin
           widget: string
+        - label: Linkedin link description (read out by screen readers)
+          name: linkedin_label
+          widget: string
       - label: Skip link
         name: skip_link
         widget: string

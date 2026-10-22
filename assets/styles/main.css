@@ -772,6 +772,17 @@ html[data-theme="dark"] .a11y-btn[aria-pressed="true"] {
   color: #fff;
 }
 
+/* The blue link needs a lighter shade on dark backgrounds, icon included */
+html[data-theme="dark"] .blue {
+  color: #6aa9ff;
+}
+html[data-theme="dark"] .blue svg path[fill="#1565C0"] {
+  fill: currentColor;
+}
+html[data-theme="dark"] .blue svg path[stroke="#1565C0"] {
+  stroke: currentColor;
+}
+
 /* Text and surface colours that come straight from the Tailwind palette */
 html[data-theme="dark"] .text-charcoal {
   color: var(--charcoal);

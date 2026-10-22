@@ -74,6 +74,11 @@
       /* A click anywhere outside the panel closes it, leaving focus where the click landed. */
       if (dialog.open && !dialog.contains(event.target)) closePanel(true);
     });
+    /* Tabbing out of the panel closes it, so keyboard users are not left with it hanging open. */
+    dialog.addEventListener("focusout", function (event) {
+      var next = event.relatedTarget;
+      if (dialog.open && next && !dialog.contains(next) && !next.closest("[data-a11y-open]")) closePanel(true);
+    });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && dialog.open) closePanel();
     });
