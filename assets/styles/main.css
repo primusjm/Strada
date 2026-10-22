@@ -975,6 +975,16 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
   }
 }
 
+/* Desktop: links and Contact button sit in one row (the wrapper is only needed for the mobile animation) */
+@media (min-width: 1280px) {
+  #menu .menu-inner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
 /* FAQ answers */
 .faq-panel {
   display: grid;
