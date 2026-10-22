@@ -1,4 +1,5 @@
-/* Photo viewer for the gallery pages: keyboard, swipe and focus handling. */
+/* Photo viewer for the gallery pages: keyboard, swipe and focus handling.
+   It fades in and out (CSS), and each photo is loaded before it replaces the last, so there is no blank flash. */
 (function () {
   var box = document.getElementById("lightbox");
   if (!box) return;
@@ -13,33 +14,51 @@
   var opener = null;
   var touchStartX = null;
 
+  var swapToken = 0;
+  var clearTimer = null;
+
   function show(i) {
     index = (i + triggers.length) % triggers.length;
     var trigger = triggers[index];
     var thumb = trigger.querySelector("img");
-    image.src = trigger.getAttribute("data-lightbox");
-    image.alt = thumb ? thumb.alt : "";
+    var url = trigger.getAttribute("data-lightbox");
+    var token = ++swapToken;
     count.textContent = index + 1 + " / " + triggers.length;
+
+    function place() {
+      if (token !== swapToken) return;
+      image.src = url;
+      image.alt = thumb ? thumb.alt : "";
+      image.classList.remove("is-swapping");
+    }
+
+    image.classList.add("is-swapping");
+    var next = new Image();
+    next.onload = next.onerror = place;
+    next.src = url;
     /* Warm the cache for the next photo. */
     new Image().src = triggers[(index + 1) % triggers.length].getAttribute("data-lightbox");
   }
 
   function isOpen() {
-    return !box.classList.contains("hidden");
+    return box.classList.contains("is-open");
   }
 
   function open(i, trigger) {
     opener = trigger;
+    window.clearTimeout(clearTimer);
     show(i);
-    box.classList.remove("hidden");
+    box.classList.add("is-open");
     document.body.style.overflow = "hidden";
     closeButton.focus();
   }
 
   function close() {
-    box.classList.add("hidden");
-    image.removeAttribute("src");
+    box.classList.remove("is-open");
+    swapToken++;
     document.body.style.overflow = "";
+    /* Keep the photo while the viewer fades out, then let go of it. */
+    clearTimer = window.setTimeout(function () { image.removeAttribute("src"); }, 350);
     if (opener) opener.focus();
   }
 

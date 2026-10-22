@@ -46,10 +46,10 @@
 
   var desktopButton = document.getElementById("scrollToTop");
   if (desktopButton) {
-    window.addEventListener("scroll", function () {
-      var show = window.scrollY > 200;
-      desktopButton.classList.toggle("hidden", !show);
-      desktopButton.classList.toggle("flex", show);
-    }, { passive: true });
+    var update = function () {
+      desktopButton.classList.toggle("is-shown", window.scrollY > 200);
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
   }
 })();

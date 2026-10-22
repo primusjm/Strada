@@ -302,6 +302,13 @@ span {
 @view-transition {
   navigation: auto;
 }
+.site-header {
+  view-transition-name: site-header;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.22s;
+}
 @media (prefers-reduced-motion: reduce) {
   @view-transition {
     navigation: none;
@@ -689,11 +696,21 @@ html.a11y-contrast a:not(.btn):not(.site-logo) {
   width: min(30rem, calc(100% - 2rem));
   z-index: 60;
 }
-.a11y-dialog[open] {
-  animation: dialog-in 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+/* The panel fades and slides in and out. Browsers without discrete transitions just show and hide it. */
+.a11y-dialog {
+  opacity: 0;
+  transform: translateY(12px) scale(0.98);
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    display 0.3s allow-discrete;
 }
-@keyframes dialog-in {
-  0% {
+.a11y-dialog[open] {
+  opacity: 1;
+  transform: none;
+}
+@starting-style {
+  .a11y-dialog[open] {
     opacity: 0;
     transform: translateY(12px) scale(0.98);
   }
@@ -1032,5 +1049,112 @@ html[data-theme="dark"] .faq-item.is-open {
   .faq-bar-v {
     transition-duration: 0s !important;
     transition-delay: 0s !important;
+  }
+}
+
+
+/* ---------- More smooth, reliable animations ---------- */
+
+/* Desktop dropdown: padding (not a margin) joins it to the link, so the pointer never crosses a gap */
+.dropdown {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.25s;
+}
+.dropdown.is-open {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
+}
+
+/* Photo viewer: fades in and out; photos cross-fade as you move through them */
+.lightbox {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease-out,
+    visibility 0s linear 0.25s;
+}
+.lightbox.is-open {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+.lightbox #lightbox-image {
+  transform: scale(0.96);
+  transition:
+    opacity 0.25s ease-out,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.lightbox.is-open #lightbox-image {
+  transform: none;
+}
+.lightbox #lightbox-image.is-swapping {
+  opacity: 0;
+}
+
+/* Scroll-to-top button: fades and rises into view */
+.scroll-top {
+  transition:
+    background-color 0.25s ease-out,
+    box-shadow 0.25s ease-out,
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.25s ease-out,
+    visibility 0s linear 0s;
+}
+.scroll-top:not(.is-shown) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition-delay: 0s, 0s, 0s, 0s, 0.3s;
+}
+
+/* Photos that arrive late sharpen in from a soft blur (reveal.js adds is-fading-in when one finishes loading) */
+@keyframes photo-in {
+  from {
+    filter: blur(14px) brightness(var(--photo-dim, 1));
+  }
+  to {
+    filter: blur(0) brightness(var(--photo-dim, 1));
+  }
+}
+img.ph.is-fading-in {
+  animation: photo-in 0.6s ease-out;
+}
+html[data-theme="dark"] {
+  --photo-dim: 0.88;
+}
+
+/* The values orbit rests while it is off screen, or while someone points at it to read a value */
+.values-stage.is-paused .values-orbit,
+.values-stage.is-paused .values-label {
+  animation-play-state: paused;
+}
+@media (hover: hover) {
+  .values-stage:hover .values-orbit,
+  .values-stage:hover .values-label {
+    animation-play-state: paused;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dropdown,
+  .lightbox,
+  .lightbox #lightbox-image,
+  .scroll-top,
+  .a11y-dialog {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  img.ph.is-fading-in {
+    animation: none;
   }
 }

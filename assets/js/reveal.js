@@ -1,4 +1,5 @@
 /* Reveals .titolo sections as they scroll into view, staggers their grids and draws zigzags when they appear.
+   Also fades photos in as they load and pauses the values orbit while it is off screen or hovered.
    Hidden states only apply when the "js" class is set on <html>. */
 (function () {
   var sections = Array.prototype.slice.call(document.querySelectorAll(".titolo"));
@@ -22,8 +23,11 @@
 
   if (reduce || !("IntersectionObserver" in window)) return showAll();
 
+  var observerWorks = false;
+
   function watch(items, className, options) {
     var observer = new IntersectionObserver(function (entries) {
+      observerWorks = true;
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         entry.target.classList.add(className);
@@ -37,6 +41,25 @@
   /* The zigzag is tiny, so it waits until it is properly on screen. */
   watch(zigzags, "is-drawn", { threshold: 1, rootMargin: "0px 0px -10% 0px" });
 
-  /* Safety net: never leave content hidden if the observer does not fire. */
-  setTimeout(showAll, 4000);
+  /* Safety net: only if the observer never reports anything, so content cannot stay hidden.
+     (Revealing everything on a timer would switch the scroll reveal off after a few seconds.) */
+  setTimeout(function () { if (!observerWorks) showAll(); }, 4000);
+
+  /* Photos that arrive after the page is shown sharpen in from a soft blur over their grey placeholder,
+     instead of popping in. Photos already loaded are left alone, and nothing is hidden while waiting. */
+  Array.prototype.forEach.call(document.querySelectorAll("img.ph"), function (img) {
+    if (img.complete) return;
+    img.addEventListener("load", function () {
+      img.classList.add("is-fading-in");
+      img.addEventListener("animationend", function () { img.classList.remove("is-fading-in"); }, { once: true });
+    }, { once: true });
+  });
+
+  /* The values orbit only needs to turn while someone can see it. */
+  var orbit = document.querySelector(".values-stage");
+  if (orbit && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      orbit.classList.toggle("is-paused", !entries[entries.length - 1].isIntersecting);
+    }).observe(orbit);
+  }
 })();
