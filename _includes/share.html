@@ -3,7 +3,7 @@
     <span class="btn-icon btn-icon-left pr-2">
         {% include icon.html icon="link" %}
     </span>
-    <span class="btn-label" data-share-label>Share</span>
+    <span class="btn-label" data-share-label>{{ site.data.pages.shared.article.share }}</span>
 </button>
 <span class="sr-only" role="status" aria-live="polite" data-share-status></span>
 <script src="/assets/js/share.js?v={{ site.time | date: '%s' }}" defer></script>

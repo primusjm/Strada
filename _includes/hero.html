@@ -1,3 +1,4 @@
+{% assign hc = site.data.pages.home.hero %}
 {% if page.image.path %}{% assign hero_src = page.image.path %}{% else %}{% assign hero_src = page.image | prepend: "/assets/images/" | append: ".webp" %}{% endif %}
 <div class="w-full bg-cream">
   <div class="self-stretch w-full max-w-screen-xl mx-auto pt-8{% if page.type == "home" %} md:pt-20{% endif %} px-4 md:pb-8 lg:px-20 xl:px-32 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
@@ -20,7 +21,7 @@
       
       {% if page.type == "home" %}
       <div class="pt-8">
-        {% include button.html link="/about-us/" label="Learn More" icon="right" type="full" %}
+        {% include button.html link=hc.button_link label=hc.button_label icon="right" type="full" %}
       </div>
       {% endif %}
       
@@ -36,8 +37,8 @@
       <div class="float-soft p-5 left-0 md:left-4 top-0 md:-top-12 absolute bg-white shadow-card inline-flex justify-center items-start gap-3 rounded-br-2xl rounded-tl-2xl md:rounded-2xl">
         {% include icon.html icon="message-bubbles" %}
         <div class="w-28 flex flex-col justify-start items-center">
-          <div class="text-center text-charcoal text-lg leading-7">Worked with</div>
-          <div class="text-center text-black text-lg leading-7">130+ Leaders</div>
+          <div class="text-center text-charcoal text-lg leading-7">{{ hc.badge_top }}</div>
+          <div class="text-center text-black text-lg leading-7">{{ hc.badge_bottom }}</div>
         </div>
       </div>
       {% endif %}

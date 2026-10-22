@@ -26,7 +26,7 @@ layout: compressa
 	</div>
 	
 	<div class="w-full h-[400px] max-w-screen-lg mx-auto overflow-hidden image lg:mb-16 lg:rounded-2xl shadow-card titolo">
-	  <img src="/assets/images/programs/intro.webp" alt="{{ c.intro.image_alt }}" class="ph w-full h-full object-cover" loading="lazy" decoding="async"/>
+	  <img src="{{ c.intro.image }}" alt="{{ c.intro.image_alt }}" class="ph w-full h-full object-cover" loading="lazy" decoding="async"/>
 	</div>
 {% include testimonials.html limit="3" %}
 <div class="w-full">
@@ -37,7 +37,7 @@ layout: compressa
 
 	  
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-4">
-		  <img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.programs.coaching.image_alt }}" src="/assets/images/programs/coaching.webp" loading="lazy" decoding="async"/>
+		  <img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.programs.coaching.image_alt }}" src="{{ c.programs.coaching.image }}" loading="lazy" decoding="async"/>
 		  <div class="mx-auto text-3xl font-medium leading-[56px]">
 			{{ c.programs.coaching.title }}
 			<span class="-ml-1">{% include icon.html icon="dot" %}</span>
@@ -49,7 +49,7 @@ layout: compressa
 		</div>
 		
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-4">
-		  <img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.programs.crli.image_alt }}" src="/assets/images/programs/crli.webp" loading="lazy" decoding="async"/>
+		  <img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.programs.crli.image_alt }}" src="{{ c.programs.crli.image }}" loading="lazy" decoding="async"/>
 		  <div class="mx-auto text-3xl font-medium leading-[56px]">
 			{{ c.programs.crli.title }}
 			<span class="-ml-1">{% include icon.html icon="dot" %}</span>

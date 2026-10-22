@@ -30,7 +30,7 @@ layout: compressa
 						<div class="self-stretch justify-start text-charcoal text-lg leading-7">{{ c.story.vision }}</div>
 					</div>
 				</div>
-				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.story.image_alt }}" src="/assets/images/about/our-story.webp" loading="lazy" decoding="async"/>
+				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.story.image_alt }}" src="{{ c.story.image }}" loading="lazy" decoding="async"/>
 			</div>
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
 {% for item in c.story.paragraphs %}<p>{{ item }}</p>{% endfor %}
@@ -63,7 +63,7 @@ layout: compressa
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-2">
 {% for item in c.difference.intro %}<p>{{ item }}</p>{% endfor %}
 				</div>
-				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="" src="/assets/images/about/our-story.webp" loading="lazy" decoding="async"/>
+				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="" src="{{ c.difference.image }}" loading="lazy" decoding="async"/>
 			</div>
 
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
@@ -98,7 +98,7 @@ layout: compressa
 	</div>
 	
 	<div class="w-full h-[400px] max-w-screen-xl mx-auto overflow-hidden titolo">
-	  <img src="/assets/images/about/communities.webp" alt="{{ c.focus.image_alt }}" class="ph w-full h-full object-cover md:rounded-none lg:rounded-2xl shadow-card lg:mb-16" loading="lazy" decoding="async"/>
+	  <img src="{{ c.focus.image }}" alt="{{ c.focus.image_alt }}" class="ph w-full h-full object-cover md:rounded-none lg:rounded-2xl shadow-card lg:mb-16" loading="lazy" decoding="async"/>
 	</div>
 </div>
 <!-- COMMUNITIES -->

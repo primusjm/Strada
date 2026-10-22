@@ -10,7 +10,7 @@
 			</div>
 			
 			<div class="flex-1 self-stretch flex flex-col justify-center items-center gap-4">
-			<img class="w-[300px] mx-auto self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.founder.image_alt }}" src="/assets/images/about/joyce.webp" loading="lazy" decoding="async"/>
+			<img class="w-[300px] mx-auto self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.founder.image_alt }}" src="{{ c.founder.image }}" loading="lazy" decoding="async"/>
 			</div>
 		</div>
 	</div>
@@ -43,7 +43,7 @@
 			</clipPath>
 			</defs>
 			</svg>
-			<a href="https://www.linkedin.com/in/joyce-malombe-3919784/" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 blue font-medium">
+			<a href="{{ site.data.pages.shared.social.linkedin }}" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 blue font-medium">
 				{{ c.founder.linkedin }}
 				<span class="pl-1">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
