@@ -15,7 +15,7 @@
         </div>
 
         <!-- Footer Links -->
-        <div class="hidden sm:grid grid-cols-2 sm:grid-cols-3 md:flex md:w-full justify-between items-center gap-6 md:gap-8 text-center">
+        <div class="hidden sm:grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-wrap md:w-full justify-between items-center gap-x-6 gap-y-4 md:gap-x-8 text-center">
           {% for item in site.data.nav-footer %}
             <a href="{{item.link}}" class="text-charcoal hover:text-ink flex justify-center items-center">
               {{item.name}}
@@ -30,7 +30,7 @@
           </button>
           <button type="button" class="a11y-open text-charcoal hover:text-ink flex justify-center items-center gap-2" data-a11y-open aria-haspopup="dialog">
             {% include icon.html icon="accessibility" %}
-            Accessibility
+            {{ t.a11y.open }}
           </button>
         </div>
 
