@@ -4,9 +4,10 @@ layout: compressa
 {% include header.html %}
 <div class="flex flex-col justify-center items-center">
 {% include nav.html %}
+<main id="main" class="w-full">
 {% include hero.html %}
 <div class="w-full">
-	<div class="self-stretch w-full max-w-screen-xl mx-auto pt-16 pb-8 px-8 lg:px-20 flex justify-between items-center titolo">
+	<div class="self-stretch w-full max-w-screen-xl mx-auto pt-16 pb-8 px-4 lg:px-20 flex justify-between items-center titolo">
 	<div class="flex flex-col md:flex-row gap-8">
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-4">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-4">
@@ -22,15 +23,11 @@ layout: compressa
 		</div>
 	</div>
 	
-	<div class="w-full h-[400px] max-w-screen-lg mx-auto overflow-hidden pb-8 lg:mb-16 lg:rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] titolo">
-	  <img
-		src="/assets/images/programs/clri-overlay.webp"
-		alt="Our Story"
-		class="w-full h-full object-cover"
-	  />
+	<div class="w-full h-[400px] max-w-screen-lg mx-auto overflow-hidden pb-8 lg:mb-16 lg:rounded-2xl shadow-card titolo">
+	  <img src="/assets/images/programs/clri-overlay.webp" alt="Four CRLI participants smiling as they hold a woven basket together" class="ph w-full h-full object-cover" loading="lazy" decoding="async"/>
 	</div>
 	
-	<div class="self-stretch w-full max-w-screen-xl mx-auto pb-8 px-8 lg:px-20 flex justify-between items-center titolo">
+	<div class="self-stretch w-full max-w-screen-xl mx-auto pb-8 px-4 lg:px-20 flex justify-between items-center titolo">
 	<div class="flex flex-col md:flex-row gap-8">
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-6">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
@@ -84,12 +81,13 @@ layout: compressa
 		  </div>
 		  
 		</div>
-		<img class="w-full md:w-[376px] self-stretch flex-1 relative rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)]" src="/assets/images/programs/crli-content.webp" />
+		<img class="w-full md:w-[376px] self-stretch flex-1 relative rounded-2xl shadow-card" alt="Handwritten notes pinned to a cork board, including 'We start from why'" src="/assets/images/programs/crli-content.webp" loading="lazy" decoding="async"/>
 	  </div>	   
 	</div>
 	{% include button.html link="/our-impact/" label="Learn About the Impact of CRLI" icon="right" type="full" %}
   </div>
 </div>
 </div>
+</main>
 </div>
 {% include footer.html %}

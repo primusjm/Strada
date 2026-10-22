@@ -4,12 +4,13 @@ layout: compressa
 {% include header.html %}
 <div class="flex flex-col justify-center items-center">
 {% include nav.html %}
+<main id="main" class="w-full">
 {% include hero.html %}
 <div class="self-stretch w-full max-w-screen-xl mx-auto pt-16 pb-8 px-4 lg:px-20 flex justify-center items-center titolo">
 	
 		  <form class="w-[90%] md:w-[60%] flex flex-col gap-8" action="https://formspree.io/f/mwprqnrw" method="POST" enctype="multipart/form-data" name="contact" id="contactForm">
 	
-	<h2 class="w-[90%] text-center text-black text-2xl font-bold leading-loose">
+	<h2 class="w-[90%] text-center text-black text-2xl font-medium leading-loose">
 	  Ready for a change? Let’s start working together!
 	</h2>
 
@@ -144,5 +145,6 @@ layout: compressa
 	</div>
 	<div class="max-w-lg text-center self-stretch text-chocolate justify-start text-lg leading-loose">Your message has been received, and we'll be in touch soon to discuss how we can begin your journey towards stronger, more impactful leadership.</div>
   </div>
+</main>
 {% include footer.html %}
 </div>
