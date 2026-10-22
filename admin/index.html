@@ -13,6 +13,46 @@
     <!-- Branding and sign-in: show our name instead of Sveltia's, and hide the GitHub button, which needs a
          login service this site does not have. Editors sign in with "Sign In Using Access Token".
          This only changes what is displayed; if a Sveltia update changes the page, it falls back to the defaults. -->
+    <style>
+      /* Rising Leaders Center colours for the CMS: the site's cream, charcoal and accessible green in light mode,
+         and the same hues darkened for dark mode. Sveltia builds its palette from these scales. */
+      html:root[data-theme="light"] {
+        --sui-background-color-1-hsl: 0 0% 100%;
+        --sui-background-color-2-hsl: 30 29% 97%;   /* site cream #FAF8F6 */
+        --sui-background-color-3-hsl: 30 24% 94%;
+        --sui-background-color-4-hsl: 228 33% 94%;  /* site stroke #EDEFF5 */
+        --sui-background-color-5-hsl: 225 25% 87%;
+        --sui-foreground-color-1-hsl: 0 0% 2%;      /* site black */
+        --sui-foreground-color-2-hsl: 222 22% 20%;
+        --sui-foreground-color-3-hsl: 220 19% 34%;  /* site charcoal #4A556C */
+        --sui-foreground-color-4-hsl: 221 13% 43%;
+        --sui-foreground-color-5-hsl: 222 12% 62%;
+        --sui-secondary-border-color: hsl(222 20% 85%);
+        --sui-primary-accent-color: hsl(150 100% 26%);       /* site green #00833F */
+        --sui-primary-accent-color-light: hsl(150 100% 29%);
+        --sui-primary-accent-color-dark: hsl(150 100% 22%);
+        --sui-primary-accent-color-text: hsl(150 100% 26%);
+      }
+      html:root[data-theme="dark"] {
+        --sui-background-color-1-hsl: 222 25% 7%;
+        --sui-background-color-2-hsl: 222 25% 9%;
+        --sui-background-color-3-hsl: 222 22% 12%;
+        --sui-background-color-4-hsl: 222 20% 15%;
+        --sui-background-color-5-hsl: 222 18% 25%;
+        --sui-foreground-color-1-hsl: 222 30% 96%;
+        --sui-foreground-color-2-hsl: 222 25% 88%;
+        --sui-foreground-color-3-hsl: 222 20% 76%;
+        --sui-foreground-color-4-hsl: 222 15% 63%;
+        --sui-foreground-color-5-hsl: 222 12% 45%;
+        --sui-secondary-border-color: hsl(222 18% 22%);
+        --sui-primary-accent-color: hsl(150 100% 26%);
+        --sui-primary-accent-color-light: hsl(150 100% 30%);
+        --sui-primary-accent-color-dark: hsl(150 100% 22%);
+        --sui-primary-accent-color-text: hsl(150 60% 55%);
+      }
+      /* The wordmark's "CENTER" is charcoal, which is too dark on the dark background. */
+      html:root[data-theme="dark"] img[src$="/admin/logo.svg"] { content: url(/admin/logo-dark.svg); }
+    </style>
     <style>.hide-github-login { display: none !important; }</style>
     <script>
       (function () {
