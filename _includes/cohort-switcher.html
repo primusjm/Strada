@@ -1,0 +1,9 @@
+{% assign g = site.data.pages.gallery %}
+<nav aria-label="{{ g.nav_label }}" class="w-full flex justify-center pb-10">
+  <div class="seg">
+    <a href="/gallery/">{{ g.all_cohorts }}</a>
+    {% for cohort in g.cohorts %}
+    <a href="{{ cohort.link }}"{% if page.url == cohort.link %} aria-current="page"{% endif %}>{{ cohort.name }}</a>
+    {% endfor %}
+  </div>
+</nav>

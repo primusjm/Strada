@@ -1,7 +1,8 @@
 title: Rising Leaders Center
 author: Joshua M.
 email: josh@auxilia.io
-lang: en_UK
+lang: en_GB
+timezone: Africa/Nairobi
 url: https://risingleaderscenter.org
 canonical_url: https://risingleaderscenter.org
 port: 7000
@@ -27,6 +28,19 @@ exclude:
   - README.md
   - .gitignore
   - bin
+  - "Strada backup"
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      permalink: "/articles/:slug/"
+
+jekyll-minifier:
+  compress_css: false
+  compress_javascript: false
+  uglifier_args:
+    harmony: true
 
 postcss:
   cache: false

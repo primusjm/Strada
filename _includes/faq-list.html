@@ -1,8 +1,9 @@
-<div class="w-full flex-shrink-0 bg-white rounded-xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] p-6 transition-all duration-300 bg-cream">
+<div class="w-full flex-shrink-0 bg-white rounded-xl shadow-card hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] p-6 transition-all duration-300 bg-cream">
   <!-- Question -->
   <button
+	:aria-expanded="(openFaq === {{ include.index }}).toString()"
 	@click="openFaq = (openFaq === {{ include.index }}) ? null : {{ include.index }}"
-	class="flex justify-between items-center w-full text-left text-lg font-medium text-charcoal focus:outline-none"
+	class="flex justify-between items-center w-full text-left text-lg font-normal text-charcoal"
   >
 	<span>{{ include.faq.question }}</span>
 

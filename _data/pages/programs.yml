@@ -1,0 +1,25 @@
+intro:
+  caption: What We Do
+  title: Introduction
+  left:
+  - At Rising Leadership Center, we believe meaningful change starts with leaders who are self-aware, supported, and grounded in their community. Our programs equip individuals, teams, organizations, and networks to lead from within so that they can catalyze transformation with and for the communities they serve.
+  - In support of this mission, we offer one signature program as well as several on-demand coaching pathways for individuals, teams, organizations, and networks.
+  right:
+  - First, we operate the Collective Rising Leadership Institute, a cohort-based leadership program based on the Integral Coaching methodology for social impact leaders and their teams.
+  - Second, we operate a customized Integral Coaching program for individual changemakers at moments of growth and change, as well as an Integral Coaching program for networks, teams, and social impact organizations.
+  - Our programs are rooted in the belief that it takes time, intentionality, and accompaniment for leaders to change their behaviors and practices. Through rigorous coaching, scaffolded support systems, intentional learning environments, and community-based reflection, we help leaders shift mindsets, change behaviors, fight to create balance, and create ripples of transformation throughout their organizations and ecosystems.
+  image_alt: Participants seated at round tables in a training room
+  image: /assets/images/programs/intro.webp
+programs:
+  caption: What We Do
+  title: Our Programs
+  coaching:
+    image_alt: A participant adding sticky notes to a flip chart
+    title: Coaching
+    text: We use Integral Coaching to help leaders and organizations grow from the inside out by deepening their self-awareness, aligning with their values, developing new skills, instilling balance across all areas of their lives, and building their capacity to lead transformational change.
+    image: /assets/images/programs/coaching.webp
+  crli:
+    image_alt: Group photo of CRLI cohort participants
+    title: CRLI
+    text: Collective Rising Leadership Institute (CRLI) is our flagship, nine-month leadership coaching program for nonprofit leaders and their organizations, including community-based organizations, networks, and non-governmental organizations.
+    image: /assets/images/programs/crli.webp

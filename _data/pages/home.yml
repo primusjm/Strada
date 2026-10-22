@@ -1,0 +1,24 @@
+why:
+  caption: What Drives Us?
+  title: Why this Initiative?
+  p1: Rising Leadership Center was created to support leaders who want to lead differently by being grounded in purpose, connected to others, and ready to act with and for their communities. We develop and energize leaders while driving transformative change to support communities’ transformative agendas. Our mission is to awaken, re-energize, and transform leaders by reconnecting them with themselves, one another, and their communities. Our vision is a world where leaders are self-aware, nurtured, and emboldened, living their values in solidarity and interdependence with others to create a lasting impact in their communities.
+  p2: 'We are living at a moment in history that requires a different, bolder way of leadership. We must challenge the status quo and center the needs and strengths of our communities if we want to lead and make a real impact. We need new leadership styles to solve the evolving challenges our communities are facing, but one thing is clear: communities must be at the center of creating and sustaining change. It’s time to rethink and question our leadership practices to better embrace complexity, uncertainty, learning, and partnership.'
+  p3: We need to identify and adopt leadership styles that are ethical, impactful, and contextually-relevant to make important changes and bring back balance in our lives, our teams, our organizations, and our communities. Change needs to start with who we are on the inside to be able to change who we are together on the outside. It’s time to connect our purpose and our passion to our leadership. Building this connection inside-out will help us and our communities to meet this moment with grace.
+services:
+- icon: notebook
+  title: 1:1 Coaching
+  link: /programs/
+  label: Explore Our Programs
+- icon: people-4
+  title: Team Coaching Sessions
+  link: /about-us/
+  label: Learn More About Us
+- icon: message-2
+  title: Consultation
+  link: /contact/
+  label: Contact Us
+hero:
+  button_label: Learn More
+  button_link: /about-us/
+  badge_top: Worked with
+  badge_bottom: 130+ Leaders

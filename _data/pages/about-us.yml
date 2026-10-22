@@ -1,0 +1,81 @@
+story:
+  caption: About Us
+  title: Our Story
+  mission_title: Our Mission
+  mission: To awaken, re-energize, and transform leaders by reconnecting them with themselves, one another, and their communities.
+  vision_title: Our Vision
+  vision: A world where leaders are self-aware, nurtured, and emboldened, living their values in solidarity and interdependence with others to create a lasting impact in their communities.
+  image_alt: Participants applauding during a CRLI session
+  paragraphs:
+  - Rising Leaders Center (RLC) was founded in 2023 to develop and energize social impact leaders while driving transformative change to communities around the world, especially those on the African continent. We believe leadership is not a position, but a practice and an attitude. Real leadership is rooted in one’s purpose as informed by who they are on the inside. To be a good leader, you must find balance between yourself, your consciousness, your culture and relationships, and the larger structures and systems affecting you. Most importantly, leadership is a responsibility to your community that requires you to have a connection to your own sense of self, purpose, and wellness to succeed.
+  - Our coaching draws from the Integral Coaching methodology to meet leaders where they are. We support leaders’ development as whole people so they can lead themselves, their teams, and their communities with integrity and clarity. Our work centers the importance of communities as partners and changemakers in creating a better tomorrow. RLC supports leaders of all backgrounds from all types of communities to rise to become their best possible self. Our guiding philosophy, to use the words of Grace Lee Boggs, is “Transform yourself to transform the world.”
+  - RLC supports leaders to engage differently with themselves, their organizations, and their communities, enabling them to thrive. By identifying their purpose and the barriers they are facing, leaders are better equipped to re-center and use their talents, even in the face of obstacles, disruptions, and challenges.
+  - Our signature program, the <b>Collective Rising Leadership Institute,</b> is available to changemaking organizations in addition to several on-demand coaching pathways for individuals, teams, organizations, and networks.
+  image: /assets/images/about/our-story.webp
+values:
+  caption: What Drives Us?
+  title: Our Values
+  core_lead: Committed to
+  core_title: Excellence
+  list_label: Our values
+difference:
+  caption: Driving Transformative Change
+  title: What’s Different About Us?
+  intro:
+  - We’re not here to check boxes or deliver one-size-fits-all leadership training. We’re here to help you, your organization, your network, and your community build something important, lasting, and impactful.
+  list_intro: 'At RLC, we:'
+  items:
+  - Understand the pressures leaders face to deliver.
+  - Reject transactional models of impact in favor of long-term community transformation.
+  - Center leadership as relational, ethical, and contextual.
+  - Give honor to the communities and many stakeholders changing lives every day.
+  - Customize our approach for each leader, team, and organization using personalized assessments as a baseline for design.
+  - Appreciate that individuals are complex and interact daily with a variety of interacting systems to make change.
+  - Recognize that change begins inside the leader, but ripples outwards.
+  - Nurture the wellness of individuals, teams, and organizations.
+  - Partner deeply with our clients to grow capacity, clarity, resiliency, and community power.
+  image: /assets/images/about/our-story.webp
+focus:
+  caption: Our Focus
+  title: Why Focus on Communities?
+  paragraphs:
+  - Whether defined by their borders or a shared characteristic, every community is unique, important, and powerful. At Rising Leaders Center, we believe that communities and leaders of local organizations are the true engines of transformation.
+  - Too often, leadership is framed as something done to or for communities by a single heroic person. We challenge that model. We focus on building leadership with communities because the people closest to the challenges are closest to knowing the solutions.
+  list_intro: 'Our work centers communities because:'
+  items:
+  - Communities are not passive recipients of change; they are active architects of their futures.
+  - Leadership without community accountability and partnership doesn’t work.
+  - Transformative leadership emerges from local wisdom, collective strength, relationships, and shared responsibility.
+  closing: When we invest in a leader as part of a community, we are investing in systems change. We equip leaders to lead with and for people so that they may together navigate complexity, build power, and create a future defined by justice and belonging.
+  image_alt: Participants in traditional dress dancing while colleagues film and photograph them
+  image: /assets/images/about/communities.webp
+approach:
+  caption: How We Work
+  title: Our Approach
+  cards:
+  - The Rising Leaders Center approach sets leaders on a developmental journey to reflect critically about their role as brokers between communities and their stakeholders as they envision a better, more just future.
+  - Our approach is grounded in the belief that transformation begins with the leader, but must ripple out to teams, organizations, and communities.
+  - We build awareness, skills, and the practice of iterative reflection and development at multiple levels – individual, peers, teams, organizations, and networks. At RLC, likeminded leaders join together to consciously practice their best version of leadership, listen and learn from communities, and collectively pursue transformative agendas that truly prioritise the wants and needs of communities.
+  - By addressing the challenges we face as leaders through individual leadership coaching, we seek to sow the seeds of an ethical leadership movement with and for the communities that we serve. We aspire to enable more leaders to awaken to who and how they are as well as how that influences how they lead as individuals, as a team, and as part of a collective.
+partners:
+  caption: Who We've Worked With
+  title: Our Partners
+  participants_heading: CRLI Participants
+  funders_heading: CRLI Funders
+founder:
+  caption: How It Started
+  title: Our Founder
+  intro:
+  - As an academic, researcher, funder, board member, and program manager, Dr. Joyce Malombe has collaborated with over <b>250</b> NGOs in the last <b>25</b> years across more than <b>30</b> countries, cementing her belief in the importance of leadership and coaching as a pathway to change communities.
+  image_alt: Portrait of Dr. Joyce Malombe, founder
+  left:
+  - Joyce has over 25 years of experience working to advance community leadership on complex social challenges. She has worked as an academic researcher in the urban informal settlements of Nairobi, Kenya, as well as with pastoralist communities on water.
+  - She designed Southern New Hampshire University’s International Community Development Program and led research at the World Bank on community foundations. She has worked for the Ford Foundation, Elma Philanthropies, and Wellspring Philanthropic Fund in global education, early childhood development, and social justice leadership.
+  - Her experiences launching and supporting the Regional Education Learning Initiative, an education-focused network of changemakers in East Africa, transformed her thinking about leadership, social impact, self-awareness, and community, leading to her pursuit of becoming a coach for others.
+  right:
+  - 'Working together with leaders over the course of her career, Joyce saw how passion and desire weren’t enough to create change: leaders needed deeper, more personalized support to think bigger about pathways to creating change.'
+  - She founded <b>Rising Leaders Center</b> in <b>2023</b> to provide this support to leaders. Today, as a Certified Master Coach, Joyce works with locally-rooted organizations and networks globally, especially in East Africa. She facilitates organizational change and transformation in her clients and partners. She deeply enjoys working with young, emerging leaders and local organizations.
+  - Dr. Joyce Malombe is a <b>Certified Integral Master Coach,</b> a <b>Certified Enneagram Practitioner,</b> a <b>Certified Enterprise Coach,</b> and an <b>Integral Systems Coach.</b> She has a PhD in Urban Planning from University of Western Ontario. Her background in academia, research, philanthropy, program management and coaching uniquely equips her to understand and meet the needs of her clients.
+  connect: Connect with Joyce on
+  linkedin: LinkedIn
+  image: /assets/images/about/joyce.webp

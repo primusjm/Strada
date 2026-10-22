@@ -1,17 +1,21 @@
+{% assign t = site.data.pages.shared %}
 <!-- Header -->
-<div class="w-full bg-cream" x-data="{ open: false }">
-  <div class="w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 lg:px-20 flex justify-between items-center">
-    
+<header class="site-header w-full bg-cream" x-data="{ open: false }" @keydown.escape.window="open = false" @click.outside="open = false">
+  <div class="header-bar w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 lg:px-20 flex justify-between items-center">
+
     <!-- Logo -->
-    <a href="/" class="whitespace-nowrap titolo" alt="home">
+    <a href="/" class="site-logo whitespace-nowrap" aria-label="{{ t.logo_label }}">
       {% include icon.html icon="logo" %}
     </a>
-    
-    <!-- Hamburger button (mobile only) -->
+
+    <!-- Hamburger button (below xl) -->
     <button id="menu-toggle"
-      class="lg:hidden flex flex-col justify-between w-6 h-5 focus:outline-none relative z-90 overflow-visible"
+      class="xl:hidden flex flex-col justify-between box-content w-6 h-5 p-3 -m-3 relative z-90 overflow-visible"
+      aria-label="{{ t.nav.menu_button }}"
+      aria-controls="menu"
+      :aria-expanded="open.toString()"
       @click="open = !open"
-    >    
+    >
       <span class="block w-full h-[2px] bg-charcoal transition-transform duration-300 origin-center"
             :class="{ 'rotate-45 translate-y-[6px]': open }"></span>
       <span class="block w-full h-[2px] bg-charcoal transition-opacity duration-300"
@@ -21,22 +25,34 @@
     </button>
 
     <!-- NAV LINKS -->
-    <div
+    <nav
       id="menu"
-      class="max-h-0 overflow-hidden lg:overflow-visible transition-all duration-500 ease-in-out lg:flex flex-col lg:flex-row justify-start items-center gap-8 absolute lg:static top-[100px] left-0 w-full lg:w-auto bg-cream lg:bg-transparent p-0 lg:p-0 shadow lg:shadow-none z-40 titolo text-lg md:text-base"
+      aria-label="{{ t.nav.main_label }}"
+      :class="{ 'max-h-[600px] p-6': open, 'max-h-0 p-0': !open }"
+      @click="if ($event.target.closest('a[href]') && !$event.target.closest('[data-parent]')) open=false"
+      class="max-h-0 overflow-hidden xl:overflow-visible transition-all duration-500 ease-in-out xl:flex flex-col xl:flex-row justify-start items-center gap-8 absolute xl:static top-full left-0 w-full xl:w-auto bg-cream xl:bg-transparent p-0 xl:p-0 shadow xl:shadow-none z-40 text-lg md:text-base"
     >
-      <div class="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-4 p-4 lg:p-0">
+      <div class="flex flex-col xl:flex-row justify-center items-center gap-4 xl:gap-8 p-4 xl:p-0">
         {% for item in site.data.nav %}
-          <div 
-            x-data="{ open: false }" 
-            @mouseenter="open = true" 
-            @mouseleave="open = false" 
-            class="relative"
+          {% assign current = "" %}
+          {% if page.url == item.link %}{% assign current = "page" %}{% elsif page.url contains item.link %}{% assign current = "true" %}{% endif %}
+          <div
+            x-data="{ open: false }"
+            @mouseenter="open = true"
+            @mouseleave="open = false"
+            {% if item.subitems %}@focusin="open = true"
+            @focusout="if (!$el.contains($event.relatedTarget)) open=false"
+            @keydown.escape="open = false"
+            {% endif %}class="relative"
           >
-            <a 
-              href="{{ item.link }}" 
-              class="flex items-center gap-1 text-charcoal text-center hover:text-green font-medium"
-              @click="open = !open"
+            <a
+              href="{{ item.link }}"
+              class="nav-link flex items-center gap-1 whitespace-nowrap text-charcoal text-center hover:text-ink font-normal"{% if current != "" %}
+              aria-current="{{ current }}"{% endif %}{% if item.subitems %}
+              data-parent
+              aria-haspopup="true"
+              :aria-expanded="open.toString()"
+              @click="if (window.matchMedia('(max-width: 1279px)').matches) { $event.preventDefault(); open=!open }"{% endif %}
             >
               {{ item.name }}
               {% if item.subitems %}
@@ -45,35 +61,38 @@
                 </svg>
               {% endif %}
               {% unless item.subitems %}
-              <span class="-ml-[1px] -mb-[7px] relative">{% include icon.html icon="menu-dot" %}</span>
+              <span class="nav-dot -ml-[1px] -mb-[7px] relative">{% include icon.html icon="menu-dot" %}</span>
               {% endunless %}
             </a>
 
             {% if item.subitems %}
-              <ul 
-                x-show="open" 
-                x-transition 
+              <ul
+                x-show="open"
+                x-transition
                 @click.away="open = false"
-                class="absolute left-2 mt-2 w-48 bg-white shadow-lg rounded-md z-40 hidden lg:block"
+                class="absolute left-2 mt-2 w-48 bg-white shadow-lg rounded-md z-40 hidden xl:block"
               >
                 {% for subitem in item.subitems %}
                   <li>
-                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-green">
+                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">
                       {{ subitem.name }}
                     </a>
                   </li>
                 {% endfor %}
               </ul>
 
-              <!-- Mobile dropdown -->
-              <ul 
-                x-show="open" 
-                x-transition 
-                class="lg:hidden flex flex-col bg-cream shadow rounded-md mt-2 overflow-hidden"
+              <!-- Mobile dropdown: the parent only opens it, so it gets its own Overview link -->
+              <ul
+                x-show="open"
+                x-transition
+                class="xl:hidden flex flex-col bg-cream shadow rounded-md mt-2 overflow-hidden"
               >
+                <li>
+                  <a href="{{ item.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">{{ t.nav.overview }}</a>
+                </li>
                 {% for subitem in item.subitems %}
                   <li>
-                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-green">
+                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">
                       {{ subitem.name }}
                     </a>
                   </li>
@@ -85,9 +104,9 @@
       </div>
 
       <!-- CONTACT US BUTTON -->
-      <div class="pt-0 pb-4 lg:pb-0 flex justify-center lg:justify-start">
-        {% include button.html link="/contact/" label="Contact" icon="left" type="full" %}
+      <div class="pt-0 pb-4 xl:pb-0 flex justify-center xl:justify-start">
+        {% include button.html link=t.nav.contact_link label=t.nav.contact icon="left" type="full" %}
       </div>
-    </div>
+    </nav>
   </div>
-</div>
+</header>

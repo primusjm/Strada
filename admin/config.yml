@@ -1,0 +1,1314 @@
+# Sveltia CMS (Decap-compatible). Sign in at /admin with GitHub or a personal access token.
+backend:
+  name: github
+  repo: primusjm/Strada-source
+  branch: main
+
+site_url: https://risingleaderscenter.org
+display_url: https://risingleaderscenter.org
+
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+collections:
+  - name: articles
+    label: Articles
+    label_singular: Article
+    folder: _posts
+    extension: md
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} ({{date}})"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
+      - { label: Author, name: author, widget: string, default: Joyce Malombe }
+      - { label: Summary, name: excerpt, widget: text, hint: Shown on article cards and under the title. }
+      - label: Header image
+        name: image
+        widget: image
+        media_folder: /assets/images/articles/uploads
+        public_folder: /assets/images/articles/uploads
+        hint: Use a wide photo. A small version for article cards is created automatically.
+      - { label: Page address, name: permalink, widget: string, required: false, hint: "Leave empty for new articles. It becomes /articles/<title>/." }
+      - { name: layout, widget: hidden, default: post }
+      - { name: type, widget: hidden, default: post }
+      - { label: Body, name: body, widget: markdown }
+
+  - name: data
+    label: Site content
+    files:
+      - label: Testimonials
+        name: testimonials
+        file: _data/testimonials.yml
+        fields:
+          - label: Testimonials
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.author}}, {{fields.company}}"
+            fields:
+              - { label: Author, name: author, widget: string }
+              - { label: Organisation, name: company, widget: string }
+              - { label: Quote, name: testimonial, widget: text }
+      - label: FAQs
+        name: faqs
+        file: _data/faqs.yml
+        fields:
+          - label: Questions
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.question}}"
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Answer, name: answer, widget: text }
+              - { label: Area, name: area, widget: string, required: false }
+      - label: CRLI participants (logos)
+        name: partners
+        file: _data/partners.yml
+        fields:
+          - label: Organisations
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Logo file name, name: logo, widget: string, hint: "File name in assets/images/logos without .webp, for example glami." }
+      - label: Funders (logos)
+        name: funders
+        file: _data/funders.yml
+        fields:
+          - label: Funders
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Logo file name, name: logo, widget: string, hint: "File name in assets/images/logos without .webp." }
+      - label: Menu (top of every page)
+        name: nav
+        file: _data/nav.yml
+        fields:
+          - label: Menu items
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Link, name: link, widget: string }
+              - label: Drop-down links
+                name: subitems
+                widget: list
+                required: false
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Link, name: link, widget: string }
+      - label: Footer links
+        name: nav-footer
+        file: _data/nav-footer.yml
+        fields:
+          - label: Links
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Link, name: link, widget: string }
+      - label: Our values
+        name: values
+        file: _data/values.yml
+        fields:
+          - label: Values
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Value, name: name, widget: string }
+              - label: Star colour
+                name: star
+                widget: select
+                options:
+                  - { label: Green, value: star-green }
+                  - { label: Blue, value: star-blue }
+                  - { label: Teal, value: star-teal }
+                  - { label: Yellow, value: star-yellow }
+
+  - name: gallery
+    label: Gallery photos
+    files:
+      - label: Cohort photos
+        name: gallery
+        file: _data/gallery.yml
+        fields:
+          - label: Cohort 1
+            name: cohort-1
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-1
+                public_folder: /assets/images/gallery/cohort-1
+                hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
+          - label: Cohort 2
+            name: cohort-2
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-2
+                public_folder: /assets/images/gallery/cohort-2
+                hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
+          - label: Cohort 3
+            name: cohort-3
+            widget: list
+            summary: "{{fields.image}}"
+            fields:
+              - label: Photo
+                name: image
+                widget: image
+                media_folder: /assets/images/gallery/cohort-3
+                public_folder: /assets/images/gallery/cohort-3
+                hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
+
+
+
+  - name: page-content
+    label: Page text
+    files:
+    - label: Gallery page
+      name: gallery
+      file: _data/pages/gallery.yml
+      fields:
+      - label: All photos
+        name: all_photos
+        widget: string
+      - label: All cohorts
+        name: all_cohorts
+        widget: string
+      - label: Cohorts
+        name: cohorts
+        widget: list
+        fields:
+        - label: Name
+          name: name
+          widget: string
+        - label: Link
+          name: link
+          widget: string
+      - label: Nav label
+        name: nav_label
+        widget: string
+    - label: About Us
+      name: about-us
+      file: _data/pages/about-us.yml
+      fields:
+      - label: Story
+        name: story
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Mission title
+          name: mission_title
+          widget: string
+        - label: Mission
+          name: mission
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Vision title
+          name: vision_title
+          widget: string
+        - label: Vision
+          name: vision
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Values
+        name: values
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Core lead
+          name: core_lead
+          widget: string
+        - label: Core title
+          name: core_title
+          widget: string
+        - label: List label
+          name: list_label
+          widget: string
+      - label: Difference
+        name: difference
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: List intro
+          name: list_intro
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Focus
+        name: focus
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: List intro
+          name: list_intro
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Closing
+          name: closing
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Approach
+        name: approach
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Cards
+          name: cards
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+      - label: Partners
+        name: partners
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Participants heading
+          name: participants_heading
+          widget: string
+        - label: Funders heading
+          name: funders_heading
+          widget: string
+      - label: Founder
+        name: founder
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Left
+          name: left
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Right
+          name: right
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Connect
+          name: connect
+          widget: string
+        - label: Linkedin
+          name: linkedin
+          widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+    - label: Our Programs
+      name: programs
+      file: _data/pages/programs.yml
+      fields:
+      - label: Intro
+        name: intro
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Left
+          name: left
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Right
+          name: right
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Programs
+        name: programs
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Coaching
+          name: coaching
+          widget: object
+          collapsed: true
+          fields:
+          - label: Image alt
+            name: image_alt
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+          - label: Text
+            name: text
+            widget: text
+            hint: Basic HTML such as <b>bold</b> is allowed.
+          - label: Photo
+            name: image
+            widget: image
+            media_folder: /assets/images/uploads
+            public_folder: /assets/images/uploads
+        - label: Crli
+          name: crli
+          widget: object
+          collapsed: true
+          fields:
+          - label: Image alt
+            name: image_alt
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+          - label: Text
+            name: text
+            widget: text
+            hint: Basic HTML such as <b>bold</b> is allowed.
+          - label: Photo
+            name: image
+            widget: image
+            media_folder: /assets/images/uploads
+            public_folder: /assets/images/uploads
+    - label: Coaching
+      name: coaching
+      file: _data/pages/coaching.yml
+      fields:
+      - label: Lead
+        name: lead
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Body
+        name: body
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Right
+        name: right
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Bullets
+        name: bullets
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Image alt
+        name: image_alt
+        widget: string
+      - label: Closing
+        name: closing
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Button
+        name: button
+        widget: string
+      - label: Photo
+        name: image
+        widget: image
+        media_folder: /assets/images/uploads
+        public_folder: /assets/images/uploads
+    - label: CRLI
+      name: crli
+      file: _data/pages/crli.yml
+      fields:
+      - label: Intro left
+        name: intro_left
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Intro right
+        name: intro_right
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Topics
+        name: topics
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Location
+        name: location
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Image alt
+        name: image_alt
+        widget: string
+      - label: Button
+        name: button
+        widget: string
+      - label: Content
+        name: content
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+        - label: Lead
+          name: lead
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Photo
+        name: image
+        widget: image
+        media_folder: /assets/images/uploads
+        public_folder: /assets/images/uploads
+    - label: Our Impact
+      name: impact
+      file: _data/pages/impact.yml
+      fields:
+      - label: Achievements
+        name: achievements
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+      - label: Intro
+        name: intro
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Items
+        name: items
+        widget: list
+        fields:
+        - label: Title
+          name: title
+          widget: string
+        - label: Text
+          name: text
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+    - label: Home page
+      name: home
+      file: _data/pages/home.yml
+      fields:
+      - label: Why
+        name: why
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: P1
+          name: p1
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: P2
+          name: p2
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: P3
+          name: p3
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Services
+        name: services
+        widget: list
+        fields:
+        - label: Icon
+          name: icon
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Link
+          name: link
+          widget: string
+        - label: Label
+          name: label
+          widget: string
+      - label: Hero
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Button label
+          name: button_label
+          widget: string
+        - label: Button link
+          name: button_link
+          widget: string
+        - label: Badge top
+          name: badge_top
+          widget: string
+        - label: Badge bottom
+          name: badge_bottom
+          widget: string
+    - label: Contact page and form
+      name: contact
+      file: _data/pages/contact.yml
+      fields:
+      - label: Heading
+        name: heading
+        widget: string
+      - label: Note
+        name: note
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Button
+        name: button
+        widget: string
+      - label: Thanks
+        name: thanks
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+      - label: Thanks text
+        name: thanks_text
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Form
+        name: form
+        widget: object
+        collapsed: true
+        fields:
+        - label: First name
+          name: first_name
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Last name
+          name: last_name
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Email
+          name: email
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+          - label: Error type
+            name: error_type
+            widget: string
+        - label: Organisation
+          name: organisation
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+        - label: Message
+          name: message
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Country
+          name: country
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+        - label: Countries
+          name: countries
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Required before
+          name: required_before
+          widget: string
+        - label: Required sr
+          name: required_sr
+          widget: string
+        - label: Required after
+          name: required_after
+          widget: string
+    - label: Site-wide text, labels and accessibility panel
+      name: shared
+      file: _data/pages/shared.yml
+      fields:
+      - label: Footer
+        name: footer
+        widget: object
+        collapsed: true
+        fields:
+        - label: Tagline
+          name: tagline
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Subscribe
+        name: subscribe
+        widget: object
+        collapsed: true
+        fields:
+        - label: Heading
+          name: heading
+          widget: string
+        - label: Text
+          name: text
+          widget: string
+        - label: Label
+          name: label
+          widget: string
+        - label: Placeholder
+          name: placeholder
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+        - label: Thanks
+          name: thanks
+          widget: object
+          collapsed: true
+          fields:
+          - label: Caption
+            name: caption
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+        - label: Thanks text
+          name: thanks_text
+          widget: string
+      - label: Testimonials
+        name: testimonials
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+      - label: Articles
+        name: articles
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+        - label: Read more
+          name: read_more
+          widget: string
+      - label: Faqs
+        name: faqs
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+      - label: Article
+        name: article
+        widget: object
+        collapsed: true
+        fields:
+        - label: Read next
+          name: read_next
+          widget: string
+        - label: All articles
+          name: all_articles
+          widget: string
+        - label: Share
+          name: share
+          widget: string
+      - label: Social
+        name: social
+        widget: object
+        collapsed: true
+        fields:
+        - label: Linkedin
+          name: linkedin
+          widget: string
+      - label: Skip link
+        name: skip_link
+        widget: string
+      - label: Logo label
+        name: logo_label
+        widget: string
+      - label: Nav
+        name: nav
+        widget: object
+        collapsed: true
+        fields:
+        - label: Menu button
+          name: menu_button
+          widget: string
+        - label: Main label
+          name: main_label
+          widget: string
+        - label: Overview
+          name: overview
+          widget: string
+        - label: Contact
+          name: contact
+          widget: string
+        - label: Contact link
+          name: contact_link
+          widget: string
+      - label: Scroll top
+        name: scroll_top
+        widget: string
+      - label: A11y
+        name: a11y
+        widget: object
+        collapsed: true
+        fields:
+        - label: Open
+          name: open
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: string
+        - label: Close
+          name: close
+          widget: string
+        - label: Size label
+          name: size_label
+          widget: string
+        - label: Decrease
+          name: decrease
+          widget: string
+        - label: Reset size
+          name: reset_size
+          widget: string
+        - label: Increase
+          name: increase
+          widget: string
+        - label: Status
+          name: status
+          widget: string
+        - label: Display label
+          name: display_label
+          widget: string
+        - label: Contrast
+          name: contrast
+          widget: string
+        - label: Underline
+          name: underline
+          widget: string
+        - label: Spacing
+          name: spacing
+          widget: string
+        - label: Bold
+          name: bold
+          widget: string
+        - label: Font
+          name: font
+          widget: string
+        - label: Still
+          name: still
+          widget: string
+        - label: Reset all
+          name: reset_all
+          widget: string
+        - label: Done
+          name: done
+          widget: string
+      - label: Not found
+        name: not_found
+        widget: object
+        collapsed: true
+        fields:
+        - label: Label
+          name: label
+          widget: string
+        - label: Intro
+          name: intro
+          widget: string
+        - label: Links
+          name: links
+          widget: list
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Link
+            name: link
+            widget: string
+      - label: Lightbox
+        name: lightbox
+        widget: object
+        collapsed: true
+        fields:
+        - label: Label
+          name: label
+          widget: string
+        - label: Close
+          name: close
+          widget: string
+        - label: Previous
+          name: previous
+          widget: string
+        - label: Next
+          name: next
+          widget: string
+      - label: Forms
+        name: forms
+        widget: object
+        collapsed: true
+        fields:
+        - label: Sending
+          name: sending
+          widget: string
+        - label: Failed
+          name: failed
+          widget: string
+        - label: Check field
+          name: check_field
+          widget: string
+      - label: Share
+        name: share
+        widget: object
+        collapsed: true
+        fields:
+        - label: Copied
+          name: copied
+          widget: string
+        - label: Copied status
+          name: copied_status
+          widget: string
+    - label: Quote
+      name: quote
+      file: _data/quote.yml
+      fields:
+      - label: Text
+        name: text
+        widget: string
+      - label: Author
+        name: author
+        widget: string
+
+  - name: pages
+    label: Page headings and intro and intro and intro
+    files:
+      - label: Home
+        name: index
+        file: index.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - label: Hero photo
+            name: image
+            widget: object
+            fields:
+              - { label: Photo, name: path, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+              - { name: width, widget: number }
+              - { name: height, widget: number }
+          - { name: permalink, widget: hidden }
+      - label: About Us
+        name: about-us
+        file: about-us.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Our Programs
+        name: programs
+        file: programs.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Coaching
+        name: coaching
+        file: coaching.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: CRLI
+        name: crli
+        file: crli.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Our Impact
+        name: impact
+        file: impact.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Articles
+        name: articles
+        file: articles.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Gallery
+        name: gallery
+        file: gallery.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 1"
+        name: cohort-1
+        file: cohort-1.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 2"
+        name: cohort-2
+        file: cohort-2.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: "Gallery: Cohort 3"
+        name: cohort-3
+        file: cohort-3.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Contact
+        name: contact
+        file: contact.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: FAQs
+        name: faqs
+        file: faqs.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: 404 page
+        name: 404
+        file: 404.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
+      - label: Coming soon
+        name: coming-soon
+        file: coming-soon.md
+        format: frontmatter
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Small heading above the title, name: caption, widget: text, required: false }
+          - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { name: layout, widget: hidden }
+          - { name: type, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
+          - { name: permalink, widget: hidden }
