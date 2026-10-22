@@ -28,22 +28,24 @@
     <nav
       id="menu"
       aria-label="{{ t.nav.main_label }}"
-      :class="{ 'max-h-[600px] p-6': open, 'max-h-0 p-0': !open }"
+      :class="{ 'is-open': open }"
       @click="if ($event.target.closest('a[href]') && !$event.target.closest('[data-parent]')) open=false"
-      class="max-h-0 overflow-hidden xl:overflow-visible transition-all duration-500 ease-in-out xl:flex flex-col xl:flex-row justify-start items-center gap-8 absolute xl:static top-full left-0 w-full xl:w-auto bg-cream xl:bg-transparent p-0 xl:p-0 shadow xl:shadow-none z-40 text-lg md:text-base"
+      class="menu-panel xl:flex flex-col xl:flex-row justify-start items-center gap-8 absolute xl:static top-full left-0 w-full xl:w-auto bg-cream xl:bg-transparent shadow xl:shadow-none z-40 text-lg md:text-base"
     >
+      <div class="menu-inner">
       <div class="flex flex-col xl:flex-row justify-center items-center gap-4 xl:gap-8 p-4 xl:p-0">
         {% for item in site.data.nav %}
           {% assign current = "" %}
           {% if page.url == item.link %}{% assign current = "page" %}{% elsif page.url contains item.link %}{% assign current = "true" %}{% endif %}
           <div
             x-data="{ open: false }"
-            @mouseenter="open = true"
-            @mouseleave="open = false"
-            {% if item.subitems %}@focusin="open = true"
-            @focusout="if (!$el.contains($event.relatedTarget)) open=false"
+            @mouseenter="if (window.innerWidth >= 1280) open = true"
+            @mouseleave="if (window.innerWidth >= 1280) open = false"
+            {% if item.subitems %}@focusin="if (window.innerWidth >= 1280) open = true"
+            @focusout="if (window.innerWidth >= 1280 && !$el.contains($event.relatedTarget)) open = false"
             @keydown.escape="open = false"
-            {% endif %}class="relative"
+            {% endif %}class="menu-item relative"
+            style="--i: {{ forloop.index0 }}"
           >
             <a
               href="{{ item.link }}"
@@ -82,11 +84,9 @@
               </ul>
 
               <!-- Mobile dropdown: the parent only opens it, so it gets its own Overview link -->
-              <ul
-                x-show="open"
-                x-transition
-                class="xl:hidden flex flex-col bg-cream shadow rounded-md mt-2 overflow-hidden"
-              >
+              <div class="submenu xl:hidden" :class="{ 'is-open': open }">
+              <div class="submenu-inner">
+              <ul class="flex flex-col bg-cream rounded-md mt-2">
                 <li>
                   <a href="{{ item.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">{{ t.nav.overview }}</a>
                 </li>
@@ -98,14 +98,17 @@
                   </li>
                 {% endfor %}
               </ul>
+              </div>
+              </div>
             {% endif %}
           </div>
         {% endfor %}
       </div>
 
       <!-- CONTACT US BUTTON -->
-      <div class="pt-0 pb-4 xl:pb-0 flex justify-center xl:justify-start">
+      <div class="menu-item pt-0 pb-4 xl:pb-0 flex justify-center xl:justify-start" style="--i: {{ site.data.nav | size }}">
         {% include button.html link=t.nav.contact_link label=t.nav.contact icon="left" type="full" %}
+      </div>
       </div>
     </nav>
   </div>
