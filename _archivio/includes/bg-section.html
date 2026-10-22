@@ -1,0 +1,32 @@
+<header class="mx-auto max-w-7xl titolo">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <nav class="mt-4 flex flex-wrap items-center text-base md:ml-auto">
+            {% for item in site.data.nav %}
+            {%if page.type == "studio" or page.type == "post" or page.type == "articolo" %}
+            <a href="{{ item.link }}" class="whitespace-nowrap py-1 md:py-1.5 px-6 font-medium text-white hover:bg-dark hover:rounded-lg hover:text-light" alt="{{item.name}}">
+                {%else%}
+                <a href="{{ item.link }}" class="whitespace-nowrap py-1 md:py-2 px-6 font-medium text-brand hover:rounded-lg hover:bg-overlay" alt="{{item.name}}">
+                    {%endif%}
+                    {{ item.name }}
+                </a>
+                {% endfor %}
+                <div class="mr-3"></div>
+                {%if page.type == "studio" %}
+                {% include pulsanti.html link="/contact/" label="Let's Talk" type="nav-clear" %}
+                {%elsif page.type == "articoli" %}
+                {% include pulsanti.html link="/contact/" label="Contact" type="nav" %}
+                {%elsif page.type == "post" or page.type == "articolo" %}
+                {% include pulsanti.html link="/contact/" label="Contact" type="nav-clear" %}
+                {%else%}
+                {% include pulsanti.html link="/contact/" label="Let's Talk" type="nav" %}
+                {%endif%}
+        </nav>
+        <a href="/" class="mt-0 flex order-first items-center mb-4 md:mb-0">
+            {%if page.type == "studio" or page.type == "post" or page.type == "articolo" %}
+            <img class="mx-auto hvr-float h-24 md:h-16" src="/assets/foto/altro/logo-white.svg" alt="logo" />
+            {%else%}
+            <img class="mx-auto hvr-float h-24 md:h-16" src="/assets/foto/altro/logo.svg" alt="logo" />
+            {%endif%}
+        </a>
+    </div>
+</header>

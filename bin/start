@@ -1,0 +1,35 @@
+#!/bin/sh
+
+set -eu
+
+POSTCSS_GEM_PATH=$(bundle show jekyll-postcss)
+POSTCSS_BIN="$POSTCSS_GEM_PATH/bin/postcss"
+
+node "$POSTCSS_BIN" --development &
+POSTCSS_PID=$!
+
+cleanup() {
+  if kill -0 "$POSTCSS_PID" 2>/dev/null; then
+    kill "$POSTCSS_PID"
+    wait "$POSTCSS_PID" 2>/dev/null || true
+  fi
+}
+
+trap cleanup EXIT INT TERM HUP
+
+ruby -rsocket -e '
+  100.times do
+    begin
+      socket = TCPSocket.new("127.0.0.1", 8124)
+      socket.close
+      exit 0
+    rescue StandardError
+      sleep 0.1
+    end
+  end
+
+  warn "PostCSS server did not start on port 8124"
+  exit 1
+'
+
+bundle exec jekyll serve --livereload

@@ -1,0 +1,180 @@
+{% if page.layout != "page" %}
+<div class="self-stretch w-full pb-4 flex flex-col justify-between items-center">
+<div class="w-full">
+        {% include subscribe.html %}
+    <div class="flex flex-col justify-center items-center px-4 max-w-screen-xl mx-auto pt-8 px-4 lg:px-20 xl:px-32 titolo">
+    <div class="w-full flex flex-col justify-start items-start gap-8">
+      
+        <div class="mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24">
+            <a href="/" class="whitespace-nowrap" alt="home">
+                {% include icon.html icon="logo" %}
+            </a>
+          <div class="w-[80%] md:w-full text-center md:text-left text-charcoal text-lg">Developing leaders and teams who prioritize growth, connection with others, and community partnership to drive transformative change.</div>
+        </div>
+        
+        <!-- Footer Links -->   
+        <div class="hidden sm:grid grid-cols-2 sm:grid-cols-3 md:flex justify-between items-center gap-6 md:gap-8 text-center">
+          {% for item in site.data.nav-footer %}
+            <a href="{{item.link}}" class="text-charcoal hover:text-green flex justify-center items-center">
+              {{item.name}}
+              <span class="ml-[1px] -mb-[8px] relative">
+                {% include icon.html icon="menu-dot" %}
+              </span>
+            </a>
+          {% endfor %}
+        </div>
+        
+        <button id="scrollToTopMobile"
+          class="mx-auto md:hidden flex flex-col justify-center bg-green text-white p-3 rounded-full shadow-lg hover:bg-green/90 transition-opacity duration-300 z-50"
+          aria-label="Scroll to top">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+          </svg>
+        </button>
+        
+        <div class="self-stretch h-px bg-stroke"></div>
+        
+        <div class="self-stretch inline-flex justify-between items-center">
+          <div class="flex flex-row justify-start items-center text-charcoal">
+            <span>Made with a&nbsp;</span>{% include icon.html icon="smile" %}<span>&nbsp;by</span>
+            <span class="font-bold">&nbsp;<a href="https://auxilia.io">Auxilia</a></span>
+          </div>
+          <a class="" href="https://www.linkedin.com/in/joyce-malombe-3919784/">
+          {% include icon.html icon="linkedin" %}
+          </a>
+        </div>
+        
+    </div>
+    </div>
+</div>
+</div>
+<!-- Scroll to Top Button -->
+<div class="hidden md:flex">
+<button id="scrollToTop" 
+  class="hidden fixed bottom-6 right-6 bg-green text-white p-3 rounded-full shadow-lg hover:bg-green/90 transition-opacity duration-300 z-50"
+  aria-label="Scroll to top">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+</div>
+{% endif %}
+<!-- FOOTER -->
+<script src="/assets/js/animations.min.js"></script>
+<script src="/assets/js/init.js"></script>
+<script src="/assets/js/alpine.min.js"></script>
+<script src="https://tinylytics.app/embed/ay4rjxtzgzNHfW277tpr.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", yall);
+</script>
+<!-- Script for contact form -->
+<script>
+    function submitContactForm() {
+        setTimeout(function() {
+            document.getElementById("contactForm").style.display = "none";
+            document.getElementById("submitContactForm").style.display = "block";
+            form.reset();
+        }, 1000);
+    }
+    var form = document.getElementById("contactForm");
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("contactForm-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "Thank you for your message!";
+                form.reset()
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                    } else {
+                        status.innerHTML = "Sorry! There was a problem sending you message. Please try again."
+                    }
+                })
+            }
+        }).catch(error => {
+            status.innerHTML = "Sorry! There was a problem sending you message. Please try again."
+        });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
+<!-- Script for contact form -->
+<!-- Script for subscription form -->
+<script>
+    function submitSubscriptionForm() {
+        setTimeout(function() {
+            document.getElementById("subscribeForm").style.display = "none";
+            document.getElementById("submitSubscribeForm").style.display = "block";
+            form.reset();
+        }, 1000);
+    }
+    var form = document.getElementById("subscribeForm");
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("subscribeForm-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "Thank you for your message!";
+                form.reset()
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                    } else {
+                        status.innerHTML = "Sorry! There was a problem sending you message. Please try again."
+                    }
+                })
+            }
+        }).catch(error => {
+            status.innerHTML = "Sorry! There was a problem sending you message. Please try again."
+        });
+    }
+    form.addEventListener("submit", handleSubmit)
+</script>
+<!-- Script for subscription form -->
+<script>
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+  const scrollToTopBtnMobile = document.getElementById("scrollToTopMobile");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      scrollToTopBtn.classList.remove("hidden");
+      scrollToTopBtn.classList.add("flex");
+    } else {
+      scrollToTopBtn.classList.add("hidden");
+      scrollToTopBtn.classList.remove("flex");
+    }
+  });
+
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+  scrollToTopBtnMobile.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+</body>
+</html>

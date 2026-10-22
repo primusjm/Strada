@@ -1,0 +1,148 @@
+---
+layout: compressa
+---
+{% include header.html %}
+<div class="flex flex-col justify-center items-center">
+{% include nav.html %}
+{% include hero.html %}
+<div class="self-stretch w-full max-w-screen-xl mx-auto pt-16 pb-8 px-4 lg:px-20 flex justify-center items-center titolo">
+	
+		  <form class="w-[90%] md:w-[60%] flex flex-col gap-8" action="https://formspree.io/f/mwprqnrw" method="POST" enctype="multipart/form-data" name="contact" id="contactForm">
+	
+	<h2 class="w-[90%] text-center text-black text-2xl font-bold leading-loose">
+	  Ready for a change? Let’s start working together!
+	</h2>
+
+	<!-- First & Last Name -->
+	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
+	  <div class="w-full flex-1 flex flex-col">
+		<label for="first-name" class="text-black text-base font-normal leading-tight mb-2">
+		  First Name <span class="text-red-600">*</span>
+		</label>
+		<input
+		  id="first-name"
+		  name="first-name"
+		  type="text"
+		  placeholder="Your first name"
+		  required
+		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
+		>
+	  </div>
+
+	  <div class="w-full flex-1 flex flex-col">
+		<label for="last-name" class="text-black text-base font-normal leading-tight mb-2">
+		  Last Name <span class="text-red-600">*</span>
+		</label>
+		<input
+		  id="last-name"
+		  name="last-name"
+		  type="text"
+		  placeholder="Your last name"
+		  required
+		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
+		>
+	  </div>
+	</div>
+
+	<!-- Email & Country -->
+	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
+	  <div class="w-full flex-1 flex flex-col">
+		<label for="email" class="text-black text-base font-normal leading-tight mb-2">
+		  Email Address <span class="text-red-600">*</span>
+		</label>
+		<input
+		  id="email"
+		  name="email"
+		  type="email"
+		  placeholder="mail@mail.com"
+		  required
+		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
+		>
+	  </div>	  
+	  
+	  <div class="w-full flex-1 flex flex-col relative">
+		<label for="country" class="text-black text-base font-normal leading-tight mb-2">
+		  Country <span class="text-red-600">*</span>
+		</label>
+		<select
+		  id="country"
+		  name="country"
+		  required
+		  class="appearance-none px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100 pr-10"
+		>
+		  <option value="" disabled selected>Please select a country</option>
+		  <option value="kenya">Kenya</option>
+		  <option value="uganda">Uganda</option>
+		  <option value="tanzania">Tanzania</option>
+		  <option value="rwanda">Rwanda</option>
+		</select>
+		<svg
+		  class="w-4 h-4 absolute right-4 top-[38px] md:top-[38px] pointer-events-none text-gray-400"
+		  xmlns="http://www.w3.org/2000/svg"
+		  fill="none"
+		  viewBox="0 0 24 24"
+		  stroke="currentColor"
+		>
+		  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+		</svg>
+	  </div>
+	</div>
+
+	<!-- Organisation -->
+	<div class="inline-flex justify-start items-start gap-8">
+	  <div class="flex-1 flex flex-col">
+		<label for="organisation" class="text-black text-base font-normal leading-tight mb-2">
+		  Organisation Name
+		</label>
+		<input
+		  id="organisation"
+		  name="organisation"
+		  type="text"
+		  placeholder="Your organisation name"
+		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
+		>
+	  </div>
+	</div>
+
+	<!-- Message -->
+	<div class="inline-flex justify-start items-start gap-8">
+	  <div class="flex-1 flex flex-col">
+		<label for="message" class="text-black text-base font-normal leading-tight mb-2">
+		  Your Message <span class="text-red-600">*</span>
+		</label>
+		<textarea
+		  id="message"
+		  name="message"
+		  placeholder="Your comments"
+		  required
+		  class="w-full h-36 px-4 py-2 bg-white rounded-2xl opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100 resize-none"
+		></textarea>
+	  </div>
+	</div>
+
+	<!-- Note -->
+	<p class="text-slate-600 text-sm opacity-50 leading-2">
+	  *Due to the international nature and demands of our work, someone will respond to your inquiry within five business days.
+	</p>
+
+	<!-- Submit -->	
+	<button class="px-6 py-2 flex justify-center items-center" onclick="submitContactForm()">
+		<a class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 px-6 md:px-8 white bg-green rounded-3xl">
+			<span class="pr-2">
+				{% include icon.html icon="message" %}
+			</span>
+			Send Message
+		</a>
+	</button>
+  </form>
+  
+</div>
+<div class="mt-8 mb-16 titolo" id="submitContactForm" style="display: none;">
+	
+	<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-6">
+		{% include title.html caption="Message Sent" title="Thank You" dot="yes" align="center" %}
+	</div>
+	<div class="max-w-lg text-center self-stretch text-chocolate justify-start text-lg leading-loose">Your message has been received, and we'll be in touch soon to discuss how we can begin your journey towards stronger, more impactful leadership.</div>
+  </div>
+{% include footer.html %}
+</div>

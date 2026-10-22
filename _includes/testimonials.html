@@ -1,0 +1,29 @@
+{% if include.limit %} {% assign limit = include.limit %} {% endif %}
+<section id="testimonials" class="w-full bg-cream py-16">
+  <div class="max-w-screen-xl mx-auto px-4 lg:px-20 flex flex-col items-center text-center gap-8 titolo">
+    {% include title.html caption="Feedback" title="Testimonials" dot="yes" align="center" %}
+
+    <!-- Masonry-like grid -->
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] w-full">
+      {% for item in site.data.testimonials limit:limit %}
+        <div class="break-inside-avoid mb-6 p-8 bg-white rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow duration-300 text-left">
+        <p class="text-gray-700 leading-relaxed mb-6">
+          “{{ item.testimonial }}”
+        </p>
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden">
+            {% include icon.html icon="quote" %}
+          </div>
+          <div class="flex flex-col">
+            <span class="text-gray-900 font-semibold text-lg">{{ item.author }}</span>
+            <span class="text-gray-500 text-base">{{ item.company }}</span>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% if page.title != "Our Impact" %}
+    {% include button.html link="/our-impact#testimonials" label="All Testimonials" icon="right" type="full" %}
+    {% endif %}
+  </div>
+</section>

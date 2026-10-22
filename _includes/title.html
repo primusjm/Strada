@@ -1,0 +1,25 @@
+{% if include.dot %} {% assign dot = include.dot %} {% endif %}
+{% if include.align %} {% assign align = include.align %} {% endif %}
+
+{% if align == "left" %}
+<div class="mx-auto w-full inline-flex flex-col justify-start items-start gap-0">
+	{% elsif align == "center" %}
+	<div class="mx-auto w-full inline-flex flex-col justify-center items-center gap-0">
+		{% endif %}
+		{% if align == "left" %}
+		<div class="inline-flex flex-col justify-start items-start gap-2">
+			{% elsif align == "center" %}
+			<div class="inline-flex flex-col justify-center items-center gap-2">
+				{% endif %}
+				{% include icon.html icon="waves" %}
+				<div class="justify-start text-lg text-charcoal leading-7">
+					{{include.caption}}
+				</div>
+			</div>
+			<div class="text-4xl font-extrabold leading-[40px]">
+				{{include.title}}
+				{% if dot == "yes" %}
+				<span class="-ml-1">{% include icon.html icon="dot" %}</span>
+				{% endif %}
+			</div>
+		</div>

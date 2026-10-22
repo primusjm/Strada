@@ -1,0 +1,76 @@
+---
+layout: compressa
+---
+{% include header.html %}
+<div class="flex flex-col justify-center items-center">
+	{% include nav.html %}
+	{% include hero.html %}
+
+	<div class="w-full py-16 flex flex-col gap-16">
+		<div class="self-stretch w-full max-w-screen-xl mx-auto px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
+			<div class="mx-auto w-full inline-flex flex-row justify-between items-center gap-0 pb-4">
+			<div class="inline-flex flex-col justify-start items-start gap-2">
+					{% include icon.html icon="waves" %}
+				<div class="text-4xl font-extrabold leading-[56px]">
+					Cohort 1
+				</div>
+				</div>
+				{% include button.html link="/gallery/cohort-1/" label="All Photos" icon="right" type="clear" %}
+			</div>
+			
+			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
+			  {% for i in (1..4) %}
+			  <div class="w-full flex flex-col justify-start items-center overflow-hidden">
+				<img class="self-stretch h-full object-cover rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)]" src="/assets/images/gallery/cohort-1/cohort-1-{{i}}.webp" />
+			  </div>
+			  {% endfor %}
+			</div>
+		</div>
+	
+		<div class="self-stretch w-full max-w-screen-xl mx-auto px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
+			<div class="mx-auto w-full inline-flex flex-row justify-between items-center gap-0 pb-4">
+			<div class="inline-flex flex-col justify-start items-start gap-2">
+					{% include icon.html icon="waves" %}
+				<div class="text-4xl font-extrabold leading-[56px]">
+					Cohort 2
+				</div>
+				</div>
+				{% include button.html link="/gallery/cohort-2/" label="All Photos" icon="right" type="clear" %}
+			</div>
+			
+			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
+			  {% for i in (1..4) %}
+			  <div class="w-full flex flex-col justify-start items-center overflow-hidden">
+				<img class="self-stretch h-full object-cover rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)]" src="/assets/images/gallery/cohort-2/cohort-2-{{i}}.webp" />
+			  </div>
+			  {% endfor %}
+			</div>
+		</div>
+		
+		<div class="self-stretch w-full max-w-screen-xl mx-auto px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
+			<div class="mx-auto w-full inline-flex flex-row justify-between items-center gap-0 pb-4">
+			<div class="inline-flex flex-col justify-start items-start gap-2">
+					{% include icon.html icon="waves" %}
+				<div class="text-4xl font-extrabold leading-[56px]">
+					Cohort 3
+				</div>
+				</div>
+				{% include button.html link="/gallery/cohort-3/" label="All Photos" icon="right" type="clear" %}
+			</div>
+			
+			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
+			  {% for i in (1..4) %}
+			  <div class="w-full flex flex-col justify-start items-center overflow-hidden">
+				<img class="self-stretch h-full object-cover rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)]" src="/assets/images/gallery/cohort-3/cohort-3-{{i}}.webp" />
+			  </div>
+			  {% endfor %}
+			</div>
+		</div>
+	</div>
+
+	{% include footer.html %}
+</div>
+
+
+
+

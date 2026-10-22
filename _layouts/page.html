@@ -1,0 +1,43 @@
+---
+layout: compressa
+---
+{% include header.html %}
+<div class="w-full">
+	  <div class="w-full min-h-screen px-8 lg:px-20 xl:px-32 grid grid-cols-1 md:grid-cols-2 items-center justify-center content-center gap-8 md:gap-12 titolo">
+	
+	<!-- LEFT CONTENT -->
+	<div class="flex flex-col justify-center items-start gap-2 text-left">
+		<!-- Logo -->
+		<a href="/" class="whitespace-nowrap pb-8" alt="home">
+		  {% include icon.html icon="logo" %}
+		</a>
+		{% include icon.html icon="waves" %}
+		<div class="text-lg text-charcoal leading-7">
+		  {{page.caption}}
+		</div>
+		<div class="w-[90%] text-6xl font-extrabold leading-[60px]">
+		  {{page.title}}
+		  {% if page.title != "Lost Your Way?" %}
+		  <span class="-ml-2 -mb-1">{% include icon.html icon="dot" %}</span>
+		  {% endif %}
+		</div>
+		<div class="w-full text-lg leading-loose text-charcoal">
+		  {{page.excerpt}}
+		</div>
+		{% if page.title == "Lost Your Way?" %}
+		<div class="pt-8">
+		  {% include button.html link="/" label="Go Home" icon="right" type="full" %}
+		</div>
+		{% endif %}
+	</div>
+
+	<!-- RIGHT IMAGE -->
+	<div class="flex justify-center items-center relative">
+	  <div class="w-full md:w-[80%] max-w-[460px]">
+		<img class="w-full h-auto" src="/assets/images/{{page.image}}.webp" alt="{{page.title}}" />
+	  </div>
+	</div>
+  </div>
+</div>
+
+{% include footer.html %}

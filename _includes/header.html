@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charset="utf-8" />
+        <title>{% if page.title and page.type != "home" %} {{page.title|capitalize_all}} • RLC {% else %} {{site.title | capitalize_all}} {% endif %}</title>
+        {% seo title=false %}
+        <!-- Favicons -->
+        <link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
+        <link rel="icon" type="image/svg+xml" href="/assets/images/icons/favicon.svg" />
+        <link rel="shortcut icon" href="/assets/images/icons/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/icons/apple-touch-icon.png" />
+        <link rel="manifest" href="/assets/images/icons/site.webmanifest" />
+        
+        <!-- Styles -->
+        <link rel="preload" href="/assets/styles/main.css" as="style">
+        <link rel="stylesheet" href="/assets/styles/main.css" />
+        <!-- Scripts -->
+        <link rel="preload" href="/assets/js/init.js" as="script">
+        <link rel="preload" href="/assets/js/alpine.min.js" as="script">
+        <link rel="preload" href="/assets/js/animations.min.js" as="script">
+    </head>
+
+
+    {% if page.layout != "page" %}
+    <body>    
+        {% else %}
+    <body class="bg-cream">
+        
+        {% endif %}
+        <!-- <svg id="fader"></svg> -->
+        <script>
+            function fadeInPage() {
+                if (!window.AnimationEvent) {
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.add('fade-out');
+            }
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!window.AnimationEvent) {
+                    return;
+                }
+                var anchors = document.getElementsByTagName('a');
+
+                for (var idx = 0; idx < anchors.length; idx += 1) {
+                    if (anchors[idx].hostname !== window.location.hostname ||
+                        anchors[idx].pathname === window.location.pathname) {
+                        continue;
+                    }
+                    anchors[idx].addEventListener('click', function(event) {
+                        var fader = document.getElementById('fader'),
+                            anchor = event.currentTarget;
+
+                        var listener = function() {
+                            window.location = anchor.href;
+                            fader.removeEventListener('animationend', listener);
+                        };
+                        fader.addEventListener('animationend', listener);
+
+                        event.preventDefault();
+                        fader.classList.add('fade-in');
+                    });
+                }
+            });
+            window.addEventListener('pageshow', function(event) {
+                if (!event.persisted) {
+                    return;
+                }
+                var fader = document.getElementById('fader');
+                fader.classList.remove('fade-in');
+            });
+            fadeInPage();
+        </script>

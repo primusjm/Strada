@@ -1,0 +1,41 @@
+{% if include.icon %} {% assign icon = include.icon %} {% endif %}
+{% if include.type %} {% assign type = include.type %} {% endif %}
+
+{% if type == "full" %}
+
+{% if icon == "left" %}
+<a href="{{include.link}}" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 px-6 md:px-8 white bg-green rounded-3xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow duration-300">
+    <span class="pr-2">
+        {% include icon.html icon="message" %}
+    </span>
+    {{include.label}}
+</a>
+{% elsif icon == "right" %}
+<a href="{{include.link}}" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 px-6 md:px-8 white bg-green rounded-3xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow duration-300">
+    {{include.label}}
+    <span class="pl-1">
+        {% include icon.html icon="arrow-right" %}
+    </span>
+</a>
+{% endif %}
+
+
+{% elsif type == "clear" %}
+
+{% if icon == "left" %}
+<a href="{{include.link}}" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 green font-bold">
+    <span class="pr-2">
+        {% include icon.html icon="message" %}
+    </span>
+    {{include.label}}
+</a>
+{% elsif icon == "right" %}
+<a href="{{include.link}}" class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 green font-bold">
+    {{include.label}}
+    <span class="pl-1">
+        {% include icon.html icon="arrow-right-green" %}
+    </span>
+</a>
+{% endif %}
+
+{% endif %}

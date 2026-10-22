@@ -1,0 +1,191 @@
+---
+---
+@import url('/assets/styles/fonts.css');
+@import url('/assets/styles/animations.css');
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer utilities {
+  .paused {
+    animation-play-state: paused;
+  }
+}
+
+:root {
+    --black: #050505;
+    --white: #ffffff;
+    --charcoal: #4A556C;
+    --cream: #FAF8F6;
+    --stroke: #EDEFF5;
+    --green: #00A651;
+    --blue: #1565C0;
+    --teal: #20AD96;
+    --yellow: #F9A825;
+  }
+
+* {
+    transition: all 0.3s ease-out;
+}
+
+html {
+    font-size: 16px;
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    background: var(--white) !important;
+}
+
+.bg-white {
+    background: var(--white) !important;
+}
+
+.bg-cream {
+    background: var(--cream) !important;
+}
+
+.bg-green {
+    background: var(--green) !important;
+}
+
+.bg-stroke {
+  background: var(--stroke);
+}
+
+.black {
+  color: var(--black);
+}
+
+.white {
+  color: var(--white);
+}
+
+.charcoal {
+  color: var(--charcoal);
+}
+
+.green {
+  color: var(--green);
+}
+
+.blue {
+  color: var(--blue);
+}
+
+.teal {
+  color: var(--teal);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+
+span {
+    display: inline-block;
+}
+
+
+::selection {
+    color: var(--white);
+    background: var(--charcoal);
+}
+
+/* Markdown content styling */
+.content {
+  max-width: 48rem; /* same as max-w-3xl */
+  margin: 1.5rem auto;
+  color: var(--charcoal);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+/* Headings */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  font-weight: 800;
+  color: var(--black);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+.content h1 { font-size: 1.875rem; } /* text-3xl */
+.content h2 { font-size: 1.5rem; }   /* text-2xl */
+.content h3 { font-size: 1.25rem; }  /* text-xl */
+
+/* Paragraphs */
+.content p {
+  margin: 0.5rem 1.5rem;
+  /* line-height: 1.6rem; */
+}
+
+/* Links */
+.content a {
+  color: var(--green);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  transition: color 0.2s ease;
+}
+.content a:hover {
+  color: var(--green);
+}
+
+/* Lists */
+.content ul,
+.content ol {
+  margin: 1rem 0 1rem 3.5rem;
+  padding: 0;
+}
+.content ul {
+  list-style-type: disc;
+}
+.content ol {
+  list-style-type: decimal;
+}
+.content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Blockquotes */
+.content blockquote {
+  border-left: 4px solid #f4efe9; /* cream-400 equivalent */
+  padding-left: 1rem;
+  font-style: italic;
+  color: #666;
+  margin: 1.5rem 0;
+}
+
+/* Code blocks */
+.content pre {
+  background: var(--cream);
+  color: var(--charcoal);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  margin: 1.5rem 0;
+}
+.content code {
+  background: var(--cream);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'Menlo', monospace;
+}
+
+/* Images */
+.content img {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}

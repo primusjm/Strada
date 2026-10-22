@@ -1,0 +1,28 @@
+<section class="w-full">
+    <div class="self-stretch w-full max-w-screen-lg mx-auto pt-8 pb-16 px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center gap-8 titolo">
+    <!-- TITLE -->
+    {% if page.title != "FAQs" %}
+    {% include title.html caption="Get Informed" title="FAQs" dot="yes" align="center" %}
+    {% endif %}
+
+    <!-- <div class="w-full space-y-4"> -->
+      <div class="w-full space-y-4" x-data="{ openFaq: 0 }">
+        {% if page.title != "FAQs" %}
+          {% for faq in site.data.faqs limit:3 %}
+            {% include faq-list.html faq=faq index=forloop.index0 %}
+          {% endfor %}
+        {% else %}
+          {% for faq in site.data.faqs %}
+            {% include faq-list.html faq=faq index=forloop.index0 %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    {% if page.title != "FAQs" %}
+    <!-- ALL FAQS BUTTON -->
+    <div class="self-stretch w-full max-w-screen-xl mx-auto flex flex-col justify-between items-center">
+      {% include button.html link="/faqs" label="All FAQs" icon="right" type="full" %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+

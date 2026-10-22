@@ -1,0 +1,34 @@
+<section class="mx-auto  relative -mt-20 flex flex-col items-center overflow-hidden pb-14 titolo">
+    <div class="container">
+        <div class="mx-4 relative grid grid-cols-1 md:gap-2 md:grid-cols-3 md:mx-0 xl:mx-32 2xl:mx-48 md:drop-shadow">
+            {% for item in site.data.servizi %}
+            <div class="mb-4 w-full bg-body md:mb-2 border border-overlay drop-shadow md:drop-shadow-none rounded-md">
+                <div class="relative z-10 p-5 md:pr-0 lg:py-7 lg:pl-7">
+                    <div class="mb-0 flex flex-row border-b border-light pb-0 text-brand">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mr-2 h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            {{ item.icon }}
+                        </svg>
+                        <div class="block font-display text-2xl">
+                            {{ item.name }}
+                        </div>
+                    </div>
+                    <p class="mb-0 pb-4 pr-2 text-base text-color">
+                        {{ item.description }}
+                    </p>
+                    <div>
+                        <div class="mb-0 flex flex-row border-b border-light pb-0 text-brand">
+                            <div class="block font-display text-xl">
+                                {{ item.caption }}
+                            </div>
+                        </div>
+                        <p class="text-base leading-loose pr-2 text-color">
+                            {{ item.tools }}
+                        </p>
+                    </div>
+                    {% include punti.html %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

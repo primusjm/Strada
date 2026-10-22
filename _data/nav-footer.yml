@@ -1,0 +1,14 @@
+- name: About Us
+  link: /about-us/
+- name: Our Programs
+  link: /programs/
+- name: Our Impact
+  link: /our-impact/
+- name: Articles
+  link: /articles/
+- name: Gallery
+  link: /gallery/
+# - name: FAQs
+  # link: /faqs/
+- name: Contact Us
+  link: /contact/

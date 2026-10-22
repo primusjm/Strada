@@ -1,0 +1,93 @@
+<!-- Header -->
+<div class="w-full bg-cream" x-data="{ open: false }">
+  <div class="w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 lg:px-20 flex justify-between items-center">
+    
+    <!-- Logo -->
+    <a href="/" class="whitespace-nowrap titolo" alt="home">
+      {% include icon.html icon="logo" %}
+    </a>
+    
+    <!-- Hamburger button (mobile only) -->
+    <button id="menu-toggle"
+      class="lg:hidden flex flex-col justify-between w-6 h-5 focus:outline-none relative z-90 overflow-visible"
+      @click="open = !open"
+    >    
+      <span class="block w-full h-[2px] bg-charcoal transition-transform duration-300 origin-center"
+            :class="{ 'rotate-45 translate-y-[6px]': open }"></span>
+      <span class="block w-full h-[2px] bg-charcoal transition-opacity duration-300"
+            :class="{ 'opacity-0': open }"></span>
+      <span class="block w-full h-[2px] bg-charcoal transition-transform duration-300 origin-center"
+            :class="{ '-rotate-45 -translate-y-[6px]': open }"></span>
+    </button>
+
+    <!-- NAV LINKS -->
+    <div
+      id="menu"
+      class="max-h-0 overflow-hidden lg:overflow-visible transition-all duration-500 ease-in-out lg:flex flex-col lg:flex-row justify-start items-center gap-8 absolute lg:static top-[100px] left-0 w-full lg:w-auto bg-cream lg:bg-transparent p-0 lg:p-0 shadow lg:shadow-none z-40 titolo text-lg md:text-base"
+    >
+      <div class="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-4 p-4 lg:p-0">
+        {% for item in site.data.nav %}
+          <div 
+            x-data="{ open: false }" 
+            @mouseenter="open = true" 
+            @mouseleave="open = false" 
+            class="relative"
+          >
+            <a 
+              href="{{ item.link }}" 
+              class="flex items-center gap-1 text-charcoal text-center hover:text-green font-medium"
+              @click="open = !open"
+            >
+              {{ item.name }}
+              {% if item.subitems %}
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              {% endif %}
+              {% unless item.subitems %}
+              <span class="-ml-[1px] -mb-[7px] relative">{% include icon.html icon="menu-dot" %}</span>
+              {% endunless %}
+            </a>
+
+            {% if item.subitems %}
+              <ul 
+                x-show="open" 
+                x-transition 
+                @click.away="open = false"
+                class="absolute left-2 mt-2 w-48 bg-white shadow-lg rounded-md z-40 hidden lg:block"
+              >
+                {% for subitem in item.subitems %}
+                  <li>
+                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-green">
+                      {{ subitem.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+
+              <!-- Mobile dropdown -->
+              <ul 
+                x-show="open" 
+                x-transition 
+                class="lg:hidden flex flex-col bg-cream shadow rounded-md mt-2 overflow-hidden"
+              >
+                {% for subitem in item.subitems %}
+                  <li>
+                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-green">
+                      {{ subitem.name }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- CONTACT US BUTTON -->
+      <div class="pt-0 pb-4 lg:pb-0 flex justify-center lg:justify-start">
+        {% include button.html link="/contact/" label="Contact" icon="left" type="full" %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+- name: About Us
+  link: /about-us/
+  subitems:
+    - name: Our Story
+      link: /about-us#story
+    - name: Our Values
+      link: /about-us#values
+    - name: Our Founder
+      link: /about-us#founder
+    - name: Our Difference
+      link: /about-us#difference
+    - name: Our Focus
+      link: /about-us#focus
+    - name: Our Approach
+      link: /about-us#approach
+    - name: Our Partners
+      link: /about-us#partners
+- name: Our Programs
+  link: /programs/
+  subitems: 
+    - name: Coaching
+      link: /programs/coaching/
+    - name: CRLI
+      link: /programs/crli/  
+- name: Our Impact
+  link: /our-impact/
+- name: Articles
+  link: /articles/
+- name: Gallery
+  link: /gallery/
+- name: FAQs
+  link: /faqs/

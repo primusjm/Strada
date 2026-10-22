@@ -1,0 +1,63 @@
+---
+layout: compressa
+---
+{% include header.html %}
+<div class="flex flex-col justify-center items-center">
+{% include nav.html %}
+{% include hero.html %}
+<!-- WHY -->
+<div class="w-full">
+  <div class="self-stretch w-full max-w-screen-xl mx-auto py-16 px-8 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
+
+	{% include title.html caption="What Drives Us?" title="Why this Initiative?" dot="no" align="center" %}
+
+	<div class="pt-8 flex flex-col justify-center items-center gap-8">
+	  <p class="mx-auto text-charcoal md:w-[80%] md:text-center">
+		Rising Leadership Center was created to support leaders who want to lead differently by being grounded in purpose, connected to others, and ready to act with and for their communities. We develop and energize leaders while driving transformative change to support communities’ transformative agendas. Our mission is to awaken, re-energize, and transform leaders by reconnecting them with themselves, one another, and their communities. Our vision is a world where leaders are self-aware, nurtured, and emboldened, living their values in solidarity and interdependence with others to create a lasting impact in their communities.
+	  </p>
+
+	  <div class="flex flex-col md:flex-row gap-8">
+		<p class="mx-auto text-charcoal md:w-[50%]">
+		  We are living at a moment in history that requires a different, bolder way of leadership. We must challenge the status quo and center the needs and strengths of our communities if we want to lead and make a real impact. We need new leadership styles to solve the evolving challenges our communities are facing, but one thing is clear: communities must be at the center of creating and sustaining change. It’s time to rethink and question our leadership practices to better embrace complexity, uncertainty, learning, and partnership.
+		</p>
+
+		<p class="mx-auto text-charcoal md:w-[50%]">
+		  We need to identify and adopt leadership styles that are ethical, impactful, and contextually-relevant to make important changes and bring back balance in our lives, our teams, our organizations, and our communities. Change needs to start with who we are on the inside to be able to change who we are together on the outside. It’s time to connect our purpose and our passion to our leadership. Building this connection inside-out will help us and our communities to meet this moment with grace.
+		</p>
+	  </div>
+
+	</div>
+
+	<div class="mt-16 mx-auto flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
+	  <div class="inline-flex flex-col justify-center items-center gap-4">
+		{% include icon.html icon="notebook" %}
+		<div class="flex flex-col justify-center items-center gap-0">
+		  <div class="text-2xl font-bold">1:1 Coaching</div>
+		  {% include button.html link="/programs/" label="Explore Our Programs" icon="right" type="clear" %}
+		</div>
+	  </div>
+
+	  <div class="inline-flex flex-col justify-center items-center gap-4">
+		{% include icon.html icon="people-4" %}
+		<div class="flex flex-col justify-center items-center gap-0">
+		  <div class="text-2xl font-bold">Team Coaching Sessions</div>
+		  {% include button.html link="/about-us/" label="Learn More About Us" icon="right" type="clear" %}
+		</div>
+	  </div>
+
+	  <div class="inline-flex flex-col justify-center items-center gap-4">
+		{% include icon.html icon="message-2" %}
+		<div class="flex flex-col justify-center items-center gap-0">
+		  <div class="text-2xl font-bold">Consultation</div>
+		  {% include button.html link="/contact/" label="Contact Us" icon="right" type="clear" %}
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+<!-- WHY -->
+{% include testimonials.html limit="3" %}
+{% include articles.html %}
+{% include faqs.html %}
+{% include footer.html %}
+</div>
