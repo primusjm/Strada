@@ -38,9 +38,9 @@
           {% assign current = "" %}
           {% if page.url == item.link %}{% assign current = "page" %}{% elsif page.url contains item.link %}{% assign current = "true" %}{% endif %}
           <div
-            x-data="{ open: false }"
-            @mouseenter="if (window.innerWidth >= 1280) open = true"
-            @mouseleave="if (window.innerWidth >= 1280) open = false"
+            x-data="{ open: false, closeTimer: null }"
+            @mouseenter="if (window.innerWidth >= 1280) { clearTimeout(closeTimer); open = true }"
+            @mouseleave="if (window.innerWidth >= 1280) { closeTimer = setTimeout(() => open = false, 140) }"
             {% if item.subitems %}@focusin="if (window.innerWidth >= 1280) open = true"
             @focusout="if (window.innerWidth >= 1280 && !$el.contains($event.relatedTarget)) open = false"
             @keydown.escape="open = false"
@@ -68,12 +68,8 @@
             </a>
 
             {% if item.subitems %}
-              <ul
-                x-show="open"
-                x-transition
-                @click.away="open = false"
-                class="absolute left-2 mt-2 w-48 bg-white shadow-lg rounded-md z-40 hidden xl:block"
-              >
+              <div class="dropdown absolute left-2 top-full pt-2 w-48 z-40 hidden xl:block" :class="{ 'is-open': open }" @click.away="open = false">
+              <ul class="bg-white shadow-lg rounded-md">
                 {% for subitem in item.subitems %}
                   <li>
                     <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">
@@ -82,6 +78,7 @@
                   </li>
                 {% endfor %}
               </ul>
+              </div>
 
               <!-- Mobile dropdown: the parent only opens it, so it gets its own Overview link -->
               <div class="submenu xl:hidden" :class="{ 'is-open': open }">

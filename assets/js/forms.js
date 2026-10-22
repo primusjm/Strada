@@ -63,16 +63,32 @@
     button.setAttribute("aria-busy", sending ? "true" : "false");
   }
 
+  function calm() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      document.documentElement.classList.contains("a11y-still");
+  }
+
+  /* The form fades out, then the thank-you message fades in and takes focus. */
   function succeed(form) {
     var hide = document.getElementById(form.dataset.hideId) || form;
     var done = document.getElementById(form.dataset.successId);
     form.reset();
-    hide.style.display = "none";
-    if (!done) return;
-    done.style.display = "block";
-    done.classList.add("is-visible");
-    done.setAttribute("tabindex", "-1");
-    done.focus();
+
+    function swap() {
+      hide.style.display = "none";
+      hide.style.opacity = "";
+      if (!done) return;
+      done.style.display = "block";
+      void done.offsetWidth; /* lets the browser see the hidden state first, so the fade-in runs */
+      done.classList.add("is-visible");
+      done.setAttribute("tabindex", "-1");
+      done.focus({ preventScroll: false });
+    }
+
+    if (calm()) return swap();
+    hide.style.transition = "opacity 0.25s ease-out";
+    hide.style.opacity = "0";
+    window.setTimeout(swap, 260);
   }
 
   function submit(form) {

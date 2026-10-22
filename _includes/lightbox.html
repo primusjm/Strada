@@ -1,6 +1,6 @@
 {% assign t = site.data.pages.shared %}
 <!-- Photo viewer: modal dialog driven by assets/js/lightbox.js -->
-<div id="lightbox" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50" role="dialog" aria-modal="true" aria-label="{{ t.lightbox.label }}">
+<div id="lightbox" class="lightbox fixed inset-0 bg-black/80 flex items-center justify-center z-50" role="dialog" aria-modal="true" aria-label="{{ t.lightbox.label }}">
   <button type="button" data-lightbox-close class="absolute top-3 right-4 w-11 h-11 flex items-center justify-center text-white text-3xl font-light rounded-full hover:bg-white/10" aria-label="{{ t.lightbox.close }}">&times;</button>
   <button type="button" data-lightbox-prev class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-white rounded-full bg-black/30 hover:bg-black/50" aria-label="{{ t.lightbox.previous }}">
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
