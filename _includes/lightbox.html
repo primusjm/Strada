@@ -1,0 +1,17 @@
+<!-- Photo viewer: modal dialog driven by assets/js/lightbox.js -->
+<div id="lightbox" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button type="button" data-lightbox-close class="absolute top-3 right-4 w-11 h-11 flex items-center justify-center text-white text-3xl font-light rounded-full hover:bg-white/10" aria-label="Close photo">&times;</button>
+  <button type="button" data-lightbox-prev class="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-white rounded-full bg-black/30 hover:bg-black/50" aria-label="Previous photo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7" />
+    </svg>
+  </button>
+  <img id="lightbox-image" src="" alt="" class="max-w-[85%] max-h-[85%] rounded-2xl shadow-lg cursor-default">
+  <button type="button" data-lightbox-next class="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center text-white rounded-full bg-black/30 hover:bg-black/50" aria-label="Next photo">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+  <p id="lightbox-count" class="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-sm" aria-live="polite"></p>
+</div>
+<script src="/assets/js/lightbox.js?v={{ site.time | date: '%s' }}" defer></script>

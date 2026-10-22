@@ -1,0 +1,16 @@
+{% comment %}
+  One gallery photo. cohort and i pick the file; label is the alt text prefix.
+  With lightbox=true it renders as a button that opens the viewer, otherwise as a plain tile.
+{% endcomment %}
+{% assign base = "/assets/images/gallery/cohort-" | append: include.cohort | append: "/" %}
+{% assign file = "cohort-" | append: include.cohort | append: "-" | append: include.i | append: ".webp" %}
+{% assign alt = "Cohort " | append: include.cohort | append: " " | append: include.label | append: " " | append: include.i %}
+{% if include.lightbox %}
+<button type="button" class="w-full flex flex-col justify-start items-center overflow-hidden rounded-2xl cursor-zoom-in" data-lightbox="{{ base }}{{ file }}" aria-haspopup="dialog">
+  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ base }}thumbs/{{ file }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
+</button>
+{% else %}
+<div class="w-full flex flex-col justify-start items-center overflow-hidden">
+  <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ base }}thumbs/{{ file }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
+</div>
+{% endif %}

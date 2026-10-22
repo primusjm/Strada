@@ -1,5 +1,5 @@
 ---
-title: Cohort 3
+title: Cohort 2
 layout: cohort-2-gallery
 type: page
 caption: Get Inspired

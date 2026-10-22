@@ -1,0 +1,8 @@
+<nav aria-label="Gallery cohorts" class="w-full flex justify-center pb-10">
+  <div class="seg">
+    <a href="/gallery/">All cohorts</a>
+    <a href="/gallery/cohort-1/"{% if page.url == "/gallery/cohort-1/" %} aria-current="page"{% endif %}>Cohort 1</a>
+    <a href="/gallery/cohort-2/"{% if page.url == "/gallery/cohort-2/" %} aria-current="page"{% endif %}>Cohort 2</a>
+    <a href="/gallery/cohort-3/"{% if page.url == "/gallery/cohort-3/" %} aria-current="page"{% endif %}>Cohort 3</a>
+  </div>
+</nav>
