@@ -1,6 +1,7 @@
 ---
 layout: compressa
 ---
+{% assign t = site.data.pages.shared %}
 {% include header.html %}
 <main id="main" class="w-full">
 	  <div class="w-full min-h-screen px-4 lg:px-20 xl:px-32 grid grid-cols-1 md:grid-cols-2 items-center justify-center content-center gap-8 md:gap-12 titolo">
@@ -8,7 +9,7 @@ layout: compressa
 	<!-- LEFT CONTENT -->
 	<div class="flex flex-col justify-center items-start gap-2 text-left">
 		<!-- Logo -->
-		<a href="/" class="whitespace-nowrap pb-8" aria-label="Rising Leaders Center, home">
+		<a href="/" class="whitespace-nowrap pb-8" aria-label="{{ t.logo_label }}">
 		  {% include icon.html icon="logo" %}
 		</a>
 		{% include icon.html icon="waves" %}
@@ -28,11 +29,11 @@ layout: compressa
 		<div class="pt-8">
 		  {% include button.html link="/" label="Go Home" icon="right" type="full" %}
 		</div>
-		<nav aria-label="Popular pages" class="pt-4 flex flex-wrap gap-x-6 gap-y-2 text-charcoal">
-		  <span>Or try:</span>
-		  <a href="/programs/" class="font-normal hover:text-ink underline underline-offset-4">Programs</a>
-		  <a href="/articles/" class="font-normal hover:text-ink underline underline-offset-4">Articles</a>
-		  <a href="/contact/" class="font-normal hover:text-ink underline underline-offset-4">Contact</a>
+		<nav aria-label="{{ t.not_found.label }}" class="pt-4 flex flex-wrap gap-x-6 gap-y-2 text-charcoal">
+		  <span>{{ t.not_found.intro }}</span>
+		  {% for link in t.not_found.links %}
+		  <a href="{{ link.link }}" class="font-normal hover:text-ink underline underline-offset-4">{{ link.label }}</a>
+		  {% endfor %}
 		</nav>
 		{% endif %}
 	</div>

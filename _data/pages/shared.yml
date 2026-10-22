@@ -18,6 +18,7 @@ articles:
   caption: Stay Motivated
   title: Read our Articles
   button: All Articles
+  read_more: Read More
 faqs:
   caption: Get Informed
   title: FAQs
@@ -28,3 +29,53 @@ article:
   share: Share
 social:
   linkedin: https://www.linkedin.com/in/joyce-malombe-3919784/
+skip_link: Skip to content
+logo_label: Rising Leaders Center, home
+nav:
+  menu_button: Menu
+  main_label: Main
+  overview: Overview
+  contact: Contact
+  contact_link: /contact/
+scroll_top: Scroll to top
+a11y:
+  open: Accessibility
+  title: Accessibility
+  intro: Adjust how this site looks and moves. Your choices are saved on this device.
+  close: Close accessibility settings
+  size_label: Text size
+  decrease: Decrease text size
+  reset_size: Reset text size
+  increase: Increase text size
+  status: Text size
+  display_label: Display
+  contrast: High contrast
+  underline: Underline links
+  spacing: Increase spacing
+  bold: Bold text
+  font: Plain font
+  still: Reduce motion
+  reset_all: Reset all
+  done: Done
+not_found:
+  label: Popular pages
+  intro: 'Or try:'
+  links:
+  - label: Programs
+    link: /programs/
+  - label: Articles
+    link: /articles/
+  - label: Contact
+    link: /contact/
+lightbox:
+  label: Photo viewer
+  close: Close photo
+  previous: Previous photo
+  next: Next photo
+forms:
+  sending: Sending…
+  failed: Couldn't send your message. Check your connection and try again.
+  check_field: Check this field
+share:
+  copied: Link copied
+  copied_status: Link copied to clipboard

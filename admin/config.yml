@@ -186,6 +186,7 @@ collections:
               - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
 
 
+
   - name: page-content
     label: Page text
     files:
@@ -209,6 +210,9 @@ collections:
         - label: Link
           name: link
           widget: string
+      - label: Nav label
+        name: nav_label
+        widget: string
     - label: About Us
       name: about-us
       file: _data/pages/about-us.yml
@@ -269,6 +273,9 @@ collections:
           widget: string
         - label: Core title
           name: core_title
+          widget: string
+        - label: List label
+          name: list_label
           widget: string
       - label: Difference
         name: difference
@@ -840,7 +847,7 @@ collections:
         - label: Required after
           name: required_after
           widget: string
-    - label: Footer, subscribe and section titles
+    - label: Site-wide text, labels and accessibility panel
       name: shared
       file: _data/pages/shared.yml
       fields:
@@ -915,6 +922,9 @@ collections:
         - label: Button
           name: button
           widget: string
+        - label: Read more
+          name: read_more
+          widget: string
       - label: Faqs
         name: faqs
         widget: object
@@ -951,6 +961,157 @@ collections:
         - label: Linkedin
           name: linkedin
           widget: string
+      - label: Skip link
+        name: skip_link
+        widget: string
+      - label: Logo label
+        name: logo_label
+        widget: string
+      - label: Nav
+        name: nav
+        widget: object
+        collapsed: true
+        fields:
+        - label: Menu button
+          name: menu_button
+          widget: string
+        - label: Main label
+          name: main_label
+          widget: string
+        - label: Overview
+          name: overview
+          widget: string
+        - label: Contact
+          name: contact
+          widget: string
+        - label: Contact link
+          name: contact_link
+          widget: string
+      - label: Scroll top
+        name: scroll_top
+        widget: string
+      - label: A11y
+        name: a11y
+        widget: object
+        collapsed: true
+        fields:
+        - label: Open
+          name: open
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: string
+        - label: Close
+          name: close
+          widget: string
+        - label: Size label
+          name: size_label
+          widget: string
+        - label: Decrease
+          name: decrease
+          widget: string
+        - label: Reset size
+          name: reset_size
+          widget: string
+        - label: Increase
+          name: increase
+          widget: string
+        - label: Status
+          name: status
+          widget: string
+        - label: Display label
+          name: display_label
+          widget: string
+        - label: Contrast
+          name: contrast
+          widget: string
+        - label: Underline
+          name: underline
+          widget: string
+        - label: Spacing
+          name: spacing
+          widget: string
+        - label: Bold
+          name: bold
+          widget: string
+        - label: Font
+          name: font
+          widget: string
+        - label: Still
+          name: still
+          widget: string
+        - label: Reset all
+          name: reset_all
+          widget: string
+        - label: Done
+          name: done
+          widget: string
+      - label: Not found
+        name: not_found
+        widget: object
+        collapsed: true
+        fields:
+        - label: Label
+          name: label
+          widget: string
+        - label: Intro
+          name: intro
+          widget: string
+        - label: Links
+          name: links
+          widget: list
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Link
+            name: link
+            widget: string
+      - label: Lightbox
+        name: lightbox
+        widget: object
+        collapsed: true
+        fields:
+        - label: Label
+          name: label
+          widget: string
+        - label: Close
+          name: close
+          widget: string
+        - label: Previous
+          name: previous
+          widget: string
+        - label: Next
+          name: next
+          widget: string
+      - label: Forms
+        name: forms
+        widget: object
+        collapsed: true
+        fields:
+        - label: Sending
+          name: sending
+          widget: string
+        - label: Failed
+          name: failed
+          widget: string
+        - label: Check field
+          name: check_field
+          widget: string
+      - label: Share
+        name: share
+        widget: object
+        collapsed: true
+        fields:
+        - label: Copied
+          name: copied
+          widget: string
+        - label: Copied status
+          name: copied_status
+          widget: string
     - label: Quote
       name: quote
       file: _data/quote.yml
@@ -963,7 +1124,7 @@ collections:
         widget: string
 
   - name: pages
-    label: Page headings and intro and intro
+    label: Page headings and intro and intro and intro
     files:
       - label: Home
         name: index

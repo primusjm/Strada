@@ -1,5 +1,5 @@
 <!-- Share: system share sheet on phones, otherwise copies the link (assets/js/share.js) -->
-<button type="button" class="btn btn-clear inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 green font-medium" data-share data-title="{{ include.title }}">
+<button type="button" class="btn btn-clear inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 green font-medium" data-share data-title="{{ include.title }}" data-copied="{{ site.data.pages.shared.share.copied }}" data-copied-status="{{ site.data.pages.shared.share.copied_status }}">
     <span class="btn-icon btn-icon-left pr-2">
         {% include icon.html icon="link" %}
     </span>

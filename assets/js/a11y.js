@@ -30,7 +30,7 @@
     });
 
     var status = document.querySelector("[data-a11y-status]");
-    if (status) status.textContent = "Text size " + SIZES[text];
+    if (status) status.textContent = (status.dataset.label || "Text size") + " " + SIZES[text];
   }
 
   document.addEventListener("click", function (event) {

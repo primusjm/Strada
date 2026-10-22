@@ -7,7 +7,7 @@
         <p class="text-charcoal text-lg leading-7">{{ t.subscribe.text }}</p>
       </div>
       <!-- FORM -->
-      <form class="md:col-span-3 w-full" action="https://formspree.io/f/xyzndyrb" method="POST" enctype="multipart/form-data" name="subscribe" novalidate data-form data-hide-id="subscribeForm" data-success-id="submitSubscribeForm">
+      <form class="md:col-span-3 w-full" action="https://formspree.io/f/xyzndyrb" method="POST" enctype="multipart/form-data" name="subscribe" novalidate data-form data-sending="{{ t.forms.sending }}" data-failed="{{ t.forms.failed }}" data-check="{{ t.forms.check_field }}" data-hide-id="subscribeForm" data-success-id="submitSubscribeForm">
         <div class="flex flex-col lg:flex-row items-stretch lg:items-start gap-3">
           <div class="flex-1 min-w-0">
             <label for="subscribe" class="sr-only">{{ t.subscribe.label }}</label>

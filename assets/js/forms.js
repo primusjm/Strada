@@ -1,6 +1,8 @@
 /* Form handling: inline validation, a sending state, and confirmation only after Formspree accepts the message. */
 (function () {
-  var FAILED = "Couldn't send your message. Check your connection and try again.";
+  /* Wording comes from data attributes on the form (editable in the CMS); these are fallbacks. */
+  var DEFAULTS = { sending: "Sending…", failed: "Couldn't send your message. Check your connection and try again.", check: "Check this field" };
+  function text(form, name) { return (form && form.dataset[name]) || DEFAULTS[name]; }
 
   function errorFor(field) {
     var id = field.id + "-error";
@@ -29,7 +31,7 @@
 
   function messageFor(field) {
     if (field.validity.typeMismatch && field.dataset.errorType) return field.dataset.errorType;
-    return field.dataset.error || "Check this field";
+    return field.dataset.error || text(field.form, "check");
   }
 
   /* Returns true when every field is valid; focuses the first one that is not. */
@@ -53,7 +55,7 @@
     var label = button.querySelector("[data-label]");
     if (sending) {
       button.dataset.idleLabel = label.textContent;
-      label.textContent = "Sending…";
+      label.textContent = text(form, "sending");
     } else if (button.dataset.idleLabel) {
       label.textContent = button.dataset.idleLabel;
     }
@@ -87,10 +89,10 @@
     }).then(function (response) {
       if (response.ok) return succeed(form);
       return response.json().then(function (data) {
-        say(data && data.errors ? data.errors.map(function (e) { return e.message; }).join(", ") : FAILED);
-      }, function () { say(FAILED); });
+        say(data && data.errors ? data.errors.map(function (e) { return e.message; }).join(", ") : text(form, "failed"));
+      }, function () { say(text(form, "failed")); });
     }).catch(function () {
-      say(FAILED);
+      say(text(form, "failed"));
     }).then(function () {
       setSending(form, false);
     });

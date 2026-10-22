@@ -5,12 +5,13 @@
 
   var label = button.querySelector("[data-share-label]");
   var status = document.querySelector("[data-share-status]");
+  var idleLabel = label.textContent;
 
   function confirmCopied() {
-    label.textContent = "Link copied";
-    status.textContent = "Link copied to clipboard";
+    label.textContent = button.dataset.copied || "Link copied";
+    status.textContent = button.dataset.copiedStatus || "Link copied to clipboard";
     setTimeout(function () {
-      label.textContent = "Share";
+      label.textContent = idleLabel;
       status.textContent = "";
     }, 2500);
   }

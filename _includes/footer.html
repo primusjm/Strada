@@ -8,7 +8,7 @@
     <div class="w-full flex flex-col justify-start items-start gap-8">
 
         <div class="mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24">
-            <a href="/" class="whitespace-nowrap" aria-label="Rising Leaders Center, home">
+            <a href="/" class="whitespace-nowrap" aria-label="{{ t.logo_label }}">
                 {% include icon.html icon="logo" %}
             </a>
           <div class="w-[80%] md:w-full text-center md:text-left text-charcoal text-lg">{{ t.footer.tagline }}</div>
@@ -33,12 +33,12 @@
         <!-- Accessibility (phones only, the link row above is hidden there) -->
         <button type="button" class="a11y-open sm:hidden text-charcoal hover:text-ink flex justify-center items-center gap-2 mx-auto" data-a11y-open aria-haspopup="dialog">
           {% include icon.html icon="accessibility" %}
-          Accessibility
+          {{ t.a11y.open }}
         </button>
 
         <button id="scrollToTopMobile"
           class="fab mx-auto md:hidden flex flex-col justify-center bg-ink text-white p-3 rounded-full shadow-lg hover:brightness-95 transition-opacity duration-300 z-50"
-          aria-label="Scroll to top">
+          aria-label="{{ t.scroll_top }}">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
           </svg>
@@ -67,7 +67,7 @@
 <div class="hidden md:flex">
 <button id="scrollToTop"
   class="fab hidden fixed bottom-6 right-6 bg-ink text-white p-3 rounded-full shadow-lg hover:brightness-95 transition-opacity duration-300 z-50"
-  aria-label="Scroll to top">
+  aria-label="{{ t.scroll_top }}">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
     <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
   </svg>

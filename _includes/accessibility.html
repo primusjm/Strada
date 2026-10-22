@@ -1,36 +1,37 @@
+{% assign t = site.data.pages.shared %}
 <!-- Accessibility panel: non-modal, opened from the footer. Choices are handled by assets/js/a11y.js. -->
 <dialog id="a11y-dialog" class="a11y-dialog" aria-labelledby="a11y-title">
   <div class="flex items-start justify-between gap-4 p-6 pb-2">
     <div>
-      <h2 id="a11y-title" class="text-2xl font-medium">Accessibility</h2>
-      <p class="mt-1 text-charcoal">Adjust how this site looks and moves. Your choices are saved on this device.</p>
+      <h2 id="a11y-title" class="text-2xl font-medium">{{ t.a11y.title }}</h2>
+      <p class="mt-1 text-charcoal">{{ t.a11y.intro }}</p>
     </div>
-    <button type="button" class="a11y-close" data-a11y-close aria-label="Close accessibility settings">&times;</button>
+    <button type="button" class="a11y-close" data-a11y-close aria-label="{{ t.a11y.close }}">&times;</button>
   </div>
   <div class="flex flex-col gap-5 p-6 pt-4">
     <div role="group" aria-labelledby="a11y-size-label">
-      <p id="a11y-size-label" class="font-medium mb-2">Text size</p>
+      <p id="a11y-size-label" class="font-medium mb-2">{{ t.a11y.size_label }}</p>
       <div class="flex flex-wrap items-center gap-1">
-        <button type="button" class="a11y-btn" data-a11y-text="-1" aria-label="Decrease text size">A&minus;</button>
-        <button type="button" class="a11y-btn" data-a11y-text="0" aria-label="Reset text size">A</button>
-        <button type="button" class="a11y-btn" data-a11y-text="1" aria-label="Increase text size">A+</button>
-        <span class="px-2 text-charcoal" data-a11y-status aria-live="polite">Text size 100%</span>
+        <button type="button" class="a11y-btn" data-a11y-text="-1" aria-label="{{ t.a11y.decrease }}">A&minus;</button>
+        <button type="button" class="a11y-btn" data-a11y-text="0" aria-label="{{ t.a11y.reset_size }}">A</button>
+        <button type="button" class="a11y-btn" data-a11y-text="1" aria-label="{{ t.a11y.increase }}">A+</button>
+        <span class="px-2 text-charcoal" data-a11y-status data-label="{{ t.a11y.status }}" aria-live="polite">{{ t.a11y.status }} 100%</span>
       </div>
     </div>
     <div role="group" aria-labelledby="a11y-display-label">
-      <p id="a11y-display-label" class="font-medium mb-2">Display</p>
+      <p id="a11y-display-label" class="font-medium mb-2">{{ t.a11y.display_label }}</p>
       <div class="flex flex-wrap gap-2">
-        <button type="button" class="a11y-btn" data-a11y-toggle="contrast" aria-pressed="false">High contrast</button>
-        <button type="button" class="a11y-btn" data-a11y-toggle="underline" aria-pressed="false">Underline links</button>
-        <button type="button" class="a11y-btn" data-a11y-toggle="spacing" aria-pressed="false">Increase spacing</button>
-        <button type="button" class="a11y-btn" data-a11y-toggle="bold" aria-pressed="false">Bold text</button>
-        <button type="button" class="a11y-btn" data-a11y-toggle="font" aria-pressed="false">Plain font</button>
-        <button type="button" class="a11y-btn" data-a11y-toggle="still" aria-pressed="false">Reduce motion</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="contrast" aria-pressed="false">{{ t.a11y.contrast }}</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="underline" aria-pressed="false">{{ t.a11y.underline }}</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="spacing" aria-pressed="false">{{ t.a11y.spacing }}</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="bold" aria-pressed="false">{{ t.a11y.bold }}</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="font" aria-pressed="false">{{ t.a11y.font }}</button>
+        <button type="button" class="a11y-btn" data-a11y-toggle="still" aria-pressed="false">{{ t.a11y.still }}</button>
       </div>
     </div>
     <div class="flex flex-wrap justify-between gap-2 pt-2">
-      <button type="button" class="a11y-btn" data-a11y-reset>Reset all</button>
-      <button type="button" class="btn btn-solid inline-flex items-center justify-center py-2.5 px-8 white bg-ink rounded-3xl" data-a11y-close>Done</button>
+      <button type="button" class="a11y-btn" data-a11y-reset>{{ t.a11y.reset_all }}</button>
+      <button type="button" class="btn btn-solid inline-flex items-center justify-center py-2.5 px-8 white bg-ink rounded-3xl" data-a11y-close>{{ t.a11y.done }}</button>
     </div>
   </div>
 </dialog>

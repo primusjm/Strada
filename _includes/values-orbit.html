@@ -8,7 +8,7 @@
       <span class="values-core-title">{{ c.values.core_title }}</span>
     </p>
   </div>
-  <ul class="values-orbit" aria-label="Our values">
+  <ul class="values-orbit" aria-label="{{ c.values.list_label }}">
     {% for value in site.data.values %}
     <li class="values-item" style="--a: {{ forloop.index0 | times: 40 | minus: 90 }}.0deg">
       <span class="values-label">
