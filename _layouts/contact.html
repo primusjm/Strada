@@ -8,40 +8,30 @@ layout: compressa
 {% include hero.html %}
 <div class="self-stretch w-full max-w-screen-xl mx-auto pt-16 pb-8 px-4 lg:px-20 flex justify-center items-center titolo">
 	
-		  <form class="w-[90%] md:w-[60%] flex flex-col gap-8" action="https://formspree.io/f/mwprqnrw" method="POST" enctype="multipart/form-data" name="contact" id="contactForm">
-	
+		  <form class="w-[90%] md:w-[60%] flex flex-col gap-8" action="https://formspree.io/f/mwprqnrw" method="POST" enctype="multipart/form-data" name="contact" id="contactForm" novalidate data-form data-success-id="submitContactForm">
+
 	<h2 class="w-[90%] text-center text-black text-2xl font-medium leading-loose">
 	  Ready for a change? Let’s start working together!
 	</h2>
+
+	<p class="text-charcoal text-base -mt-4">
+	  Fields marked <span class="text-red-600" aria-hidden="true">*</span><span class="sr-only"> with an asterisk</span> are required.
+	</p>
 
 	<!-- First & Last Name -->
 	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="first-name" class="text-black text-base font-normal leading-tight mb-2">
-		  First Name <span class="text-red-600">*</span>
+		  First Name <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input
-		  id="first-name"
-		  name="first-name"
-		  type="text"
-		  placeholder="Your first name"
-		  required
-		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
-		>
+		<input id="first-name" name="first-name" autocomplete="given-name" data-error="Enter your first name" type="text" placeholder="Your first name" required class="field">
 	  </div>
 
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="last-name" class="text-black text-base font-normal leading-tight mb-2">
-		  Last Name <span class="text-red-600">*</span>
+		  Last Name <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input
-		  id="last-name"
-		  name="last-name"
-		  type="text"
-		  placeholder="Your last name"
-		  required
-		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
-		>
+		<input id="last-name" name="last-name" autocomplete="family-name" data-error="Enter your last name" type="text" placeholder="Your last name" required class="field">
 	  </div>
 	</div>
 
@@ -49,29 +39,17 @@ layout: compressa
 	<div class="inline-flex flex-col md:flex-row justify-start items-start gap-8">
 	  <div class="w-full flex-1 flex flex-col">
 		<label for="email" class="text-black text-base font-normal leading-tight mb-2">
-		  Email Address <span class="text-red-600">*</span>
+		  Email Address <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<input
-		  id="email"
-		  name="email"
-		  type="email"
-		  placeholder="mail@mail.com"
-		  required
-		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
-		>
-	  </div>	  
-	  
+		<input id="email" name="email" autocomplete="email" data-error="Enter your email address" data-error-type="Enter a valid email address" type="email" placeholder="mail@mail.com" required class="field">
+	  </div>
+
 	  <div class="w-full flex-1 flex flex-col relative">
 		<label for="country" class="text-black text-base font-normal leading-tight mb-2">
-		  Country <span class="text-red-600">*</span>
+		  Country <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<select
-		  id="country"
-		  name="country"
-		  required
-		  class="appearance-none px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100 pr-10"
-		>
-		  <option value="" disabled selected>Please select a country</option>
+		<select id="country" name="country" autocomplete="country-name" data-error="Select your country" required class="field appearance-none pr-10">
+		  <option value="" disabled selected>Select a country</option>
 		  <option value="kenya">Kenya</option>
 		  <option value="uganda">Uganda</option>
 		  <option value="tanzania">Tanzania</option>
@@ -95,13 +73,7 @@ layout: compressa
 		<label for="organisation" class="text-black text-base font-normal leading-tight mb-2">
 		  Organisation Name
 		</label>
-		<input
-		  id="organisation"
-		  name="organisation"
-		  type="text"
-		  placeholder="Your organisation name"
-		  class="px-4 bg-white rounded-3xl flex-1 opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100"
-		>
+		<input id="organisation" name="organisation" autocomplete="organization" type="text" placeholder="Your organisation name" class="field">
 	  </div>
 	</div>
 
@@ -109,36 +81,32 @@ layout: compressa
 	<div class="inline-flex justify-start items-start gap-8">
 	  <div class="flex-1 flex flex-col">
 		<label for="message" class="text-black text-base font-normal leading-tight mb-2">
-		  Your Message <span class="text-red-600">*</span>
+		  Your Message <span class="text-red-600" aria-hidden="true">*</span>
 		</label>
-		<textarea
-		  id="message"
-		  name="message"
-		  placeholder="Your comments"
-		  required
-		  class="w-full h-36 px-4 py-2 bg-white rounded-2xl opacity-50 justify-start text-chocolate leading-7 outline outline-1 outline-gray-100 resize-none"
-		></textarea>
+		<textarea id="message" name="message" data-error="Enter your message" placeholder="Your comments" required class="field h-36 resize-none"></textarea>
 	  </div>
 	</div>
 
 	<!-- Note -->
-	<p class="text-slate-600 text-sm opacity-50 leading-2">
-	  *Due to the international nature and demands of our work, someone will respond to your inquiry within five business days.
+	<p class="text-charcoal text-base leading-7">
+	  Due to the international nature and demands of our work, someone will respond to your inquiry within five business days.
 	</p>
 
-	<!-- Submit -->	
-	<button class="px-6 py-2 flex justify-center items-center" onclick="submitContactForm()">
-		<a class="inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 px-6 md:px-8 white bg-green rounded-3xl">
-			<span class="pr-2">
-				{% include icon.html icon="message" %}
-			</span>
-			Send Message
-		</a>
-	</button>
+	<p id="contactForm-status" class="form-status" role="alert"></p>
+
+	<!-- Submit -->
+	<div class="flex justify-center">
+	  <button type="submit" class="btn btn-solid inline-flex items-center justify-center whitespace-nowrap py-2.5 md:py-2 px-6 md:px-8 white bg-ink rounded-3xl">
+		<span class="btn-icon btn-icon-left pr-2">
+		  {% include icon.html icon="message" %}
+		</span>
+		<span data-label>Send Message</span>
+	  </button>
+	</div>
   </form>
-  
+
 </div>
-<div class="mt-8 mb-16 titolo" id="submitContactForm" style="display: none;">
+<div class="mt-8 mb-16 titolo" id="submitContactForm" style="display: none;" aria-live="polite">
 	
 	<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-6">
 		{% include title.html caption="Message Sent" title="Thank You" dot="yes" align="center" %}
