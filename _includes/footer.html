@@ -24,17 +24,27 @@
               </span>
             </a>
           {% endfor %}
-          <button type="button" class="a11y-open text-charcoal hover:text-ink flex justify-center items-center gap-2 md:ml-auto" data-a11y-open aria-haspopup="dialog">
+          <button type="button" class="a11y-open theme-toggle text-charcoal hover:text-ink flex justify-center items-center gap-2 md:ml-auto" data-theme-toggle aria-pressed="false">
+            {% include icon.html icon="moon" %}{% include icon.html icon="sun" %}
+            {{ t.theme.label }}
+          </button>
+          <button type="button" class="a11y-open text-charcoal hover:text-ink flex justify-center items-center gap-2" data-a11y-open aria-haspopup="dialog">
             {% include icon.html icon="accessibility" %}
             Accessibility
           </button>
         </div>
 
-        <!-- Accessibility (phones only, the link row above is hidden there) -->
-        <button type="button" class="a11y-open sm:hidden text-charcoal hover:text-ink flex justify-center items-center gap-2 mx-auto" data-a11y-open aria-haspopup="dialog">
-          {% include icon.html icon="accessibility" %}
-          {{ t.a11y.open }}
-        </button>
+        <!-- Theme and accessibility (phones only, the link row above is hidden there) -->
+        <div class="sm:hidden flex justify-center items-center gap-8 mx-auto">
+          <button type="button" class="a11y-open theme-toggle text-charcoal hover:text-ink flex justify-center items-center gap-2" data-theme-toggle aria-pressed="false">
+            {% include icon.html icon="moon" %}{% include icon.html icon="sun" %}
+            {{ t.theme.label }}
+          </button>
+          <button type="button" class="a11y-open text-charcoal hover:text-ink flex justify-center items-center gap-2" data-a11y-open aria-haspopup="dialog">
+            {% include icon.html icon="accessibility" %}
+            {{ t.a11y.open }}
+          </button>
+        </div>
 
         <button id="scrollToTopMobile"
           class="fab mx-auto md:hidden flex flex-col justify-center bg-ink text-white p-3 rounded-full shadow-lg hover:brightness-95 transition-opacity duration-300 z-50"
@@ -77,6 +87,7 @@
 <!-- FOOTER -->
 <script src="/assets/js/reveal.js?v={{ v }}" defer></script>
 <script src="/assets/js/a11y.js?v={{ v }}" defer></script>
+<script src="/assets/js/theme.js?v={{ v }}" defer></script>
 <script src="/assets/js/forms.js?v={{ v }}" defer></script>
 <script src="/assets/js/init.js?v={{ v }}" defer></script>
 <script src="/assets/js/alpine.min.js?v={{ v }}" defer></script>

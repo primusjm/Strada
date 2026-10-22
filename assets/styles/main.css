@@ -1,5 +1,6 @@
 ---
 ---
+/* Build note: the PostCSS step passes this file through a shell, so keep the number of single-quote characters in it even (the two import lines use four). */
 @import url('/assets/styles/fonts.css');
 @import url('/assets/styles/animations.css');
 
@@ -24,6 +25,9 @@
   --blue: #1565c0;
   --teal: #20ad96;
   --yellow: #f9a825;
+  --page: #fff;
+  --surface: #fff;
+  --ink-text: var(--green-ink);
 }
 a,
 button,
@@ -49,9 +53,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.bg-white,
 body {
-  background: var(--white) !important;
+  background: var(--page) !important;
+}
+.bg-white {
+  background: var(--surface) !important;
 }
 .bg-cream {
   background: var(--cream) !important;
@@ -425,7 +431,7 @@ p {
   }
 }
 .field {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid #7f889c;
   border-radius: 1.5rem;
   color: var(--black);
@@ -514,7 +520,7 @@ textarea.field {
   padding: 0.5rem 1.25rem;
 }
 .seg a:hover {
-  background: var(--white);
+  background: var(--surface);
 }
 .seg a[aria-current] {
   background: var(--green-ink);
@@ -548,7 +554,7 @@ textarea.field {
 }
 .a11y-btn {
   align-items: center;
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid #7f889c;
   border-radius: 9999px;
   color: var(--charcoal);
@@ -669,7 +675,7 @@ html.a11y-contrast a:not(.btn):not(.site-logo) {
   min-height: 44px;
 }
 .a11y-dialog {
-  background: var(--white);
+  background: var(--surface);
   border: 1px solid var(--stroke);
   border-radius: 1rem;
   box-shadow: 0 12px 40px rgba(5, 5, 5, 0.22);
@@ -715,3 +721,145 @@ html.a11y-contrast .a11y-dialog {
   border: 2px solid #000;
 }
 
+
+/* ---------- Light and dark themes ----------
+   html[data-theme] is set before first paint by the inline script in the page head and changed by
+   assets/js/theme.js. The dark palette matches the CMS (see admin/index.html). High contrast mode always
+   uses the light theme. */
+html[data-theme="light"] {
+  color-scheme: light;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #11151d;
+  --surface: #1c212c;
+  --cream: #171c26;
+  --stroke: #2a3140;
+  --charcoal: #b9c1d1;
+  --black: #eef1f7;
+  --ink-text: hsl(150 60% 55%);
+}
+
+/* Greens used as text need a lighter shade on dark backgrounds; buttons keep the accessible green fill. */
+html[data-theme="dark"] .text-ink,
+html[data-theme="dark"] .hover\:text-ink:hover,
+html[data-theme="dark"] .group:hover .group-hover\:text-ink,
+html[data-theme="dark"] .green,
+html[data-theme="dark"] .content a,
+html[data-theme="dark"] .content a:hover,
+html[data-theme="dark"] .nav-link[aria-current],
+html[data-theme="dark"] .a11y-btn:hover {
+  color: var(--ink-text);
+}
+html[data-theme="dark"] .a11y-btn[aria-pressed="true"] {
+  color: #fff;
+}
+
+/* Text and surface colours that come straight from the Tailwind palette */
+html[data-theme="dark"] .text-charcoal {
+  color: var(--charcoal);
+}
+html[data-theme="dark"] .text-black,
+html[data-theme="dark"] .text-gray-900 {
+  color: var(--black);
+}
+html[data-theme="dark"] .text-gray-700 {
+  color: #c9d0dd;
+}
+html[data-theme="dark"] .text-gray-500 {
+  color: #9aa3b6;
+}
+html[data-theme="dark"] .text-gray-400 {
+  color: #8d96aa;
+}
+html[data-theme="dark"] .text-red-600 {
+  color: #ff8a80;
+}
+html[data-theme="dark"] .bg-charcoal {
+  background-color: var(--charcoal);
+}
+html[data-theme="dark"] .hover\:bg-gray-100:hover {
+  background-color: rgb(74 85 108 / 0.35);
+}
+html[data-theme="dark"] .outline-gray-100 {
+  outline-color: var(--stroke);
+}
+html[data-theme="dark"] .seg a[aria-current] {
+  color: #fff;
+}
+html[data-theme="dark"] ::selection {
+  background: var(--green-ink);
+  color: #fff;
+}
+html[data-theme="dark"] .skip-link {
+  background: var(--green-ink);
+}
+html[data-theme="dark"] :focus-visible {
+  outline-color: #7fb2ff;
+}
+html[data-theme="dark"] .field {
+  border-color: #5f687c;
+}
+html[data-theme="dark"] .field::placeholder {
+  color: #98a1b4;
+}
+html[data-theme="dark"] .field-error,
+html[data-theme="dark"] .form-status {
+  color: #ff8a80;
+}
+html[data-theme="dark"] .a11y-dialog {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Photos are dimmed slightly so they do not glare; icons and the photo viewer keep full brightness. */
+html[data-theme="dark"] img:not([src$=".svg"]):not(#lightbox-image) {
+  filter: brightness(0.88);
+}
+
+/* Inline SVG icons and the logo have their dark and cream colours baked in. */
+html[data-theme="dark"] svg [stroke="#050505"],
+html[data-theme="dark"] svg [stroke="#020202"] {
+  stroke: #e9ecf3;
+}
+html[data-theme="dark"] svg [fill="#050505"],
+html[data-theme="dark"] svg [fill="#020202"] {
+  fill: #e9ecf3;
+}
+html[data-theme="dark"] svg [fill="#4A556C"] {
+  fill: #c3cbda;
+}
+html[data-theme="dark"] svg [stroke="#4A556C"] {
+  stroke: #c3cbda;
+}
+html[data-theme="dark"] svg [fill="#FAF8F6"] {
+  fill: var(--cream);
+}
+html[data-theme="dark"] svg [stroke="#FAF8F6"] {
+  stroke: var(--cream);
+}
+html[data-theme="dark"] svg rect[rx][fill="white"] {
+  fill: var(--surface);
+}
+html[data-theme="dark"] svg rect[rx][stroke="white"] {
+  stroke: var(--cream);
+}
+
+/* Theme toggle: the moon shows in light mode (switch to dark), the sun in dark mode (switch to light). */
+.theme-toggle .theme-sun,
+html[data-theme="dark"] .theme-toggle .theme-moon {
+  display: none;
+}
+html[data-theme="dark"] .theme-toggle .theme-sun {
+  display: inline-block;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-fade,
+  html.theme-fade body,
+  html.theme-fade main,
+  html.theme-fade header,
+  html.theme-fade footer,
+  html.theme-fade .bg-white,
+  html.theme-fade .bg-cream {
+    transition: background-color 0.3s ease-out, color 0.3s ease-out;
+  }
+}

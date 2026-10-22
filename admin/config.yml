@@ -190,6 +190,7 @@ collections:
 
 
 
+
   - name: page-content
     label: Page text
     files:
@@ -1115,6 +1116,14 @@ collections:
         - label: Copied status
           name: copied_status
           widget: string
+      - label: Theme
+        name: theme
+        widget: object
+        collapsed: true
+        fields:
+        - label: Label
+          name: label
+          widget: string
     - label: Quote
       name: quote
       file: _data/quote.yml
@@ -1127,7 +1136,7 @@ collections:
         widget: string
 
   - name: pages
-    label: Page headings and intro
+    label: Page headings and intro and intro
     files:
       - label: Home
         name: index

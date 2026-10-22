@@ -6,11 +6,11 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta charset="utf-8" />
-        <!-- Applies saved accessibility choices and the js flag before first paint -->
-        <script>document.documentElement.classList.add("js");try{var a=JSON.parse(localStorage.getItem("rlc-a11y")||"{}"),d=document.documentElement;if(a.text)d.setAttribute("data-text",a.text);["contrast","underline","still","spacing","font","bold"].forEach(function(k){if(a[k])d.classList.add("a11y-"+k)})}catch(e){}</script>
-        <!-- GitHub Pages cannot send headers, so the content security policy is set here. Alpine needs unsafe-eval. -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://tinylytics.app; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self' https://formspree.io https://tinylytics.app" />
         <meta name="theme-color" content="#FAF8F6" />
+        <meta name="color-scheme" content="light dark" />
+        <!-- Applies the js flag, saved accessibility choices and the light or dark theme before first paint.
+             The theme is the saved choice, otherwise the device setting; high contrast always uses light. -->
+        <script>document.documentElement.classList.add("js");(function(){var d=document.documentElement,a={},t="";try{a=JSON.parse(localStorage.getItem("rlc-a11y")||"{}");t=localStorage.getItem("rlc-theme")||""}catch(e){}if(a.text)d.setAttribute("data-text",a.text);["contrast","underline","still","spacing","font","bold"].forEach(function(k){if(a[k])d.classList.add("a11y-"+k)});if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(a.contrast)t="light";d.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="dark"?"#171C26":"#FAF8F6")})()</script>
         <title>{% if page.title and page.type != "home" %} {{page.title|capitalize_all}} • RLC {% else %} {{site.title | capitalize_all}} {% endif %}</title>
         {% seo title=false %}
         <!-- Favicons -->

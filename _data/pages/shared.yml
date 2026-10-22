@@ -79,3 +79,5 @@ forms:
 share:
   copied: Link copied
   copied_status: Link copied to clipboard
+theme:
+  label: Dark mode
