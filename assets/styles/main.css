@@ -494,16 +494,6 @@ textarea.field {
 .nav-link[aria-current] {
   color: var(--green-ink);
 }
-.nav-link[aria-current]:after {
-  background: var(--green-ink);
-  border-radius: 2px;
-  bottom: -4px;
-  content: "";
-  height: 2px;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
 .ph {
   background-color: var(--stroke);
 }

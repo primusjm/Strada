@@ -61,16 +61,18 @@
     if (first) first.focus();
   }
 
-  function closePanel() {
+  function closePanel(keepFocus) {
     dialog.close();
-    if (opener) opener.focus();
+    if (opener && !keepFocus) opener.focus();
   }
 
   if (dialog && typeof dialog.show === "function") {
     document.addEventListener("click", function (event) {
       var open = event.target.closest("[data-a11y-open]");
       if (open) return dialog.open ? closePanel() : openPanel(open);
-      if (event.target.closest("[data-a11y-close]")) closePanel();
+      if (event.target.closest("[data-a11y-close]")) return closePanel();
+      /* A click anywhere outside the panel closes it, leaving focus where the click landed. */
+      if (dialog.open && !dialog.contains(event.target)) closePanel(true);
     });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && dialog.open) closePanel();
