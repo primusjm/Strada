@@ -8,6 +8,21 @@
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
+    <!-- Sign-in with GitHub needs a login service this site does not have, so hide that button.
+         Editors sign in with "Sign In Using Access Token". -->
+    <style>.hide-github-login { display: none !important; }</style>
+    <script>
+      (function () {
+        function hide() {
+          document.querySelectorAll("button").forEach(function (b) {
+            var t = b.textContent;
+            if (/sign in with/i.test(t) && !/token/i.test(t)) b.classList.add("hide-github-login");
+          });
+        }
+        new MutationObserver(hide).observe(document.documentElement, { childList: true, subtree: true });
+        hide();
+      })();
+    </script>
     <!-- Sveltia CMS: https://github.com/sveltia/sveltia-cms -->
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
   </body>
