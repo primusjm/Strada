@@ -13,6 +13,9 @@
         <script>document.documentElement.classList.add("js");(function(){var d=document.documentElement,a={},t="";try{a=JSON.parse(localStorage.getItem("rlc-a11y")||"{}");t=localStorage.getItem("rlc-theme")||""}catch(e){}if(a.text)d.setAttribute("data-text",a.text);["contrast","underline","still","spacing","font","bold"].forEach(function(k){if(a[k])d.classList.add("a11y-"+k)});if(t!=="light"&&t!=="dark")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(a.contrast)t="light";d.setAttribute("data-theme",t);var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content",t==="dark"?"#171C26":"#FAF8F6")})()</script>
         <title>{% if page.title and page.type != "home" %} {{page.title|capitalize_all}} • RLC {% else %} {{site.title | capitalize_all}} {% endif %}</title>
         {% seo title=false %}
+        {% if page.type == "home" %}
+        <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":{{ site.title | jsonify }},"url":{{ site.url | jsonify }},"logo":{{ site.url | append: "/assets/images/icons/apple-touch-icon.png" | jsonify }},"description":{{ page.excerpt | strip_html | strip | jsonify }}}</script>
+        {% endif %}
         <!-- Favicons -->
         <link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
         <link rel="icon" type="image/svg+xml" href="/assets/images/icons/favicon.svg" />

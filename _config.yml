@@ -1,5 +1,4 @@
 title: Rising Leaders Center
-author: Joshua M.
 email: josh@auxilia.io
 lang: en_GB
 timezone: Africa/Nairobi
@@ -31,6 +30,10 @@ exclude:
   - "Strada backup"
 
 defaults:
+  - scope:
+      path: "admin"
+    values:
+      sitemap: false
   - scope:
       path: "_posts"
     values:

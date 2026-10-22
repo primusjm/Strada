@@ -1136,7 +1136,7 @@ collections:
         widget: string
 
   - name: pages
-    label: Page headings and intro and intro
+    label: Page headings and intro
     files:
       - label: Home
         name: index
@@ -1146,6 +1146,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - label: Hero photo
@@ -1164,6 +1165,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1176,6 +1178,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1188,6 +1191,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1200,6 +1204,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1212,6 +1217,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1224,6 +1230,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1236,6 +1243,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1248,6 +1256,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1260,6 +1269,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1272,6 +1282,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1284,6 +1295,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1296,6 +1308,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1308,6 +1321,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
@@ -1320,6 +1334,7 @@ collections:
           - { label: Title, name: title, widget: string }
           - { label: Small heading above the title, name: caption, widget: text, required: false }
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
+          - { label: Search and sharing description, name: description, widget: text, required: false, hint: "Shown in Google results and when the page is shared. Aim for 120 to 160 characters. If empty, the intro text is used." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
