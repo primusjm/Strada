@@ -1,5 +1,5 @@
 {% assign hc = site.data.pages.home.hero %}
-{% if page.image.path %}{% assign hero_src = page.image.path %}{% else %}{% assign hero_src = page.image | prepend: "/assets/images/" | append: ".webp" %}{% endif %}
+{% if page.image.path %}{% assign hero_src = page.image.path %}{% elsif page.image contains "/assets/" %}{% assign hero_src = page.image %}{% else %}{% assign hero_src = page.image | prepend: "/assets/images/" | append: ".webp" %}{% endif %}
 <div class="w-full bg-cream">
   <div class="self-stretch w-full max-w-screen-xl mx-auto pt-8{% if page.type == "home" %} md:pt-20{% endif %} px-4 md:pb-8 lg:px-20 xl:px-32 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
     

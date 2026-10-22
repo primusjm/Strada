@@ -4,6 +4,6 @@ layout: cohort-3-gallery
 type: page
 caption: Get Inspired
 excerpt: Explore our gallery, a collection of moments and experiences designed to inspire and connect.
-image: gallery/cohort-3-header
+image: /assets/images/gallery/cohort-3-header.webp
 permalink: "/gallery/cohort-3/"
 ---
