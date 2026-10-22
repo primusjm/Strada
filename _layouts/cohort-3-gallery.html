@@ -12,7 +12,7 @@ layout: compressa
 			{% include cohort-switcher.html %}
 			<div class="self-stretch grid grid-cols-1 md:grid-cols-4 justify-between items-start gap-6">
 			  {% for photo in site.data.gallery["cohort-3"] %}
-			  {% include gallery-thumb.html image=photo.image n=forloop.index cohort=3 label="Image" lightbox=true %}
+			  {% include gallery-thumb.html image=photo.image n=forloop.index cohort=3 label="Image" lightbox=true alt_text=photo.alt %}
 			  {% endfor %}
 			</div>
 		</div>

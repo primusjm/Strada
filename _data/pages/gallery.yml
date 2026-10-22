@@ -1,0 +1,9 @@
+all_photos: All Photos
+all_cohorts: All cohorts
+cohorts:
+- name: Cohort 1
+  link: /gallery/cohort-1/
+- name: Cohort 2
+  link: /gallery/cohort-2/
+- name: Cohort 3
+  link: /gallery/cohort-3/
