@@ -548,7 +548,7 @@ textarea.field {
   padding-bottom: 0.75rem;
   padding-top: 0.75rem;
 }
-@media (max-width: 1279px) {
+@media (max-width: 1099px) {
   .site-header.is-scrolled .site-logo svg {
     width: 130px;
   }
@@ -887,7 +887,7 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
    Hidden panels use visibility so their links and text are skipped by keyboards and screen readers. */
 
 /* Phone and tablet menu */
-@media (max-width: 1279px) {
+@media (max-width: 1099px) {
   #menu.menu-panel {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -976,7 +976,7 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
 }
 
 /* Desktop: links and Contact button sit in one row (the wrapper is only needed for the mobile animation) */
-@media (min-width: 1280px) {
+@media (min-width: 1100px) {
   #menu .menu-inner {
     display: flex;
     flex-direction: row;

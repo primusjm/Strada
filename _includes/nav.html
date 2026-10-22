@@ -1,7 +1,7 @@
 {% assign t = site.data.pages.shared %}
 <!-- Header -->
 <header class="site-header w-full bg-cream" x-data="{ open: false }" @keydown.escape.window="open = false" @click.outside="open = false">
-  <div class="header-bar w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 lg:px-20 flex justify-between items-center">
+  <div class="header-bar w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 md:px-8 nav:px-8 xl:px-20 flex justify-between items-center">
 
     <!-- Logo -->
     <a href="/" class="site-logo whitespace-nowrap" aria-label="{{ t.logo_label }}">
@@ -10,7 +10,7 @@
 
     <!-- Hamburger button (below xl) -->
     <button id="menu-toggle"
-      class="xl:hidden flex flex-col justify-between box-content w-6 h-5 p-3 -m-3 relative z-90 overflow-visible"
+      class="nav:hidden flex flex-col justify-between box-content w-6 h-5 p-3 -m-3 relative z-90 overflow-visible"
       aria-label="{{ t.nav.menu_button }}"
       aria-controls="menu"
       :aria-expanded="open.toString()"
@@ -30,19 +30,19 @@
       aria-label="{{ t.nav.main_label }}"
       :class="{ 'is-open': open }"
       @click="if ($event.target.closest('a[href]') && !$event.target.closest('[data-parent]')) open=false"
-      class="menu-panel xl:flex flex-col xl:flex-row justify-start items-center gap-8 absolute xl:static top-full left-0 w-full xl:w-auto bg-cream xl:bg-transparent shadow xl:shadow-none z-40 text-lg md:text-base"
+      class="menu-panel nav:flex flex-col nav:flex-row justify-start items-center gap-5 xl:gap-8 absolute nav:static top-full left-0 w-full nav:w-auto bg-cream nav:bg-transparent shadow nav:shadow-none z-40 text-lg md:text-base"
     >
       <div class="menu-inner">
-      <div class="flex flex-col xl:flex-row justify-center items-center gap-4 xl:gap-8 p-4 xl:p-0">
+      <div class="flex flex-col nav:flex-row justify-center items-center gap-4 nav:gap-5 xl:gap-8 p-4 nav:p-0">
         {% for item in site.data.nav %}
           {% assign current = "" %}
           {% if page.url == item.link %}{% assign current = "page" %}{% elsif page.url contains item.link %}{% assign current = "true" %}{% endif %}
           <div
             x-data="{ open: false, closeTimer: null }"
-            @mouseenter="if (window.innerWidth >= 1280) { clearTimeout(closeTimer); open = true }"
-            @mouseleave="if (window.innerWidth >= 1280) { closeTimer = setTimeout(() => open = false, 140) }"
-            {% if item.subitems %}@focusin="if (window.innerWidth >= 1280) open = true"
-            @focusout="if (window.innerWidth >= 1280 && !$el.contains($event.relatedTarget)) open = false"
+            @mouseenter="if (window.innerWidth >= 1100) { clearTimeout(closeTimer); open = true }"
+            @mouseleave="if (window.innerWidth >= 1100) { closeTimer = setTimeout(() => open = false, 140) }"
+            {% if item.subitems %}@focusin="if (window.innerWidth >= 1100) open = true"
+            @focusout="if (window.innerWidth >= 1100 && !$el.contains($event.relatedTarget)) open = false"
             @keydown.escape="open = false"
             {% endif %}class="menu-item relative"
             style="--i: {{ forloop.index0 }}"
@@ -68,7 +68,7 @@
             </a>
 
             {% if item.subitems %}
-              <div class="dropdown absolute left-2 top-full pt-2 w-48 z-40 hidden xl:block" :class="{ 'is-open': open }" @click.away="open = false">
+              <div class="dropdown absolute left-2 top-full pt-2 w-48 z-40 hidden nav:block" :class="{ 'is-open': open }" @click.away="open = false">
               <ul class="bg-white shadow-lg rounded-md">
                 {% for subitem in item.subitems %}
                   <li>
@@ -81,7 +81,7 @@
               </div>
 
               <!-- Mobile dropdown: the parent only opens it, so it gets its own Overview link -->
-              <div class="submenu xl:hidden" :class="{ 'is-open': open }">
+              <div class="submenu nav:hidden" :class="{ 'is-open': open }">
               <div class="submenu-inner">
               <ul class="flex flex-col bg-cream rounded-md mt-2">
                 <li>
@@ -103,7 +103,7 @@
       </div>
 
       <!-- CONTACT US BUTTON -->
-      <div class="menu-item pt-0 pb-4 xl:pb-0 flex justify-center xl:justify-start" style="--i: {{ site.data.nav | size }}">
+      <div class="menu-item pt-0 pb-4 nav:pb-0 flex justify-center nav:justify-start" style="--i: {{ site.data.nav | size }}">
         {% include button.html link=t.nav.contact_link label=t.nav.contact icon="left" type="full" %}
       </div>
       </div>

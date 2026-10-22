@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        nav: "1100px",
+      },
       colors: {
         black: "#050505",
         white: "#ffffff",
