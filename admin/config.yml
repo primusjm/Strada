@@ -1124,7 +1124,7 @@ collections:
         widget: string
 
   - name: pages
-    label: Page headings and intro and intro and intro
+    label: Page headings and intro
     files:
       - label: Home
         name: index
@@ -1289,7 +1289,7 @@ collections:
           - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: 404 page
-        name: 404
+        name: "404"
         file: 404.md
         format: frontmatter
         fields:
