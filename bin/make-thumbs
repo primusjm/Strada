@@ -23,3 +23,12 @@ find "$IMG"/articles/*/ -name '*.webp' ! -name '*-640.webp' | while read -r f; d
   convert "$f" -resize 640x -quality 78 "$out"
   echo "thumb: $out"
 done
+
+# Oversized uploads (page and header images wider than 1400px) are scaled down in the built site.
+# Gallery photos and article images are left alone: they feed the viewer and the srcset sizes.
+find "$IMG" -name '*.webp' ! -path '*/gallery/cohort-*/*' ! -path '*/articles/*' ! -path '*/thumbs/*' | while read -r f; do
+  w=$(identify -format %w "$f")
+  [ "$w" -gt 1400 ] || continue
+  convert "$f" -resize 1400x -quality 76 "$f"
+  echo "resized: $f"
+done
