@@ -1,0 +1,20 @@
+<!-- Values orbit: the values circle the laurel once every 120s (CSS in main.css), labels stay upright. -->
+<div class="values-stage">
+  <div class="values-core">
+    <img class="values-laurel" src="/assets/images/about/laurel.svg" alt="" aria-hidden="true" />
+    <p class="values-core-text">
+      <span class="values-core-lead">Committed to</span>
+      <span class="values-core-title">Excellence</span>
+    </p>
+  </div>
+  <ul class="values-orbit" aria-label="Our values">
+    {% for value in site.data.values %}
+    <li class="values-item" style="--a: {{ forloop.index0 | times: 40 | minus: 90 }}.0deg">
+      <span class="values-label">
+        {% include icon.html icon=value.star %}
+        <span>{{ value.name }}</span>
+      </span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>

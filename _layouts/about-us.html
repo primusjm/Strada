@@ -16,7 +16,7 @@ layout: compressa
 						{% include icon.html icon="mission" %}
 					</div>
 					<div class="flex-1 pt-2 inline-flex flex-col justify-start items-start gap-2">
-						<div class="self-stretch justify-start text-black text-2xl font-medium leading-loose">Our Mission</div>
+						<h3 class="self-stretch justify-start text-black text-2xl font-medium leading-loose">Our Mission</h3>
 						<div class="self-stretch justify-start text-charcoal text-lg leading-7">To awaken, re-energize, and transform leaders by reconnecting them with themselves, one another, and their communities.</div>
 					</div>
 				</div>
@@ -25,11 +25,11 @@ layout: compressa
 						{% include icon.html icon="vision" %}
 					</div>
 					<div class="flex-1 pt-2 inline-flex flex-col justify-start items-start gap-2">
-						<div class="self-stretch justify-start text-black text-2xl font-medium leading-loose">Our Vision</div>
+						<h3 class="self-stretch justify-start text-black text-2xl font-medium leading-loose">Our Vision</h3>
 						<div class="self-stretch justify-start text-charcoal text-lg leading-7">A world where leaders are self-aware, nurtured, and emboldened, living their values in solidarity and interdependence with others to create a lasting impact in their communities.</div>
 					</div>
 				</div>
-				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="" src="/assets/images/about/our-story.webp" loading="lazy" decoding="async"/>
+				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="Participants applauding during a CRLI session" src="/assets/images/about/our-story.webp" loading="lazy" decoding="async"/>
 			</div>
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
 				<p>Rising Leaders Center (RLC) was founded in 2023 to develop and energize social impact leaders while driving transformative change to communities around the world, especially those on the African continent. We believe leadership is not a position, but a practice and an attitude. Real leadership is rooted in one’s purpose as informed by who they are on the inside. To be a good leader, you must find balance between yourself, your consciousness, your culture and relationships, and the larger structures and systems affecting you. Most importantly, leadership is a responsibility to your community that requires you to have a connection to your own sense of self, purpose, and wellness to succeed.</p>
@@ -47,7 +47,7 @@ layout: compressa
 	<div class="self-stretch w-full max-w-screen-xl mx-auto py-16 px-4 lg:px-20 flex justify-between items-center titolo">
 		<div class="w-full inline-flex flex-col justify-start items-center gap-12">
 			{% include title.html caption="What Drives Us?" title="Our Values" dot="yes" align="center" %}
-			<img src="/assets/images/about/values.webp" />
+			{% include values-orbit.html %}
 			{% include quote.html %}
 		</div>
 	</div>
@@ -126,28 +126,28 @@ layout: compressa
 	
 	  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
 		
-		<div class="p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
 		  {% include icon.html icon="approach-1" %}
 		  <div class="text-charcoal leading-loose">
 			The Rising Leaders Center approach sets leaders on a developmental journey to reflect critically about their role as brokers between communities and their stakeholders as they envision a better, more just future.
 		  </div>
 		</div>
 	
-		<div class="p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
 		  {% include icon.html icon="approach-2" %}
 		  <div class="text-charcoal leading-loose">
 			Our approach is grounded in the belief that transformation begins with the leader, but must ripple out to teams, organizations, and communities.
 		  </div>
 		</div>
 	
-		<div class="p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
 		  {% include icon.html icon="approach-3" %}
 		  <div class="text-charcoal leading-loose">
 			We build awareness, skills, and the practice of iterative reflection and development at multiple levels – individual, peers, teams, organizations, and networks. At RLC, likeminded leaders join together to consciously practice their best version of leadership, listen and learn from communities, and collectively pursue transformative agendas that truly prioritise the wants and needs of communities.
 		  </div>
 		</div>
 	
-		<div class="p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
 		  {% include icon.html icon="approach-4" %}
 		  <div class="text-charcoal leading-loose">
 			By addressing the challenges we face as leaders through individual leadership coaching, we seek to sow the seeds of an ethical leadership movement with and for the communities that we serve. We aspire to enable more leaders to awaken to who and how they are as well as how that influences how they lead as individuals, as a team, and as part of a collective.
@@ -171,23 +171,23 @@ layout: compressa
 		{% include title.html caption="Who We've Worked With" title="Our Partners" dot="yes" align="left" %}
 			</div>
 	<div class="self-stretch flex flex-col md:flex-row justify-between items-center gap-6">
-	  <div class="justify-start text-2xl font-medium leading-loose">CRLI Participants</div>
+	  <h3 class="justify-start text-2xl font-medium leading-loose">CRLI Participants</h3>
 	</div>
-	<div class="self-stretch inline-flex justify-center items-center md:justify-start md:items-start gap-12 flex-wrap content-start">
+	<div class="self-stretch inline-flex justify-center items-center md:justify-start md:items-start gap-12 flex-wrap content-start stagger">
 	  {% for item in site.data.partners %}
 	  <div class="w-40 inline-flex flex-col justify-start items-center gap-3">
-		<img class="w-40 h-14" src="/assets/images/logos/{{item.logo}}.webp" />
+		<img class="w-40 h-14" alt="" src="/assets/images/logos/{{item.logo}}.webp" loading="lazy" decoding="async" />
 		<div class="self-stretch text-center justify-start text-black text-base leading-tight">{{item.name}}</div>
 	  </div>
 	  {% endfor %}
 	</div>
 	<div class="self-stretch flex flex-col md:flex-row justify-between items-center gap-6">
-	  <div class="justify-start text-2xl font-medium leading-loose">CRLI Funders</div>
+	  <h3 class="justify-start text-2xl font-medium leading-loose">CRLI Funders</h3>
 	</div>
-	<div class="self-stretch inline-flex justify-center items-center md:justify-start md:items-start gap-12 flex-wrap content-start">
+	<div class="self-stretch inline-flex justify-center items-center md:justify-start md:items-start gap-12 flex-wrap content-start stagger">
 	 {% for item in site.data.funders %}
 	 <div class="w-40 inline-flex flex-col justify-start items-center gap-3">
-	   <img class="w-40 h-14" src="/assets/images/logos/{{item.logo}}.webp" />
+	   <img class="w-40 h-14" alt="" src="/assets/images/logos/{{item.logo}}.webp" loading="lazy" decoding="async" />
 	   <div class="self-stretch text-center justify-start text-black text-base leading-tight">{{item.name}}</div>
 	 </div>
 	 {% endfor %}
