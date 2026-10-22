@@ -4,23 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>Content Manager</title>
+    <title>Rising Leaders Center</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/icons/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/images/icons/favicon-96x96.png" sizes="96x96" />
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
-    <!-- Sign-in with GitHub needs a login service this site does not have, so hide that button.
-         Editors sign in with "Sign In Using Access Token". -->
+    <!-- Branding and sign-in: show our name instead of Sveltia's, and hide the GitHub button, which needs a
+         login service this site does not have. Editors sign in with "Sign In Using Access Token".
+         This only changes what is displayed; if a Sveltia update changes the page, it falls back to the defaults. -->
     <style>.hide-github-login { display: none !important; }</style>
     <script>
       (function () {
-        function hide() {
+        var NAME = "Rising Leaders Center";
+        function rebrand() {
           document.querySelectorAll("button").forEach(function (b) {
             var t = b.textContent;
             if (/sign in with/i.test(t) && !/token/i.test(t)) b.classList.add("hide-github-login");
           });
+          var walker = document.createTreeWalker(document.body || document.documentElement, NodeFilter.SHOW_TEXT);
+          var node;
+          while ((node = walker.nextNode())) {
+            if (node.nodeValue.indexOf("Sveltia CMS") !== -1) node.nodeValue = node.nodeValue.split("Sveltia CMS").join(NAME);
+          }
+          if (document.title.indexOf("Sveltia CMS") !== -1) document.title = document.title.split("Sveltia CMS").join(NAME);
         }
-        new MutationObserver(hide).observe(document.documentElement, { childList: true, subtree: true });
-        hide();
+        new MutationObserver(rebrand).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+        rebrand();
       })();
     </script>
     <!-- Sveltia CMS: https://github.com/sveltia/sveltia-cms -->
