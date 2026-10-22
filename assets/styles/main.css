@@ -863,3 +863,174 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
     transition: background-color 0.3s ease-out, color 0.3s ease-out;
   }
 }
+
+/* ---------- Smooth open and close animations ----------
+   Height is animated with a grid-row transition (0fr to 1fr), so it follows the real content height
+   instead of a guessed maximum, and the content fades and slides in after the box starts to open.
+   Hidden panels use visibility so their links and text are skipped by keyboards and screen readers. */
+
+/* Phone and tablet menu */
+@media (max-width: 1279px) {
+  #menu.menu-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    box-shadow: none;
+    max-height: calc(100vh - 5rem);
+    max-height: calc(100dvh - 5rem);
+    transition:
+      grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s ease-out,
+      visibility 0s linear 0.45s;
+  }
+  #menu.menu-panel.is-open {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    box-shadow: 0 14px 24px rgba(5, 5, 5, 0.1);
+    transition-delay: 0s;
+  }
+  #menu .menu-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+  #menu.is-open .menu-inner {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  /* Full-width, centred items so nothing shifts sideways when a sub-menu opens */
+  #menu .menu-item {
+    align-self: stretch;
+  }
+  #menu .menu-item > a {
+    justify-content: center;
+  }
+  #menu .menu-item {
+    opacity: 0;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.2s ease-out,
+      transform 0.2s ease-out;
+  }
+  #menu.is-open .menu-item {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.35s ease-out calc(var(--i, 0) * 45ms + 120ms),
+      transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 45ms + 120ms);
+  }
+
+  /* Sub-menus inside the phone menu */
+  .submenu {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+      visibility 0s linear 0.4s;
+  }
+  .submenu.is-open {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition-delay: 0s;
+  }
+  .submenu-inner {
+    overflow: hidden;
+    min-height: 0;
+    max-width: 18rem;
+    margin-inline: auto;
+  }
+  .submenu-inner ul {
+    border: 1px solid var(--stroke);
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity 0.2s ease-out,
+      transform 0.3s ease-out;
+  }
+  .submenu.is-open .submenu-inner ul {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.35s ease-out 0.08s,
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+  }
+}
+
+/* FAQ answers */
+.faq-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.45s;
+}
+.faq-panel.is-open {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition-delay: 0s;
+}
+.faq-panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.faq-answer {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.2s ease-out,
+    transform 0.3s ease-out;
+}
+.faq-panel.is-open .faq-answer {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.4s ease-out 0.1s,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s;
+}
+.faq-item.is-open {
+  box-shadow: 0 6px 18px rgba(5, 5, 5, 0.1);
+}
+.faq-icon {
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.faq-bar-h {
+  transition:
+    opacity 0.3s ease-out,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-bar-v {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.faq-item.is-open .faq-icon {
+  transform: rotate(180deg);
+}
+.faq-item.is-open .faq-bar-h {
+  opacity: 0;
+  transform: scaleX(0.4);
+}
+.faq-item.is-open .faq-bar-v {
+  transform: rotate(90deg);
+}
+html[data-theme="dark"] .faq-item.is-open {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+/* Visitors who ask for less motion get the same open and close, instantly */
+@media (prefers-reduced-motion: reduce) {
+  #menu.menu-panel,
+  #menu .menu-item,
+  .submenu,
+  .submenu-inner ul,
+  .faq-panel,
+  .faq-answer,
+  .faq-icon,
+  .faq-bar-h,
+  .faq-bar-v {
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
