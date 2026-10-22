@@ -1,5 +1,6 @@
+{% if page.image.path %}{% assign hero_src = page.image.path %}{% else %}{% assign hero_src = page.image | prepend: "/assets/images/" | append: ".webp" %}{% endif %}
 <div class="w-full bg-cream">
-  <div class="self-stretch w-full max-w-screen-xl mx-auto pt-8 px-4 md:pb-8 lg:px-20 xl:px-32 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
+  <div class="self-stretch w-full max-w-screen-xl mx-auto pt-8{% if page.type == "home" %} md:pt-20{% endif %} px-4 md:pb-8 lg:px-20 xl:px-32 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-12">
     
     <!-- LEFT CONTENT -->
     <div class="w-full md:w-1/2 flex flex-col justify-center items-start gap-4 text-left titolo">
@@ -8,10 +9,10 @@
           {{page.caption}}
         </div>
 
-      <div class="text-5xl md:text-6xl font-extrabold leading-[60px]">
+      <h1 class="text-display font-medium">
         {{page.title}}
-        <span class="-ml-2">{% include icon.html icon="dot" %}</span>
-      </div>
+        <span class="title-dot -ml-2">{% include icon.html icon="dot" %}</span>
+      </h1>
 
       <div class="w-full text-lg leading-loose text-charcoal">
         {{page.excerpt}}
@@ -28,11 +29,11 @@
     <!-- RIGHT IMAGE -->
     <div class="w-full md:w-1/2 flex justify-center items-center relative titolo">
       <div class="w-full md:w-[80%] max-w-[460px]">
-        <img class="w-full h-auto rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)]" src="/assets/images/{{page.image}}.webp" alt="{{page.title}}" />
+        <img class="parallax w-full h-auto rounded-2xl shadow-card" src="{{ hero_src }}" alt="" fetchpriority="high" decoding="async" />
       </div>
 
       {% if page.type == "home" %}
-      <div class="p-5 left-0 md:left-4 top-0 md:-top-12 absolute bg-white shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] inline-flex justify-center items-start gap-3 rounded-br-2xl rounded-tl-2xl md:rounded-2xl">
+      <div class="float-soft p-5 left-0 md:left-4 top-0 md:-top-12 absolute bg-white shadow-card inline-flex justify-center items-start gap-3 rounded-br-2xl rounded-tl-2xl md:rounded-2xl">
         {% include icon.html icon="message-bubbles" %}
         <div class="w-28 flex flex-col justify-start items-center">
           <div class="text-center text-charcoal text-lg leading-7">Worked with</div>

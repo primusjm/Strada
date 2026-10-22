@@ -6,7 +6,7 @@
     <!-- Masonry-like grid -->
     <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] w-full">
       {% for item in site.data.testimonials limit:limit %}
-        <div class="break-inside-avoid mb-6 p-8 bg-white rounded-2xl shadow-[0px_1px_3px_0px_rgba(0,0,0,0.16)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow duration-300 text-left">
+        <div class="break-inside-avoid mb-6 p-8 bg-white rounded-2xl shadow-card hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-shadow duration-300 text-left">
         <p class="text-gray-700 leading-relaxed mb-6">
           “{{ item.testimonial }}”
         </p>
@@ -15,7 +15,7 @@
             {% include icon.html icon="quote" %}
           </div>
           <div class="flex flex-col">
-            <span class="text-gray-900 font-semibold text-lg">{{ item.author }}</span>
+            <span class="text-gray-900 font-medium text-lg">{{ item.author }}</span>
             <span class="text-gray-500 text-base">{{ item.company }}</span>
           </div>
         </div>

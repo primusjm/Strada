@@ -4,10 +4,11 @@ layout: compressa
 {% include header.html %}
 <div class="flex flex-col justify-center items-center">
 {% include nav.html %}
+<main id="main" class="w-full">
 {% include hero.html %}
 <!-- WHY -->
 <div class="w-full">
-  <div class="self-stretch w-full max-w-screen-xl mx-auto py-16 px-8 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
+  <div class="self-stretch w-full max-w-screen-xl mx-auto py-16 px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
 
 	{% include title.html caption="What Drives Us?" title="Why this Initiative?" dot="no" align="center" %}
 
@@ -28,11 +29,11 @@ layout: compressa
 
 	</div>
 
-	<div class="mt-16 mx-auto flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
+	<div class="stagger mt-16 mx-auto flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
 	  <div class="inline-flex flex-col justify-center items-center gap-4">
 		{% include icon.html icon="notebook" %}
 		<div class="flex flex-col justify-center items-center gap-0">
-		  <div class="text-2xl font-bold">1:1 Coaching</div>
+		  <h3 class="text-2xl font-medium">1:1 Coaching</h3>
 		  {% include button.html link="/programs/" label="Explore Our Programs" icon="right" type="clear" %}
 		</div>
 	  </div>
@@ -40,7 +41,7 @@ layout: compressa
 	  <div class="inline-flex flex-col justify-center items-center gap-4">
 		{% include icon.html icon="people-4" %}
 		<div class="flex flex-col justify-center items-center gap-0">
-		  <div class="text-2xl font-bold">Team Coaching Sessions</div>
+		  <h3 class="text-2xl font-medium">Team Coaching Sessions</h3>
 		  {% include button.html link="/about-us/" label="Learn More About Us" icon="right" type="clear" %}
 		</div>
 	  </div>
@@ -48,7 +49,7 @@ layout: compressa
 	  <div class="inline-flex flex-col justify-center items-center gap-4">
 		{% include icon.html icon="message-2" %}
 		<div class="flex flex-col justify-center items-center gap-0">
-		  <div class="text-2xl font-bold">Consultation</div>
+		  <h3 class="text-2xl font-medium">Consultation</h3>
 		  {% include button.html link="/contact/" label="Contact Us" icon="right" type="clear" %}
 		</div>
 	  </div>
@@ -59,5 +60,6 @@ layout: compressa
 {% include testimonials.html limit="3" %}
 {% include articles.html %}
 {% include faqs.html %}
+</main>
 {% include footer.html %}
 </div>
