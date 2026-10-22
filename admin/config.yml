@@ -89,6 +89,38 @@ collections:
             fields:
               - { label: Name, name: name, widget: string }
               - { label: Logo file name, name: logo, widget: string, hint: "File name in assets/images/logos without .webp." }
+      - label: Menu (top of every page)
+        name: nav
+        file: _data/nav.yml
+        fields:
+          - label: Menu items
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Link, name: link, widget: string }
+              - label: Drop-down links
+                name: subitems
+                widget: list
+                required: false
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Link, name: link, widget: string }
+      - label: Footer links
+        name: nav-footer
+        file: _data/nav-footer.yml
+        fields:
+          - label: Links
+            name: items
+            widget: list
+            root: true
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Link, name: link, widget: string }
       - label: Our values
         name: values
         file: _data/values.yml
@@ -127,6 +159,7 @@ collections:
                 media_folder: /assets/images/gallery/cohort-1
                 public_folder: /assets/images/gallery/cohort-1
                 hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
           - label: Cohort 2
             name: cohort-2
             widget: list
@@ -138,6 +171,7 @@ collections:
                 media_folder: /assets/images/gallery/cohort-2
                 public_folder: /assets/images/gallery/cohort-2
                 hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
           - label: Cohort 3
             name: cohort-3
             widget: list
@@ -149,10 +183,32 @@ collections:
                 media_folder: /assets/images/gallery/cohort-3
                 public_folder: /assets/images/gallery/cohort-3
                 hint: The order here is the order on the site. Small versions are created automatically.
+              - { label: Description for screen readers, name: alt, widget: string, required: false, hint: "Optional. Describes the photo for people who cannot see it." }
+
 
   - name: page-content
     label: Page text
     files:
+    - label: Gallery page
+      name: gallery
+      file: _data/pages/gallery.yml
+      fields:
+      - label: All photos
+        name: all_photos
+        widget: string
+      - label: All cohorts
+        name: all_cohorts
+        widget: string
+      - label: Cohorts
+        name: cohorts
+        widget: list
+        fields:
+        - label: Name
+          name: name
+          widget: string
+        - label: Link
+          name: link
+          widget: string
     - label: About Us
       name: about-us
       file: _data/pages/about-us.yml
@@ -192,6 +248,11 @@ collections:
             label: Text
             name: text
             widget: text
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
       - label: Values
         name: values
         widget: object
@@ -237,6 +298,11 @@ collections:
             label: Text
             name: text
             widget: text
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
       - label: Focus
         name: focus
         widget: object
@@ -272,6 +338,11 @@ collections:
         - label: Image alt
           name: image_alt
           widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
       - label: Approach
         name: approach
         widget: object
@@ -348,6 +419,11 @@ collections:
         - label: Linkedin
           name: linkedin
           widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
     - label: Our Programs
       name: programs
       file: _data/pages/programs.yml
@@ -380,6 +456,11 @@ collections:
         - label: Image alt
           name: image_alt
           widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
       - label: Programs
         name: programs
         widget: object
@@ -406,6 +487,11 @@ collections:
             name: text
             widget: text
             hint: Basic HTML such as <b>bold</b> is allowed.
+          - label: Photo
+            name: image
+            widget: image
+            media_folder: /assets/images/uploads
+            public_folder: /assets/images/uploads
         - label: Crli
           name: crli
           widget: object
@@ -421,6 +507,11 @@ collections:
             name: text
             widget: text
             hint: Basic HTML such as <b>bold</b> is allowed.
+          - label: Photo
+            name: image
+            widget: image
+            media_folder: /assets/images/uploads
+            public_folder: /assets/images/uploads
     - label: Coaching
       name: coaching
       file: _data/pages/coaching.yml
@@ -457,6 +548,11 @@ collections:
       - label: Button
         name: button
         widget: string
+      - label: Photo
+        name: image
+        widget: image
+        media_folder: /assets/images/uploads
+        public_folder: /assets/images/uploads
     - label: CRLI
       name: crli
       file: _data/pages/crli.yml
@@ -507,6 +603,16 @@ collections:
         - label: Button
           name: button
           widget: string
+        - label: Photo
+          name: image
+          widget: image
+          media_folder: /assets/images/uploads
+          public_folder: /assets/images/uploads
+      - label: Photo
+        name: image
+        widget: image
+        media_folder: /assets/images/uploads
+        public_folder: /assets/images/uploads
     - label: Our Impact
       name: impact
       file: _data/pages/impact.yml
@@ -583,7 +689,24 @@ collections:
         - label: Label
           name: label
           widget: string
-    - label: Contact
+      - label: Hero
+        name: hero
+        widget: object
+        collapsed: true
+        fields:
+        - label: Button label
+          name: button_label
+          widget: string
+        - label: Button link
+          name: button_link
+          widget: string
+        - label: Badge top
+          name: badge_top
+          widget: string
+        - label: Badge bottom
+          name: badge_bottom
+          widget: string
+    - label: Contact page and form
       name: contact
       file: _data/pages/contact.yml
       fields:
@@ -612,6 +735,111 @@ collections:
         name: thanks_text
         widget: text
         hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Form
+        name: form
+        widget: object
+        collapsed: true
+        fields:
+        - label: First name
+          name: first_name
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Last name
+          name: last_name
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Email
+          name: email
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+          - label: Error type
+            name: error_type
+            widget: string
+        - label: Organisation
+          name: organisation
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+        - label: Message
+          name: message
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+        - label: Country
+          name: country
+          widget: object
+          collapsed: true
+          fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: Error
+            name: error
+            widget: string
+          - label: Placeholder
+            name: placeholder
+            widget: string
+        - label: Countries
+          name: countries
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Required before
+          name: required_before
+          widget: string
+        - label: Required sr
+          name: required_sr
+          widget: string
+        - label: Required after
+          name: required_after
+          widget: string
     - label: Footer, subscribe and section titles
       name: shared
       file: _data/pages/shared.yml
@@ -701,6 +929,28 @@ collections:
         - label: Button
           name: button
           widget: string
+      - label: Article
+        name: article
+        widget: object
+        collapsed: true
+        fields:
+        - label: Read next
+          name: read_next
+          widget: string
+        - label: All articles
+          name: all_articles
+          widget: string
+        - label: Share
+          name: share
+          widget: string
+      - label: Social
+        name: social
+        widget: object
+        collapsed: true
+        fields:
+        - label: Linkedin
+          name: linkedin
+          widget: string
     - label: Quote
       name: quote
       file: _data/quote.yml
@@ -713,7 +963,7 @@ collections:
         widget: string
 
   - name: pages
-    label: Page headings and intro
+    label: Page headings and intro and intro
     files:
       - label: Home
         name: index
@@ -725,11 +975,11 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - label: Hero image
+          - label: Hero photo
             name: image
             widget: object
             fields:
-              - { name: path, widget: string }
+              - { label: Photo, name: path, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
               - { name: width, widget: number }
               - { name: height, widget: number }
           - { name: permalink, widget: hidden }
@@ -743,7 +993,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Our Programs
         name: programs
@@ -755,7 +1005,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Coaching
         name: coaching
@@ -767,7 +1017,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: CRLI
         name: crli
@@ -779,7 +1029,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Our Impact
         name: impact
@@ -791,7 +1041,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Articles
         name: articles
@@ -803,7 +1053,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Gallery
         name: gallery
@@ -815,7 +1065,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: "Gallery: Cohort 1"
         name: cohort-1
@@ -827,7 +1077,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: "Gallery: Cohort 2"
         name: cohort-2
@@ -839,7 +1089,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: "Gallery: Cohort 3"
         name: cohort-3
@@ -851,7 +1101,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Contact
         name: contact
@@ -863,7 +1113,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: FAQs
         name: faqs
@@ -875,7 +1125,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: 404 page
         name: 404
@@ -887,7 +1137,7 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }
       - label: Coming soon
         name: coming-soon
@@ -899,5 +1149,5 @@ collections:
           - { label: Intro text, name: excerpt, widget: text, required: false, hint: "Basic HTML such as <br> is allowed." }
           - { name: layout, widget: hidden }
           - { name: type, widget: hidden }
-          - { label: Hero image, name: image, widget: hidden }
+          - { label: Hero photo, name: image, widget: image, media_folder: /assets/images/uploads, public_folder: /assets/images/uploads }
           - { name: permalink, widget: hidden }

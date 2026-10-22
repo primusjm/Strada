@@ -9,7 +9,8 @@ GitHub Action in `.github/workflows/pages.yml` then rebuilds and publishes the s
 Thumbnails for new gallery and article images are created during that build by `bin/make-thumbs`.
 
 Page text lives in `_data/pages/*.yml` (one file per page) and is rendered by the layouts. Text fields accept basic HTML such as `<b>`.
-Field labels, the form fields on the contact page and image alt text for non-CMS images stay in the layouts.
+Editors can also change menus, footer links, photos on every page, the gallery headings, contact form wording and the
+small labels such as "Read next". Only technical text (the accessibility panel, error pages' extras) stays in the layouts.
 
 ## Local development
 `npm ci && bundle install`, then `bin/start` (serves with live reload) or `JEKYLL_ENV=production bundle exec jekyll build`.
