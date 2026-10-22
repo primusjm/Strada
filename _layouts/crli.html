@@ -1,6 +1,7 @@
 ---
 layout: compressa
 ---
+{% assign c = site.data.pages["crli"] %}
 {% include header.html %}
 <div class="flex flex-col justify-center items-center">
 {% include nav.html %}
@@ -11,33 +12,33 @@ layout: compressa
 	<div class="flex flex-col md:flex-row gap-8">
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-4">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-4">
-					<p>CRLI is structured around the belief that leaders are only as strong as the team that surrounds them and that leaders grow best through connection with others. In CRLI, leaders and their organizations explore how to better serve their communities by bettering themselves and their organizations. CRLI is grounded in the principle that leadership is a collective effort and a practice.</p>
+					<p>{{ c.intro_left }}</p>
 				</div>
 			</div>
 
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-4">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-4">
-					<p>Leaders accepted into the CRLI program gain access to a space of self-reflection, allowing them to better know themselves – their strengths, opportunities for growth, and tendencies. They work in learning partnership groups based to create a culture of vulnerability, connection, and growth. Leaders and their organizations are accompanied on this journey by trained coaches who support their learning, growth, and development.</p>
+					<p>{{ c.intro_right }}</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<div class="w-full h-[400px] max-w-screen-lg mx-auto overflow-hidden pb-8 lg:mb-16 lg:rounded-2xl shadow-card titolo">
-	  <img src="/assets/images/programs/clri-overlay.webp" alt="Four CRLI participants smiling as they hold a woven basket together" class="ph w-full h-full object-cover" loading="lazy" decoding="async"/>
+	  <img src="/assets/images/programs/clri-overlay.webp" alt="{{ c.image_alt }}" class="ph w-full h-full object-cover" loading="lazy" decoding="async"/>
 	</div>
 	
 	<div class="self-stretch w-full max-w-screen-xl mx-auto pb-8 px-4 lg:px-20 flex justify-between items-center titolo">
 	<div class="flex flex-col md:flex-row gap-8">
 		<div class="flex-1 self-stretch flex flex-col justify-start items-start gap-6">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
-					<p>Hand-selected experts skilled in special areas of interest help demystify various aspects of organizational leadership. Topics addressed in CRLI are co-created and selected by individuals and organizations to address specific challenges faced daily. For example, cohorts have explored emotional intelligence, ubuntu, gender, wellness, and how to become the leader Africa needs in crisis.</p>
+					<p>{{ c.topics }}</p>
 				</div>
 			</div>
 	
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
-					<p>Currently, all organizations participating in CRLI are rooted in East Africa and focus on quality education, girls’ education, marginalized communities, or community development. We have a plan to expand to other countries and regions over time.</p>
+					<p>{{ c.location }}</p>
 				</div>
 			</div>
 		</div>
@@ -45,46 +46,46 @@ layout: compressa
 	
 </div>
 {% include quote.html %}
-{% include button.html link="/contact/" label="Get Started" icon="right" type="clear" %}
+{% include button.html link="/contact/" label=c.button icon="right" type="clear" %}
 
 <div class="w-full mt-8">
 <div class="self-stretch w-full max-w-screen-xl mx-auto py-8 px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
   <div class="w-full flex flex-col justify-start items-center gap-0">
-	{% include title.html caption="" title="CRLI Content" dot="yes" align="center" %}  
-	<div class="flex-1 justify-start text-charcoal text-lg text-center font-normal leading-loose">The nine-month coaching and development agenda for CRLI includes:</div>
+	{% include title.html caption="" title=c.content.title dot="yes" align="center" %}  
+	<div class="flex-1 justify-start text-charcoal text-lg text-center font-normal leading-loose">{{ c.content.lead }}</div>
 	<div class="self-stretch flex flex-col md:flex-row justify-center items-center">
 	  <div class="w-[80%] inline-flex flex-col md:flex-row justify-start items-center gap-12 py-8">
 		<div class="flex-1 inline-flex flex-col justify-start items-start gap-6">
 		  <div class="self-stretch inline-flex justify-start items-center gap-4">
 			{% include icon.html icon="content-1" %}
-			<div class="flex-1 justify-start text-black text-lg font-normal">Individual self-assessment</div>
+			<div class="flex-1 justify-start text-black text-lg font-normal">{{ c.content.items[0] }}</div>
 		  </div>
 		  
 		  <div class="self-stretch inline-flex justify-start items-center gap-4">
 			{% include icon.html icon="content-2" %}
-			<div class="flex-1 justify-start text-black text-lg font-normal">Organizational assessments</div>
+			<div class="flex-1 justify-start text-black text-lg font-normal">{{ c.content.items[1] }}</div>
 		  </div>
 		  
 		  <div class="self-stretch inline-flex justify-start items-center gap-4">
 			{% include icon.html icon="content-3" %}
-			<div class="flex-1 justify-start text-black text-lg font-normal">Two in-person meetings</div>
+			<div class="flex-1 justify-start text-black text-lg font-normal">{{ c.content.items[2] }}</div>
 		  </div>
 		  
 		  <div class="self-stretch inline-flex justify-start items-center gap-4">
 			{% include icon.html icon="content-4" %}
-			<div class="flex-1 justify-start text-black text-lg font-normal">Individual, team, and organizational coaching by certified coaches</div>
+			<div class="flex-1 justify-start text-black text-lg font-normal">{{ c.content.items[3] }}</div>
 		  </div>
 		  
 		  <div class="self-stretch inline-flex justify-start items-center gap-4">
 			{% include icon.html icon="content-5" %}
-			<div class="flex-1 justify-start text-black text-lg font-normal">Creation and implementation of Organizational Transformational Action Plans</div>
+			<div class="flex-1 justify-start text-black text-lg font-normal">{{ c.content.items[4] }}</div>
 		  </div>
 		  
 		</div>
-		<img class="w-full md:w-[376px] self-stretch flex-1 relative rounded-2xl shadow-card" alt="Handwritten notes pinned to a cork board, including 'We start from why'" src="/assets/images/programs/crli-content.webp" loading="lazy" decoding="async"/>
+		<img class="w-full md:w-[376px] self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.content.image_alt }}" src="/assets/images/programs/crli-content.webp" loading="lazy" decoding="async"/>
 	  </div>	   
 	</div>
-	{% include button.html link="/our-impact/" label="Learn About the Impact of CRLI" icon="right" type="full" %}
+	{% include button.html link="/our-impact/" label=c.content.button icon="right" type="full" %}
   </div>
 </div>
 </div>
