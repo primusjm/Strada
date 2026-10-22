@@ -1,10 +1,11 @@
 <!-- Values orbit: the values circle the laurel once every 120s (CSS in main.css), labels stay upright. -->
+{% assign c = site.data.pages["about-us"] %}
 <div class="values-stage">
   <div class="values-core">
     <img class="values-laurel" src="/assets/images/about/laurel.svg" alt="" aria-hidden="true" />
     <p class="values-core-text">
-      <span class="values-core-lead">Committed to</span>
-      <span class="values-core-title">Excellence</span>
+      <span class="values-core-lead">{{ c.values.core_lead }}</span>
+      <span class="values-core-title">{{ c.values.core_title }}</span>
     </p>
   </div>
   <ul class="values-orbit" aria-label="Our values">
