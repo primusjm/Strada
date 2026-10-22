@@ -783,6 +783,11 @@ html[data-theme="dark"] .blue svg path[stroke="#1565C0"] {
   stroke: currentColor;
 }
 
+/* The blue LinkedIn badge becomes white on dark backgrounds */
+html[data-theme="dark"] .linkedin-link path {
+  fill: #fff;
+}
+
 /* Text and surface colours that come straight from the Tailwind palette */
 html[data-theme="dark"] .text-charcoal {
   color: var(--charcoal);
