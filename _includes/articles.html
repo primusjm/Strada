@@ -1,6 +1,7 @@
+{% assign t = site.data.pages.shared %}
 <div class="w-full">
 <div class="self-stretch w-full max-w-screen-xl mx-auto py-20 px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center gap-8">
-{% include title.html caption="Stay Motivated" title="Read our Articles" dot="yes" align="center" %}
+{% include title.html caption=t.articles.caption title=t.articles.title dot="yes" align="center" %}
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
     {% for post in site.posts %}
     {% include article-image.html image=post.image %}
@@ -20,7 +21,7 @@
     {% endfor %}
   </div>
   {% if page.layout == "home" %}
-{% include button.html link="/articles" label="All Articles" icon="right" type="full" %}
+{% include button.html link="/articles" label=t.articles.button icon="right" type="full" %}
 {% endif %}
 </div>
 </div>

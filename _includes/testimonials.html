@@ -1,7 +1,8 @@
+{% assign t = site.data.pages.shared %}
 {% if include.limit %} {% assign limit = include.limit %} {% endif %}
 <section id="testimonials" class="w-full bg-cream py-16">
   <div class="max-w-screen-xl mx-auto px-4 lg:px-20 flex flex-col items-center text-center gap-8 titolo">
-    {% include title.html caption="Feedback" title="Testimonials" dot="yes" align="center" %}
+    {% include title.html caption=t.testimonials.caption title=t.testimonials.title dot="yes" align="center" %}
 
     <!-- Masonry-like grid -->
     <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] w-full">
@@ -23,7 +24,7 @@
       {% endfor %}
     </div>
     {% if page.title != "Our Impact" %}
-    {% include button.html link="/our-impact#testimonials" label="All Testimonials" icon="right" type="full" %}
+    {% include button.html link="/our-impact#testimonials" label=t.testimonials.button icon="right" type="full" %}
     {% endif %}
   </div>
 </section>

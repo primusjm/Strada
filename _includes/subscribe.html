@@ -1,19 +1,20 @@
+{% assign t = site.data.pages.shared %}
 <div class="bg-cream">
   <div class="w-full max-w-screen-xl mx-auto px-4 lg:px-20 py-12 md:py-16">
     <div id="subscribeForm" class="titolo rounded-2xl bg-white shadow-card px-6 py-8 md:px-12 md:py-12 grid grid-cols-1 md:grid-cols-5 items-center gap-6 md:gap-12">
       <div class="md:col-span-2 flex flex-col gap-2 text-center md:text-left">
-        <h2 class="text-heading font-medium">Subscribe to join the network</h2>
-        <p class="text-charcoal text-lg leading-7">Stay up to date with the latest news, announcements, and articles.</p>
+        <h2 class="text-heading font-medium">{{ t.subscribe.heading }}</h2>
+        <p class="text-charcoal text-lg leading-7">{{ t.subscribe.text }}</p>
       </div>
       <!-- FORM -->
       <form class="md:col-span-3 w-full" action="https://formspree.io/f/xyzndyrb" method="POST" enctype="multipart/form-data" name="subscribe" novalidate data-form data-hide-id="subscribeForm" data-success-id="submitSubscribeForm">
         <div class="flex flex-col lg:flex-row items-stretch lg:items-start gap-3">
           <div class="flex-1 min-w-0">
-            <label for="subscribe" class="sr-only">Email address</label>
-            <input id="subscribe" name="subscribe" type="email" autocomplete="email" required placeholder="Your email address" data-error="Enter your email address" data-error-type="Enter a valid email address" class="field py-3.5">
+            <label for="subscribe" class="sr-only">{{ t.subscribe.label }}</label>
+            <input id="subscribe" name="subscribe" type="email" autocomplete="email" required placeholder="{{ t.subscribe.placeholder }}" data-error="Enter your email address" data-error-type="Enter a valid email address" class="field py-3.5">
           </div>
           <button type="submit" class="btn btn-solid lg:flex-none inline-flex items-center justify-center whitespace-nowrap min-h-[54px] px-8 white bg-ink rounded-3xl">
-            <span data-label>Subscribe</span>
+            <span data-label>{{ t.subscribe.button }}</span>
             <span class="btn-icon btn-icon-right pl-2">{% include icon.html icon="arrow-right" %}</span>
           </button>
         </div>
@@ -23,9 +24,9 @@
 
     <div class="my-4 titolo" id="submitSubscribeForm" style="display: none;" aria-live="polite">
       <div class="flex-1 self-stretch flex flex-col justify-start items-start gap-6">
-        {% include title.html caption="You're Subscribed" title="Thank You" dot="yes" align="center" %}
+        {% include title.html caption=t.subscribe.thanks.caption title=t.subscribe.thanks.title dot="yes" align="center" %}
       </div>
-      <div class="max-w-lg text-center self-stretch text-chocolate justify-start text-lg leading-loose">You’ve successfully subscribed! Stay tuned for updates, insights, and news delivered straight to your inbox.</div>
+      <div class="max-w-lg text-center self-stretch text-chocolate justify-start text-lg leading-loose">{{ t.subscribe.thanks_text }}</div>
     </div>
   </div>
 </div>

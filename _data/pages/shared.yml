@@ -1,0 +1,24 @@
+footer:
+  tagline: Developing leaders and teams who prioritize growth, connection with others, and community partnership to drive transformative change.
+subscribe:
+  heading: Subscribe to join the network
+  text: Stay up to date with the latest news, announcements, and articles.
+  label: Email address
+  placeholder: Your email address
+  button: Subscribe
+  thanks:
+    caption: You're Subscribed
+    title: Thank You
+  thanks_text: You’ve successfully subscribed! Stay tuned for updates, insights, and news delivered straight to your inbox.
+testimonials:
+  caption: Feedback
+  title: Testimonials
+  button: All Testimonials
+articles:
+  caption: Stay Motivated
+  title: Read our Articles
+  button: All Articles
+faqs:
+  caption: Get Informed
+  title: FAQs
+  button: All FAQs
