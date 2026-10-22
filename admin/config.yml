@@ -150,8 +150,570 @@ collections:
                 public_folder: /assets/images/gallery/cohort-3
                 hint: The order here is the order on the site. Small versions are created automatically.
 
+  - name: page-content
+    label: Page text
+    files:
+    - label: About Us
+      name: about-us
+      file: _data/pages/about-us.yml
+      fields:
+      - label: Story
+        name: story
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Mission title
+          name: mission_title
+          widget: string
+        - label: Mission
+          name: mission
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Vision title
+          name: vision_title
+          widget: string
+        - label: Vision
+          name: vision
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+      - label: Values
+        name: values
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Core lead
+          name: core_lead
+          widget: string
+        - label: Core title
+          name: core_title
+          widget: string
+      - label: Difference
+        name: difference
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: List intro
+          name: list_intro
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+      - label: Focus
+        name: focus
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Paragraphs
+          name: paragraphs
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: List intro
+          name: list_intro
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Closing
+          name: closing
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Image alt
+          name: image_alt
+          widget: string
+      - label: Approach
+        name: approach
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Cards
+          name: cards
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+      - label: Partners
+        name: partners
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Participants heading
+          name: participants_heading
+          widget: string
+        - label: Funders heading
+          name: funders_heading
+          widget: string
+      - label: Founder
+        name: founder
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Intro
+          name: intro
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Left
+          name: left
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Right
+          name: right
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Connect
+          name: connect
+          widget: string
+        - label: Linkedin
+          name: linkedin
+          widget: string
+    - label: Our Programs
+      name: programs
+      file: _data/pages/programs.yml
+      fields:
+      - label: Intro
+        name: intro
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Left
+          name: left
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Right
+          name: right
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+      - label: Programs
+        name: programs
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Coaching
+          name: coaching
+          widget: object
+          collapsed: true
+          fields:
+          - label: Image alt
+            name: image_alt
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+          - label: Text
+            name: text
+            widget: text
+            hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: Crli
+          name: crli
+          widget: object
+          collapsed: true
+          fields:
+          - label: Image alt
+            name: image_alt
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+          - label: Text
+            name: text
+            widget: text
+            hint: Basic HTML such as <b>bold</b> is allowed.
+    - label: Coaching
+      name: coaching
+      file: _data/pages/coaching.yml
+      fields:
+      - label: Lead
+        name: lead
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Body
+        name: body
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Right
+        name: right
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Bullets
+        name: bullets
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Image alt
+        name: image_alt
+        widget: string
+      - label: Closing
+        name: closing
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Button
+        name: button
+        widget: string
+    - label: CRLI
+      name: crli
+      file: _data/pages/crli.yml
+      fields:
+      - label: Intro left
+        name: intro_left
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Intro right
+        name: intro_right
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Topics
+        name: topics
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Location
+        name: location
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Image alt
+        name: image_alt
+        widget: string
+      - label: Button
+        name: button
+        widget: string
+      - label: Content
+        name: content
+        widget: object
+        collapsed: true
+        fields:
+        - label: Title
+          name: title
+          widget: string
+        - label: Lead
+          name: lead
+          widget: string
+        - label: Items
+          name: items
+          widget: list
+          field:
+            label: Text
+            name: text
+            widget: text
+        - label: Image alt
+          name: image_alt
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+    - label: Our Impact
+      name: impact
+      file: _data/pages/impact.yml
+      fields:
+      - label: Achievements
+        name: achievements
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+      - label: Intro
+        name: intro
+        widget: list
+        field:
+          label: Text
+          name: text
+          widget: text
+      - label: Items
+        name: items
+        widget: list
+        fields:
+        - label: Title
+          name: title
+          widget: string
+        - label: Text
+          name: text
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+    - label: Home page
+      name: home
+      file: _data/pages/home.yml
+      fields:
+      - label: Why
+        name: why
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: P1
+          name: p1
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: P2
+          name: p2
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+        - label: P3
+          name: p3
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Services
+        name: services
+        widget: list
+        fields:
+        - label: Icon
+          name: icon
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Link
+          name: link
+          widget: string
+        - label: Label
+          name: label
+          widget: string
+    - label: Contact
+      name: contact
+      file: _data/pages/contact.yml
+      fields:
+      - label: Heading
+        name: heading
+        widget: string
+      - label: Note
+        name: note
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Button
+        name: button
+        widget: string
+      - label: Thanks
+        name: thanks
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+      - label: Thanks text
+        name: thanks_text
+        widget: text
+        hint: Basic HTML such as <b>bold</b> is allowed.
+    - label: Footer, subscribe and section titles
+      name: shared
+      file: _data/pages/shared.yml
+      fields:
+      - label: Footer
+        name: footer
+        widget: object
+        collapsed: true
+        fields:
+        - label: Tagline
+          name: tagline
+          widget: text
+          hint: Basic HTML such as <b>bold</b> is allowed.
+      - label: Subscribe
+        name: subscribe
+        widget: object
+        collapsed: true
+        fields:
+        - label: Heading
+          name: heading
+          widget: string
+        - label: Text
+          name: text
+          widget: string
+        - label: Label
+          name: label
+          widget: string
+        - label: Placeholder
+          name: placeholder
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+        - label: Thanks
+          name: thanks
+          widget: object
+          collapsed: true
+          fields:
+          - label: Caption
+            name: caption
+            widget: string
+          - label: Title
+            name: title
+            widget: string
+        - label: Thanks text
+          name: thanks_text
+          widget: string
+      - label: Testimonials
+        name: testimonials
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+      - label: Articles
+        name: articles
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+      - label: Faqs
+        name: faqs
+        widget: object
+        collapsed: true
+        fields:
+        - label: Caption
+          name: caption
+          widget: string
+        - label: Title
+          name: title
+          widget: string
+        - label: Button
+          name: button
+          widget: string
+    - label: Quote
+      name: quote
+      file: _data/quote.yml
+      fields:
+      - label: Text
+        name: text
+        widget: string
+      - label: Author
+        name: author
+        widget: string
+
   - name: pages
-    label: Page headings
+    label: Page headings and intro
     files:
       - label: Home
         name: index
