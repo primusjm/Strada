@@ -4,6 +4,9 @@ backend:
   repo: primusjm/Strada
   branch: main
 
+logo:
+  src: /admin/logo.svg
+
 site_url: https://risingleaderscenter.org
 display_url: https://risingleaderscenter.org
 
