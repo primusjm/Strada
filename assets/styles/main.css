@@ -1165,6 +1165,84 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
   }
 }
 
+/* About: Our Approach. Four cream cards in two staggered columns, joined by a hand-drawn arrow path.
+   The right column starts 60px lower; the cards span grid rows so each column stacks without gaps. */
+.approach-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.approach-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  background: var(--cream);
+  border: 1px solid var(--stroke);
+  border-top-width: 0;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  letter-spacing: -0.02em;
+}
+.approach-card.approach-1 {
+  border-top-width: 1px;
+}
+.approach-arrow {
+  display: none;
+}
+@media (min-width: 768px) {
+  .approach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto auto auto;
+    column-gap: 14px;
+  }
+  .approach-card {
+    padding: 4rem 3rem;
+  }
+  .approach-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .approach-2 {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    margin-top: 60px;
+    border-top-width: 1px;
+  }
+  .approach-3 {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+  }
+  .approach-4 {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  .approach-arrow {
+    display: block;
+    position: absolute;
+    width: 100px;
+    height: 24px;
+    max-width: none;
+    pointer-events: none;
+  }
+  .approach-arrow-1 {
+    left: -57px;
+    top: 10px;
+  }
+  .approach-arrow-2 {
+    left: calc(100% - 43px);
+    top: 5px;
+    transform: rotate(152.75deg) scaleY(-1);
+  }
+  .approach-arrow-3 {
+    left: -57px;
+    bottom: 135px;
+    transform: rotate(-27.25deg) scaleY(-1);
+  }
+}
+
 /* FAQ answers */
 .faq-panel {
   display: grid;

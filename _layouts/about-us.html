@@ -105,44 +105,52 @@ layout: compressa
 <!-- APPROACH -->
 <div id="approach" class="w-full">
   <div class="self-stretch w-full max-w-screen-xl mx-auto py-16 px-4 lg:px-20 xl:px-32 flex flex-col justify-between items-center titolo">
-	<div class="w-full flex flex-col justify-start items-center gap-8">
-	
+	<div class="w-full max-w-[926px] flex flex-col justify-start items-center gap-12">
+
+	  <div class="md:hidden w-full">
 	  {% include title.html caption=c.approach.caption title=c.approach.title dot="yes" align="center" %}
-	
-	  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-		
-		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+	  </div>
+	  <div class="w-full hidden md:block">
+	  {% include title.html caption=c.approach.caption title=c.approach.title dot="yes" align="left" %}
+	  </div>
+
+	  <div class="approach-grid w-full">
+
+		<div class="approach-card approach-1">
 		  {% include icon.html icon="approach-1" %}
-		  <div class="text-charcoal leading-loose">
+		  <div class="text-charcoal">
 			{{ c.approach.cards[0] }}
 		  </div>
 		</div>
-	
-		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+
+		<div class="approach-card approach-2">
+		  <img class="approach-arrow approach-arrow-1" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-2" %}
-		  <div class="text-charcoal leading-loose">
+		  <div class="text-charcoal">
 			{{ c.approach.cards[1] }}
 		  </div>
 		</div>
-	
-		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+
+		<div class="approach-card approach-3">
+		  <img class="approach-arrow approach-arrow-2" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-3" %}
-		  <div class="text-charcoal leading-loose">
+		  <div class="text-charcoal">
 			{{ c.approach.cards[2] }}
 		  </div>
 		</div>
-	
-		<div class="lift p-12 shadow-card flex flex-col justify-start items-start bg-cream gap-4 rounded-2xl">
+
+		<div class="approach-card approach-4">
+		  <img class="approach-arrow approach-arrow-3" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-4" %}
-		  <div class="text-charcoal leading-loose">
+		  <div class="text-charcoal">
 			{{ c.approach.cards[3] }}
 		  </div>
 		</div>
-	
+
 	  </div>
 	</div>
-	
-	
+
+
   </div>
 </div>
 <!-- APPROACH -->
