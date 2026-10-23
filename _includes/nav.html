@@ -1,6 +1,6 @@
 {% assign t = site.data.pages.shared %}
 <!-- Header -->
-<header class="site-header w-full bg-cream" x-data="{ open: false }" @keydown.escape.window="open = false" @click.outside="open = false">
+<header class="site-header w-full bg-cream" x-data="{ open: false }" x-effect="document.documentElement.classList.toggle('menu-open', open)" @keydown.escape.window="open = false" @click.outside="open = false">
   <div class="header-bar w-full max-w-screen-xl mx-auto pt-8 px-4 pb-4 md:px-8 nav:px-8 xl:px-20 flex justify-between items-center">
 
     <!-- Logo -->
