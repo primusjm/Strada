@@ -186,36 +186,33 @@ span {
   margin: 1.5rem 0;
   width: 100%;
 }
+/* Values: the nine values travel round the laurel on an oval, matching the Figma layout (about 666 by 462).
+   --t is an angle that the animation turns through a full circle; each value sits at its own angle plus --t,
+   so the labels stay upright with no counter-rotation. Browsers without @property keep the resting layout. */
+@property --t {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
 .values-stage {
-  aspect-ratio: 1/1;
+  aspect-ratio: 666/462;
   container-type: size;
   margin-inline: auto;
-  max-width: 760px;
+  max-width: 666px;
   position: relative;
   width: 100%;
-}
-@media (min-width: 640px) {
-  .values-stage .values-orbit {
-    --r: 41cqw;
-  }
-}
-@media (max-width: 639px) {
-  .values-stage {
-    margin-inline: -1rem;
-    max-width: none;
-    width: calc(100% + 2rem);
-  }
 }
 .values-core {
   display: grid;
   inset: 0;
   place-items: center;
   position: absolute;
+  transform: translateY(5.2cqh);
 }
 .values-laurel {
   grid-area: 1/1;
   height: auto;
-  width: 50cqw;
+  width: 36.6cqw;
 }
 .values-core-text {
   align-items: center;
@@ -228,16 +225,18 @@ span {
   white-space: nowrap;
 }
 .values-core-lead {
-  font-size: clamp(12px, 3.4cqw, 26px);
-  line-height: 1.2;
+  font-size: clamp(11px, 2.7cqw, 20px);
+  line-height: 1.5;
 }
 .values-core-title {
-  font-size: clamp(15px, 4.8cqw, 38px);
-  font-weight: 500;
-  line-height: 1.2;
+  font-size: clamp(15px, 3.9cqw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
 }
 .values-orbit {
-  --r: 38cqw;
+  --rx: 48cqw;
+  --ry: 47.6cqh;
   --period: 120s;
   animation: values-orbit var(--period) linear infinite;
   inset: 0;
@@ -251,18 +250,20 @@ span {
   left: 50%;
   position: absolute;
   top: 50%;
-  transform: rotate(var(--a)) translateX(var(--r)) rotate(calc(var(--a) * -1));
+  transform: translate(
+    calc(var(--rx) * cos(var(--a) + var(--t))),
+    calc(var(--ry) * sin(var(--a) + var(--t)))
+  );
   width: 0;
 }
 .values-label {
   align-items: center;
-  animation: values-upright var(--period) linear infinite;
   color: var(--charcoal);
   display: flex;
-  font-size: clamp(11.5px, 3.4cqw, 26px);
-  gap: 0.35em;
+  font-size: clamp(12px, 3cqw, 22px);
+  gap: 0.3em;
   left: 0;
-  line-height: 1.2;
+  line-height: 1.6;
   position: absolute;
   top: 0;
   transform: translate(-50%, -50%);
@@ -271,23 +272,58 @@ span {
 .values-label svg {
   flex: none;
   height: auto;
-  width: 1.1em;
+  width: 1.15em;
+}
+@media (max-width: 799px) {
+  .values-stage {
+    aspect-ratio: 1/1.1;
+    margin-inline: -1rem;
+    max-width: none;
+    width: calc(100% + 2rem);
+  }
+  .values-stage .values-orbit {
+    --rx: 35cqw;
+    --ry: 41cqh;
+  }
+  .values-laurel {
+    width: 48cqw;
+  }
+  .values-core-lead {
+    font-size: 3.7cqw;
+  }
+  .values-core-title {
+    font-size: 5.2cqw;
+  }
+  .values-label {
+    font-size: 3.1cqw;
+  }
+}
+@media (min-width: 560px) and (max-width: 799px) {
+  .values-stage {
+    aspect-ratio: 560/580;
+    margin-inline: auto;
+    max-width: 560px;
+    width: 100%;
+  }
+  .values-stage .values-orbit {
+    --rx: 36cqw;
+  }
+  .values-core-lead {
+    font-size: 19px;
+  }
+  .values-core-title {
+    font-size: 28px;
+  }
+  .values-label {
+    font-size: 18px;
+  }
 }
 @keyframes values-orbit {
   to {
-    transform: rotate(1turn);
-  }
-}
-@keyframes values-upright {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(-1turn);
+    --t: 360deg;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .values-label,
   .values-orbit {
     animation: none;
   }
@@ -1403,13 +1439,11 @@ html[data-theme="dark"] {
 }
 
 /* The values orbit rests while it is off screen, or while someone points at it to read a value */
-.values-stage.is-paused .values-orbit,
-.values-stage.is-paused .values-label {
+.values-stage.is-paused .values-orbit {
   animation-play-state: paused;
 }
 @media (hover: hover) {
-  .values-stage:hover .values-orbit,
-  .values-stage:hover .values-label {
+  .values-stage:hover .values-orbit {
     animation-play-state: paused;
   }
 }
