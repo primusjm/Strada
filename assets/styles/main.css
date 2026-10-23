@@ -918,9 +918,31 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
       visibility 0s linear 0.45s;
   }
   #menu.menu-panel.is-open {
+    border-bottom: 1px solid var(--stroke);
     grid-template-rows: 1fr;
     visibility: visible;
     box-shadow: 0 14px 24px rgba(5, 5, 5, 0.1);
+    border-bottom-color: color-mix(in srgb, var(--charcoal) 30%, transparent);
+    transition-delay: 0s;
+  }
+  /* Dims the page behind the open menu. A tap on it closes the menu (the header closes on outside clicks). */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    background: rgba(5, 5, 5, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.35s ease-out,
+      visibility 0s linear 0.35s;
+  }
+  html.menu-open body::after {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
     transition-delay: 0s;
   }
   #menu .menu-inner {
@@ -1065,6 +1087,7 @@ html[data-theme="dark"] .faq-item.is-open {
 /* Visitors who ask for less motion get the same open and close, instantly */
 @media (prefers-reduced-motion: reduce) {
   #menu.menu-panel,
+  body::after,
   #menu .menu-item,
   .submenu,
   .submenu-inner ul,
