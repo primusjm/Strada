@@ -989,8 +989,8 @@ collections:
         - label: Main label
           name: main_label
           widget: string
-        - label: Overview
-          name: overview
+        - label: Sub-menu button description (read out by screen readers, after the menu name)
+          name: submenu_label
           widget: string
         - label: Contact
           name: contact

@@ -29,7 +29,7 @@
       id="menu"
       aria-label="{{ t.nav.main_label }}"
       :class="{ 'is-open': open }"
-      @click="if ($event.target.closest('a[href]') && !$event.target.closest('[data-parent]')) open=false"
+      @click="if ($event.target.closest('a[href]')) open=false"
       class="menu-panel nav:flex flex-col nav:flex-row justify-start items-center gap-5 xl:gap-8 absolute nav:static top-full left-0 w-full nav:w-auto bg-cream nav:bg-transparent shadow nav:shadow-none z-40 text-lg md:text-base"
     >
       <div class="menu-inner">
@@ -53,18 +53,23 @@
               aria-current="{{ current }}"{% endif %}{% if item.subitems %}
               data-parent
               aria-haspopup="true"
-              :aria-expanded="open.toString()"
-              @click="if (window.matchMedia('(max-width: 1099px)').matches) { $event.preventDefault(); open=!open }"{% endif %}
+              :aria-expanded="open.toString()"{% endif %}
             >
               {{ item.name }}
               {% if item.subitems %}
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="hidden nav:block h-3 w-3 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               {% endif %}
             </a>
 
             {% if item.subitems %}
+              <!-- Phone and tablet: the link opens the page, this button opens and closes the sub-menu -->
+              <button type="button" class="submenu-toggle nav:hidden" data-toggle aria-label="{{ item.name }} {{ t.nav.submenu_label }}" :aria-expanded="open.toString()" @click="open = !open">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200" :class="{ 'rotate-180': open }" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
               <div class="dropdown absolute left-0 top-full pt-3 w-[22rem] z-40 hidden nav:block" :class="{ 'is-open': open }" @click.away="open = false">
               <div class="dd-card relative">
                 <span class="dd-notch" aria-hidden="true"></span>
@@ -81,7 +86,6 @@
                     </li>
                   {% endfor %}
                 </ul>
-                <a href="{{ item.link }}" class="dd-all">{{ t.nav.overview }}</a>
               </div>
               </div>
 
@@ -89,9 +93,6 @@
               <div class="submenu nav:hidden" :class="{ 'is-open': open }">
               <div class="submenu-inner">
               <ul class="mobile-sub flex flex-col">
-                <li>
-                  <a href="{{ item.link }}" class="block py-3 text-charcoal hover:text-ink">{{ t.nav.overview }}</a>
-                </li>
                 {% for subitem in item.subitems %}
                   <li>
                     <a href="{{ subitem.link }}" class="block py-3 text-charcoal hover:text-ink">

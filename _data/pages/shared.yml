@@ -36,7 +36,7 @@ logo_label: Rising Leaders Center, home
 nav:
   menu_button: Menu
   main_label: Main
-  overview: Overview
+  submenu_label: sub-menu
   contact: Contact
   contact_link: /contact/
 scroll_top: Scroll to top
