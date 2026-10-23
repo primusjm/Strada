@@ -1088,7 +1088,7 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
   #menu .nav-link {
     padding: 0.5rem 0.625rem;
   }
-  /* The current page is green and bold with an underline; hover draws a grey one */
+  /* The current page is green and bold with an underline; hover draws the same green line */
   #menu .nav-link::after {
     content: "";
     position: absolute;
@@ -1097,7 +1097,7 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
     bottom: 0;
     height: 2px;
     border-radius: 2px;
-    background: color-mix(in srgb, var(--charcoal) 40%, transparent);
+    background: var(--ink-text);
     transform: scaleX(0);
     transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   }

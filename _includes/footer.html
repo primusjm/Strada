@@ -19,9 +19,6 @@
           {% for item in site.data.nav-footer %}
             <a href="{{item.link}}" class="link-draw text-charcoal hover:text-ink flex justify-center items-center">
               {{item.name}}
-              <span class="ml-[1px] -mb-[8px] relative">
-                {% include icon.html icon="menu-dot" %}
-              </span>
             </a>
           {% endfor %}
           <button type="button" class="a11y-open theme-toggle text-charcoal hover:text-ink flex justify-center items-center gap-2 md:ml-auto" data-theme-toggle aria-pressed="false">
