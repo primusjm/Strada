@@ -1,19 +1,19 @@
 /* Scroll reveal: sections start slightly lowered and transparent, then settle when they enter the viewport.
-   Only active when the "js" class is on <html>, so content is always visible without JavaScript. */
-.js .titolo {
+   Only active once reveal.js has switched on the "js-reveal" class on <html>, so content is always visible without JavaScript. */
+.js-reveal .titolo {
     opacity: 0;
     transform: translateY(16px) scale(0.98);
     transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
         transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.js .titolo.is-visible {
+.js-reveal .titolo.is-visible {
     opacity: 1;
     transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .js .titolo {
+    .js-reveal .titolo {
         opacity: 1;
         transform: none;
         transition: none;
@@ -35,11 +35,11 @@
     overflow: visible;
 }
 
-.js .zigzag path {
+.js-reveal .zigzag path {
     stroke-dashoffset: 1;
 }
 
-.js .zigzag.is-drawn path {
+.js-reveal .zigzag.is-drawn path {
     animation: zigzag-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.3s both;
 }
 
@@ -51,11 +51,11 @@
     }
 }
 
-.js .titolo:not(.is-visible) :is(.grid, .stagger) > * {
+.js-reveal .titolo:not(.is-visible) :is(.grid, .stagger) > * {
     opacity: 0;
 }
 
-.js .titolo.is-visible :is(.grid, .stagger) > * {
+.js-reveal .titolo.is-visible :is(.grid, .stagger) > * {
     animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--i, 0) * 70ms + 0.15s) backwards;
 }
 
@@ -71,11 +71,11 @@
     transform-origin: 50% 100%;
 }
 
-.js .titolo:not(.is-visible) .title-dot {
+.js-reveal .titolo:not(.is-visible) .title-dot {
     opacity: 0;
 }
 
-.js .titolo.is-visible .title-dot {
+.js-reveal .titolo.is-visible .title-dot {
     animation: dot-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s backwards;
 }
 
@@ -109,20 +109,35 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .js .zigzag path {
+    .js-reveal .zigzag path {
         stroke-dashoffset: 0;
     }
 
-    .js .zigzag.is-drawn path,
-    .js .titolo.is-visible :is(.grid, .stagger) > *,
-    .js .titolo.is-visible .title-dot,
+    .js-reveal .zigzag.is-drawn path,
+    .js-reveal .titolo.is-visible :is(.grid, .stagger) > *,
+    .js-reveal .titolo.is-visible .title-dot,
     .float-soft,
     .parallax {
         animation: none;
     }
 
-    .js .titolo:not(.is-visible) :is(.grid, .stagger) > *,
-    .js .titolo:not(.is-visible) .title-dot {
+    .js-reveal .titolo:not(.is-visible) :is(.grid, .stagger) > *,
+    .js-reveal .titolo:not(.is-visible) .title-dot {
         opacity: 1;
     }
+}
+
+/* Anything already on screen when the page opens appears at once, with no fade, so the page feels ready as it paints */
+.js-reveal .titolo.is-instant {
+    transition: none;
+}
+
+.js-reveal .titolo.is-instant :is(.grid, .stagger) > *,
+.js-reveal .titolo.is-instant .title-dot,
+.js-reveal .zigzag.is-instant path {
+    animation: none;
+}
+
+.js-reveal .zigzag.is-instant path {
+    stroke-dashoffset: 0;
 }
