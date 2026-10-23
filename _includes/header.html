@@ -35,4 +35,14 @@
     {% else %}
     <body class="bg-cream">
     {% endif %}
+        <!-- Loading screen: the three waves draw and fade. It only appears if the page takes longer than about 0.2s,
+             stays long enough not to flicker, then fades out. Hidden without JavaScript. -->
+        <div class="page-loader" aria-hidden="true">
+          <svg width="96" height="96" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="loader-wave loader-wave-1" pathLength="100" d="M6 18C6 18 13.5 13.5 21 13.5C31.9464 13.5 40.0536 22.5 51 22.5C58.5 22.5 66 18 66 18" stroke="#1565C0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="loader-wave loader-wave-2" pathLength="100" d="M6 36C6 36 13.5 31.5 21 31.5C31.9464 31.5 40.0536 40.5 51 40.5C58.5 40.5 66 36 66 36" stroke="#20AD96" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            <path class="loader-wave loader-wave-3" pathLength="100" d="M6 54C6 54 13.5 49.5 21 49.5C31.9464 49.5 40.0536 58.5 51 58.5C58.5 58.5 66 54 66 54" stroke="#F9A825" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <script>(function(){var d=document.documentElement,n=0;function done(){if(n)return;n=1;var t=performance.now(),w=t<200?0:Math.max(0,800-t);if(!w&&t<200)d.classList.add("is-fast");setTimeout(function(){d.classList.add("is-loaded")},w)}if(document.readyState==="complete")done();else addEventListener("load",done);setTimeout(done,10000)})()</script>
         <a href="#main" class="skip-link">{{ t.skip_link }}</a>
