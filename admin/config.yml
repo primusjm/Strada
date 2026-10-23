@@ -112,6 +112,7 @@ collections:
                 fields:
                   - { label: Name, name: name, widget: string }
                   - { label: Link, name: link, widget: string }
+                  - { label: Short description (optional, shown under the name on desktop), name: description, widget: string, required: false }
       - label: Footer links
         name: nav-footer
         file: _data/nav-footer.yml

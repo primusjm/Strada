@@ -33,7 +33,7 @@
       class="menu-panel nav:flex flex-col nav:flex-row justify-start items-center gap-5 xl:gap-8 absolute nav:static top-full left-0 w-full nav:w-auto bg-cream nav:bg-transparent shadow nav:shadow-none z-40 text-lg md:text-base"
     >
       <div class="menu-inner">
-      <div class="flex flex-col nav:flex-row justify-center items-center gap-4 nav:gap-5 xl:gap-8 p-4 nav:p-0">
+      <div class="flex flex-col nav:flex-row justify-center items-stretch nav:items-center nav:gap-0 xl:gap-1 px-5 pt-2 nav:p-0">
         {% for item in site.data.nav %}
           {% assign current = "" %}
           {% if page.url == item.link %}{% assign current = "page" %}{% elsif page.url contains item.link %}{% assign current = "true" %}{% endif %}
@@ -49,12 +49,12 @@
           >
             <a
               href="{{ item.link }}"
-              class="nav-link flex items-center gap-1 whitespace-nowrap text-charcoal text-center hover:text-ink font-normal"{% if current != "" %}
+              class="nav-link flex items-center gap-1 whitespace-nowrap text-charcoal hover:text-ink font-normal"{% if current != "" %}
               aria-current="{{ current }}"{% endif %}{% if item.subitems %}
               data-parent
               aria-haspopup="true"
               :aria-expanded="open.toString()"
-              @click="if (window.matchMedia('(max-width: 1279px)').matches) { $event.preventDefault(); open=!open }"{% endif %}
+              @click="if (window.matchMedia('(max-width: 1099px)').matches) { $event.preventDefault(); open=!open }"{% endif %}
             >
               {{ item.name }}
               {% if item.subitems %}
@@ -62,34 +62,39 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
               {% endif %}
-              {% unless item.subitems %}
-              <span class="nav-dot -ml-[1px] -mb-[7px] relative">{% include icon.html icon="menu-dot" %}</span>
-              {% endunless %}
             </a>
 
             {% if item.subitems %}
-              <div class="dropdown absolute left-2 top-full pt-2 w-48 z-40 hidden nav:block" :class="{ 'is-open': open }" @click.away="open = false">
-              <ul class="bg-white shadow-lg rounded-md">
-                {% for subitem in item.subitems %}
-                  <li>
-                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">
-                      {{ subitem.name }}
-                    </a>
-                  </li>
-                {% endfor %}
-              </ul>
+              <div class="dropdown absolute left-0 top-full pt-3 w-[22rem] z-40 hidden nav:block" :class="{ 'is-open': open }" @click.away="open = false">
+              <div class="dd-card relative">
+                <span class="dd-notch" aria-hidden="true"></span>
+                <ul class="flex flex-col gap-0.5">
+                  {% for subitem in item.subitems %}
+                    <li>
+                      <a href="{{ subitem.link }}" class="dd-item">
+                        <span class="flex flex-col">
+                          <span class="dd-title">{{ subitem.name }}</span>
+                          {% if subitem.description %}<span class="dd-desc">{{ subitem.description }}</span>{% endif %}
+                        </span>
+                        <svg class="dd-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+                <a href="{{ item.link }}" class="dd-all">{{ t.nav.overview }}</a>
+              </div>
               </div>
 
               <!-- Mobile dropdown: the parent only opens it, so it gets its own Overview link -->
               <div class="submenu nav:hidden" :class="{ 'is-open': open }">
               <div class="submenu-inner">
-              <ul class="flex flex-col bg-cream rounded-md mt-2">
+              <ul class="mobile-sub flex flex-col">
                 <li>
-                  <a href="{{ item.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">{{ t.nav.overview }}</a>
+                  <a href="{{ item.link }}" class="block py-3 text-charcoal hover:text-ink">{{ t.nav.overview }}</a>
                 </li>
                 {% for subitem in item.subitems %}
                   <li>
-                    <a href="{{ subitem.link }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-ink">
+                    <a href="{{ subitem.link }}" class="block py-3 text-charcoal hover:text-ink">
                       {{ subitem.name }}
                     </a>
                   </li>
@@ -103,8 +108,19 @@
       </div>
 
       <!-- CONTACT US BUTTON -->
-      <div class="menu-item pt-0 pb-4 nav:pb-0 flex justify-center nav:justify-start" style="--i: {{ site.data.nav | size }}">
+      <div class="menu-item menu-contact pt-4 pb-3 nav:p-0 flex justify-center nav:justify-start px-5 nav:px-0" style="--i: {{ site.data.nav | size }}">
         {% include button.html link=t.nav.contact_link label=t.nav.contact icon="left" type="full" %}
+      </div>
+
+      <!-- Theme and LinkedIn (phone and tablet menu only; the footer has them on desktop) -->
+      <div class="menu-item menu-utility nav:hidden" style="--i: {{ site.data.nav | size }}">
+        <button type="button" class="a11y-open theme-toggle text-charcoal hover:text-ink flex items-center gap-2" data-theme-toggle aria-pressed="false">
+          {% include icon.html icon="moon" %}{% include icon.html icon="sun" %}
+          {{ t.theme.label }}
+        </button>
+        <a class="linkedin-link" href="{{ t.social.linkedin_company }}" aria-label="{{ t.social.linkedin_label }}">
+          {% include icon.html icon="linkedin" %}
+        </a>
       </div>
       </div>
     </nav>

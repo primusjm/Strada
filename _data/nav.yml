@@ -20,8 +20,10 @@
   subitems: 
     - name: Coaching
       link: /programs/coaching/
+      description: One-to-one leadership coaching
     - name: CRLI
-      link: /programs/crli/  
+      link: /programs/crli/
+      description: Nine-month institute for nonprofit leaders
 - name: Our Impact
   link: /our-impact/
 - name: Articles
