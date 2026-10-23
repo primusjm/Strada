@@ -8,8 +8,11 @@
 {% assign alt = "Cohort " | append: include.cohort | append: " " | append: include.label | append: " " | append: include.n %}
 {% if include.alt_text and include.alt_text != "" %}{% assign alt = include.alt_text %}{% endif %}
 {% if include.lightbox %}
-<button type="button" class="w-full flex flex-col justify-start items-center overflow-hidden rounded-2xl cursor-zoom-in" data-lightbox="{{ include.image }}" aria-haspopup="dialog">
+<button type="button" class="gallery-tile relative w-full flex flex-col justify-start items-center overflow-hidden rounded-2xl cursor-zoom-in" data-lightbox="{{ include.image }}" aria-haspopup="dialog">
   <img class="ph self-stretch h-full object-cover rounded-2xl shadow-card" src="{{ thumb }}" alt="{{ alt }}" width="640" height="427" loading="lazy" decoding="async" />
+  <span class="gallery-zoom" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+  </span>
 </button>
 {% else %}
 <div class="w-full flex flex-col justify-start items-center overflow-hidden">
