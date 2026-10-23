@@ -45,6 +45,7 @@ textarea {
     transform 0.3s ease-out;
 }
 html {
+  background: var(--page);
   font-size: 16px;
   overflow-x: hidden !important;
   scroll-behavior: smooth;
@@ -344,7 +345,7 @@ span {
 }
 ::view-transition-old(root),
 ::view-transition-new(root) {
-  animation-duration: 0.22s;
+  animation-duration: 0.15s;
 }
 @media (prefers-reduced-motion: reduce) {
   @view-transition {
@@ -1392,100 +1393,6 @@ html[data-theme="dark"] .theme-toggle .theme-sun {
   .gallery-zoom {
     display: none;
   }
-}
-
-/* ---------- Loading screen ----------
-   Fades in after 0.2s (so quick page loads never show it), holds, then fades out once the page has loaded. */
-.page-loader {
-  display: none;
-}
-html.js .page-loader {
-  align-items: center;
-  animation: loader-in 0.35s ease-out 0.2s forwards;
-  background: var(--page);
-  display: flex;
-  inset: 0;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
-  z-index: 100;
-}
-html.is-fast .page-loader {
-  display: none;
-}
-html.is-loaded .page-loader {
-  animation: loader-out 0.45s ease-out forwards;
-}
-.loader-wave {
-  animation:
-    loader-wave 1.6s ease-in-out infinite,
-    loader-bob 1.6s ease-in-out infinite;
-  stroke-dasharray: 100;
-  transform-box: fill-box;
-}
-.loader-wave-2 {
-  animation-delay: 0.18s;
-}
-.loader-wave-3 {
-  animation-delay: 0.36s;
-}
-@keyframes loader-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes loader-out {
-  from {
-    opacity: 1;
-    visibility: visible;
-  }
-  to {
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-@keyframes loader-wave {
-  0% {
-    opacity: 0;
-    stroke-dashoffset: 100;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-    stroke-dashoffset: 0;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    stroke-dashoffset: -100;
-  }
-}
-@keyframes loader-bob {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .loader-wave {
-    animation: none;
-    stroke-dasharray: none;
-  }
-}
-html.a11y-still .loader-wave {
-  animation: none;
-  stroke-dasharray: none;
 }
 
 /* FAQ answers */

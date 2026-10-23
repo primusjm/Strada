@@ -23,6 +23,17 @@
 
   if (reduce || !("IntersectionObserver" in window)) return showAll();
 
+  /* Sections already on screen appear at once (no fade). The hiding styles only switch on here, after that
+     decision, so nothing is hidden before this script has run. */
+  var vh = window.innerHeight;
+  sections.concat(zigzags).forEach(function (el) {
+    var box = el.getBoundingClientRect();
+    if (box.top < vh * 0.94 && box.bottom > 0) {
+      el.classList.add(el.classList.contains("zigzag") ? "is-drawn" : "is-visible", "is-instant");
+    }
+  });
+  document.documentElement.classList.add("js-reveal");
+
   var observerWorks = false;
 
   function watch(items, className, options) {
