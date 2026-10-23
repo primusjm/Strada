@@ -32,8 +32,8 @@ layout: compressa
 
 	<div class="stagger mt-16 mx-auto flex flex-col md:flex-row justify-center items-center gap-16 md:gap-24">
 	  {% for item in c.services %}
-	  <div class="inline-flex flex-col justify-center items-center gap-4">
-		{% include icon.html icon=item.icon %}
+	  <div class="service inline-flex flex-col justify-center items-center gap-4">
+		<span class="service-icon">{% include icon.html icon=item.icon %}</span>
 		<div class="flex flex-col justify-center items-center gap-0">
 		  <h3 class="text-2xl font-medium">{{ item.title }}</h3>
 		  {% include button.html link=item.link label=item.label icon="right" type="clear" %}

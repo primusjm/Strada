@@ -30,7 +30,7 @@ layout: compressa
 						<div class="self-stretch justify-start text-charcoal text-lg leading-7">{{ c.story.vision }}</div>
 					</div>
 				</div>
-				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="{{ c.story.image_alt }}" src="{{ c.story.image }}" loading="lazy" decoding="async"/>
+				<img class="self-stretch flex-1 relative rounded-2xl shadow-card photo-lift" alt="{{ c.story.image_alt }}" src="{{ c.story.image }}" loading="lazy" decoding="async"/>
 			</div>
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
 {% for item in c.story.paragraphs %}<p>{{ item }}</p>{% endfor %}
@@ -63,7 +63,7 @@ layout: compressa
 				<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-2">
 {% for item in c.difference.intro %}<p>{{ item }}</p>{% endfor %}
 				</div>
-				<img class="self-stretch flex-1 relative rounded-2xl shadow-card" alt="" src="{{ c.difference.image }}" loading="lazy" decoding="async"/>
+				<img class="self-stretch flex-1 relative rounded-2xl shadow-card photo-lift" alt="" src="{{ c.difference.image }}" loading="lazy" decoding="async"/>
 			</div>
 
 			<div class="self-stretch flex-1 justify-start text-charcoal font-normal leading-7 flex flex-col justify-start items-start gap-6">
@@ -116,14 +116,14 @@ layout: compressa
 
 	  <div class="approach-grid w-full">
 
-		<div class="approach-card approach-1">
+		<div class="hover-card approach-card approach-1">
 		  {% include icon.html icon="approach-1" %}
 		  <div class="text-charcoal">
 			{{ c.approach.cards[0] }}
 		  </div>
 		</div>
 
-		<div class="approach-card approach-2">
+		<div class="hover-card approach-card approach-2">
 		  <img class="approach-arrow approach-arrow-1" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-2" %}
 		  <div class="text-charcoal">
@@ -131,7 +131,7 @@ layout: compressa
 		  </div>
 		</div>
 
-		<div class="approach-card approach-3">
+		<div class="hover-card approach-card approach-3">
 		  <img class="approach-arrow approach-arrow-2" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-3" %}
 		  <div class="text-charcoal">
@@ -139,7 +139,7 @@ layout: compressa
 		  </div>
 		</div>
 
-		<div class="approach-card approach-4">
+		<div class="hover-card approach-card approach-4">
 		  <img class="approach-arrow approach-arrow-3" src="/assets/images/about/approach-arrow.svg" width="100" height="24" alt="" aria-hidden="true" />
 		  {% include icon.html icon="approach-4" %}
 		  <div class="text-charcoal">
